@@ -17,6 +17,7 @@ public class PPEING4 {
     public static void main(String[] args) {
         // TODO code application logic here
         // HELLO WORLD BELETTE
+        int GAUTIER;
     }
     
 }

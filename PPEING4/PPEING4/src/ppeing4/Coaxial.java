@@ -17,11 +17,11 @@ public class Coaxial extends Technologies{
     private float hauteur;
     
     private float smod;
-    private float nbre_modules;
-    private float surface_contact;
+    private int nbre_modules;
+    private double surface_contact;
     
-    private float r_charge;
-    private float taux_occupation;
+    private double r_charge;
+    private double taux_occupation;
     
     private float resistance_th_globale;
     private float coeff_convection_h;
@@ -38,6 +38,44 @@ public class Coaxial extends Technologies{
         this.hauteur=hauteur;
 
     }
+    
+    public float calcul_smod(float surface_module)
+    {
+        
+        float rayon;
+        double inter_nbre_modules;
+       
+        if(hauteur<largeur)
+            rayon=hauteur/4;
+        else
+            rayon=largeur/4;
+        
+        surface_contact = 2*Math.PI*rayon*longueur;
+        inter_nbre_modules =  surface_contact/surface_module;
+        nbre_modules = (int) inter_nbre_modules;
+        
+        
+        smod = nbre_modules*surface_module;
+        
+        taux_occupation = smod/surface_contact;
+        
+        return smod;
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    public double calcul_r_charge (float densite_couple, float longueur_jambe, float surface_jambe)
+    {
+       
+        r_charge = (masse_volumique*densite_couple*taux_occupation*longueur_jambe)/(2*surface_jambe*surface_jambe);
+        return r_charge;
+    }
+    
     
     
     

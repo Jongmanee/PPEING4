@@ -6,6 +6,7 @@
 package ppeing4;
 
 import java.util.Scanner;
+import java.lang.Math;
 
 /**
  *
@@ -20,7 +21,7 @@ public class PPEING4 {
         // TODO code application logic here
         // HELLO WORLD BELETTE
         
-        Technologies tech1;
+        
         
         Scanner sc = new Scanner(System.in);
         float debit_m;
@@ -30,6 +31,10 @@ public class PPEING4 {
         float longueur;
         float largeur;
         float hauteur;
+        
+        
+        
+        
         
         System.out.println("Veuillez saisir le débit massique :");
          do  
@@ -41,6 +46,7 @@ public class PPEING4 {
 
         
         
+                 
         System.out.println("Veuillez saisir la capacité massique du fluide :");
         do  
         {
@@ -49,6 +55,9 @@ public class PPEING4 {
          
                  System.out.println(capacite_th);
         
+                 
+                 
+                 
         System.out.println("Veuillez saisir la différence de température entre les deux fluides :");
         do  
         {
@@ -57,6 +66,10 @@ public class PPEING4 {
          
                  System.out.println(diff_temperature);
         
+                 
+                 
+                 
+                 
         System.out.println("Veuillez saisir la masse volumique du fluide :");
         do  
         {
@@ -65,13 +78,15 @@ public class PPEING4 {
          
                  System.out.println(masse_volumique);
         
-        System.out.println("Veuillez saisir la longueur de l'espace disponible :");
-          do  
-        {
-           longueur = sc.nextFloat();
-        }while (longueur<0);
-         
-                 System.out.println(longueur);
+                 
+                 
+                 
+      
+                 
+                 
+                 
+                 
+                 
         System.out.println("Veuillez saisir la largeur de l'espace disponible :");
         do  
         {
@@ -79,6 +94,10 @@ public class PPEING4 {
         }while (largeur<0);
          
                  System.out.println(largeur);
+                 
+                 
+                 
+                 
         System.out.println("Veuillez saisir la hauteur de l'espace disponible :");
         do  
         {
@@ -86,15 +105,25 @@ public class PPEING4 {
         }while (hauteur<0);
          
                  System.out.println(hauteur);
+                 
+                 
+        System.out.println("Veuillez saisir la longueur de l'espace disponible :");
+          do  
+        {
+           longueur = sc.nextFloat();
+        }while (longueur<0 && longueur>=hauteur && longueur>=largeur);
+         
+                 System.out.println(longueur);
         
         
+        Coaxial coax1;
         
+        coax1 = new Coaxial(longueur,largeur,hauteur,debit_m,capacite_th,diff_temperature,masse_volumique);
         
-        //tech1 = new Technologies(1,0,0,0);
+        System.out.println(coax1.get_debit());
         
-        
-        
-        
+         System.out.println(coax1.calcul_smod(3));
+         System.out.println(coax1.calcul_r_charge(2,1,1));
         
     }
     

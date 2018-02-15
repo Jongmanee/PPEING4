@@ -12,10 +12,10 @@ package ppeing4;
  */
 public class Technologies {
     
-    private float debit_m;
-    private float capacite_th;
-    private float diff_temperature;
-    private float masse_volumique;
+    protected float debit_m;
+    protected float capacite_th;
+    protected float diff_temperature;
+    protected float masse_volumique;
     
     public Technologies (float debit_m, float capacite_th, float diff_temperature, float masse_volumique)
     {
@@ -25,5 +25,15 @@ public class Technologies {
         this.masse_volumique = masse_volumique;
         
     }
+
+    public float get_debit ()
+    {
+        return debit_m;
+    }
+    
+    
+    
+    
+    
     
 }

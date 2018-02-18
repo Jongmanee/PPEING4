@@ -8,6 +8,7 @@ package ppeing4;
 import java.util.Scanner;
 import java.lang.Math;
 
+
 /**
  *
  * @author Jongmanee Denis
@@ -17,7 +18,8 @@ public class PPEING4 {
     /**fefeffffefefefe
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // TODO code application logic here
         // HELLO WORLD BELETTE
         
@@ -32,10 +34,10 @@ public class PPEING4 {
         float largeur;
         float hauteur;
         
-        
-        
-        
-        
+        Ecran fenetre;
+        fenetre = new Ecran();
+        fenetre.setVisible(true);
+         
         System.out.println("Veuillez saisir le débit massique :");
          do  
         {

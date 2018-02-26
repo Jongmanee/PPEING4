@@ -36,6 +36,7 @@ public class Ecran extends JFrame
     JFrame frame;
     ImageIcon fond;
     JLabel jlbackgroundImage;
+    String bulle;
    
     
 
@@ -125,7 +126,7 @@ public class Ecran extends JFrame
                           String[] choix = {"Coaxial", "À plaques", "À spirales"};
                     JOptionPane jop = new JOptionPane();
 
-                    String bulle = (String)jop.showInputDialog(null, 
+                    bulle = (String)jop.showInputDialog(null, 
                     "Veuillez choisir la technologie de l'échangeur",
                     "PPE ING4 GEOTHERMIE",
                     JOptionPane.QUESTION_MESSAGE,
@@ -165,7 +166,14 @@ public class Ecran extends JFrame
                          
                          Fenetre_saisie fenetre2 ;
                         fenetre2 = new Fenetre_saisie();
-                        fenetre2.setVisible(true);
+                        if (fenetre2.bulle!=null)
+                        {
+                            fenetre2.setVisible(true);
+                        }
+                        else
+                        {
+                            fenetre2.setVisible(false);
+                        }
                         
                     } 
 

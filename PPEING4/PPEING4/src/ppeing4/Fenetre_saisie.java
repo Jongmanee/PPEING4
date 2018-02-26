@@ -27,14 +27,14 @@ public class Fenetre_saisie extends JFrame{
     JButton b1,b2;
     JPanel panneau;
     JTextArea txt_utilisation;
-    
+    String bulle;
     
     public Fenetre_saisie ()
     {
         String[] choix = {"Coaxial", "À plaques", "À spirales"};
                     JOptionPane jop = new JOptionPane();
 
-                    String bulle = (String)jop.showInputDialog(null, 
+                    bulle = (String)jop.showInputDialog(null, 
                     "Veuillez choisir la technologie de l'échangeur",
                     "PPE ING4 GEOTHERMIE",
                     JOptionPane.QUESTION_MESSAGE,
@@ -104,7 +104,14 @@ public class Fenetre_saisie extends JFrame{
                      {
                          Fenetre_saisie fenetre2 ;
                         fenetre2 = new Fenetre_saisie();
-                        fenetre2.setVisible(true);
+                        if (fenetre2.bulle!=null)
+                        {
+                            fenetre2.setVisible(true);
+                        }
+                        else
+                        {
+                            fenetre2.setVisible(false);
+                        }
                      }
                 }
          

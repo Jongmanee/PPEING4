@@ -21,23 +21,25 @@ public class PPEING4 {
     public static void main(String[] args) 
     {
         // TODO code application logic here
-        // HELLO WORLD BELETTE
+       
         
         
         
         Scanner sc = new Scanner(System.in);
-        float debit_m;
-        float capacite_th;
-        float diff_temperature;
-        float masse_volumique;
-        float longueur;
-        float largeur;
-        float hauteur;
+        float debit_m=0;
+        float capacite_th=0;
+        float diff_temperature=0;
+        float masse_volumique=0;
+        float longueur=0;
+        float largeur=0;
+        float hauteur=0;
         
         Ecran fenetre;
         fenetre = new Ecran();
         fenetre.setVisible(true);
-         
+        
+        /*
+        
         System.out.println("Veuillez saisir le débit massique :");
          do  
         {
@@ -116,7 +118,7 @@ public class PPEING4 {
         }while (longueur<0 && longueur>=hauteur && longueur>=largeur);
          
                  System.out.println(longueur);
-        
+        */
         
         Coaxial coax1;
         
@@ -126,7 +128,7 @@ public class PPEING4 {
         
          System.out.println(coax1.calcul_smod(3));
          System.out.println(coax1.calcul_r_charge(2,1,1));
-        
+      
     }
     
 }

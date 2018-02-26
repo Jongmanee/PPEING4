@@ -5,6 +5,8 @@
 */
 package ppeing4;
 
+
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -27,7 +29,7 @@ public class Ecran extends JFrame
 {
 
 
-    JPanel panneau;
+    JPanel panneau, panneau2;
     JButton b1, b2, b3, b4;
     JTextArea txt_utilisation;
     JScrollPane defil;
@@ -51,7 +53,7 @@ public class Ecran extends JFrame
 
         "                                    Présentation du Logiciel\n"+
 
-        "Partie de ce constat nous avons décidé d’étendre notre travail à d’autres centrales géothermique afin de pouvoir palie a une perte de chaleur éventuel sur toutes les centrales. "+"\r"+
+        "Partis de ce constat nous avons décidé d’étendre notre travail à d’autres centrales géothermique afin de pouvoir palie a une perte de chaleur éventuel sur toutes les centrales. "+"\r"+
         "Nous avons décidé de créer un logiciel qui pourra permettre à l’utilisateur, après saisie des caractéristiques de sa centrale géothermique et de son réseau, avoir une comparaison entre différentes façons ou technologies afin d’exploiter la chaleur perdue au retour de l’eau chaude dans le réseau géothermique.\n\r" +
         "L’intérêt de notre logiciel sera donc d’obtenir une solution adaptée et efficace pour chaque chacune des centrales géothermique face a une éventuelle perte de chaleur.\n"+
         "Après avoir rentré les données caractéristiques de la centrale, l’utilisateur aura à sa disposition un tableau de solutions diverses ou lui sera indiqué la solution la plus efficace pour valoriser la chaleur de sa centrale.\n"
@@ -161,6 +163,10 @@ public class Ecran extends JFrame
                      if (arg0.getSource()==b4)
                     {
                          
+                         Fenetre_saisie fenetre2 ;
+                        fenetre2 = new Fenetre_saisie();
+                        fenetre2.setVisible(true);
+                        
                     } 
 
                 }

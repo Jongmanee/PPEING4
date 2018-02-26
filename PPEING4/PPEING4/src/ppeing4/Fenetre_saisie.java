@@ -87,36 +87,60 @@ public class Fenetre_saisie extends JFrame{
         JFormattedTextField debitnb= new JFormattedTextField(NumberFormat.getInstance());
         debitnb.setColumns(20);
         panneau.add(debitnb);
+        
+        
         JLabel capacitelb=new JLabel("Rentrer la capacite");
         panneau.add(capacitelb);
         JFormattedTextField capacitenb= new JFormattedTextField(NumberFormat.getInstance());
         capacitenb.setColumns(20);
         panneau.add(capacitenb);
+        
+        
         JLabel difftemperaturelb=new JLabel("Rentrer la différence de temperature");
         panneau.add(difftemperaturelb);
         JFormattedTextField difftemperaturenb= new JFormattedTextField(NumberFormat.getInstance());
         difftemperaturenb.setColumns(20);
         panneau.add(difftemperaturenb);
+        
+        
         JLabel massevolumiquelb=new JLabel("Rentrer la masse volumique");
         panneau.add(massevolumiquelb);
         JFormattedTextField massevolumiquenb= new JFormattedTextField(NumberFormat.getInstance());
         massevolumiquenb.setColumns(20);
         panneau.add(massevolumiquenb);
+        
+        
         JLabel longueurlb=new JLabel("Rentrer la longueur");
         panneau.add(longueurlb);
         JFormattedTextField longueurnb= new JFormattedTextField(NumberFormat.getInstance());
         longueurnb.setColumns(20);
         panneau.add(longueurnb);
+        
+        
         JLabel largeurlb=new JLabel("Rentrer la largueur");
         panneau.add(largeurlb);
         JFormattedTextField largeurnb= new JFormattedTextField(NumberFormat.getInstance());
         largeurnb.setColumns(20);
         panneau.add(largeurnb);
+        
+        
         JLabel hauteurlb=new JLabel("Rentrer la hauteur");
         panneau.add(hauteurlb);
         JFormattedTextField hauteurnb= new JFormattedTextField(NumberFormat.getInstance());
         hauteurnb.setColumns(20);
         panneau.add(hauteurnb);
+        
+        JLabel viscositelb=new JLabel("Rentrer la viscosite");
+        panneau.add(debitlb);
+        JFormattedTextField viscositenb= new JFormattedTextField(NumberFormat.getInstance());
+        debitnb.setColumns(20);
+        panneau.add(debitnb);
+        
+        JLabel epaisseurlb=new JLabel("Rentrer l'épaisseur de la paroi");
+        panneau.add(debitlb);
+        JFormattedTextField epaisseurnb= new JFormattedTextField(NumberFormat.getInstance());
+        debitnb.setColumns(20);
+        panneau.add(debitnb);
         //faire les setVisibles
         
         getContentPane().add(panneau); 

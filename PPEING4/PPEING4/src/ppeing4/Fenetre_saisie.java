@@ -17,6 +17,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.NumberFormat;
+import java.text.Format;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 /**
  *
@@ -76,8 +81,45 @@ public class Fenetre_saisie extends JFrame{
           panneau.add(b1);
           panneau.add(b2);
           
-          getContentPane().add(panneau);
-          
+        // Formulaire (partie coaxial)
+        JLabel debitlb=new JLabel("Rentrer le debit");
+        panneau.add(debitlb);
+        JFormattedTextField debitnb= new JFormattedTextField(NumberFormat.getInstance());
+        debitnb.setColumns(20);
+        panneau.add(debitnb);
+        JLabel capacitelb=new JLabel("Rentrer la capacite");
+        panneau.add(capacitelb);
+        JFormattedTextField capacitenb= new JFormattedTextField(NumberFormat.getInstance());
+        capacitenb.setColumns(20);
+        panneau.add(capacitenb);
+        JLabel difftemperaturelb=new JLabel("Rentrer la différence de temperature");
+        panneau.add(difftemperaturelb);
+        JFormattedTextField difftemperaturenb= new JFormattedTextField(NumberFormat.getInstance());
+        difftemperaturenb.setColumns(20);
+        panneau.add(difftemperaturenb);
+        JLabel massevolumiquelb=new JLabel("Rentrer la masse volumique");
+        panneau.add(massevolumiquelb);
+        JFormattedTextField massevolumiquenb= new JFormattedTextField(NumberFormat.getInstance());
+        massevolumiquenb.setColumns(20);
+        panneau.add(massevolumiquenb);
+        JLabel longueurlb=new JLabel("Rentrer la longueur");
+        panneau.add(longueurlb);
+        JFormattedTextField longueurnb= new JFormattedTextField(NumberFormat.getInstance());
+        longueurnb.setColumns(20);
+        panneau.add(longueurnb);
+        JLabel largeurlb=new JLabel("Rentrer la largueur");
+        panneau.add(largeurlb);
+        JFormattedTextField largeurnb= new JFormattedTextField(NumberFormat.getInstance());
+        largeurnb.setColumns(20);
+        panneau.add(largeurnb);
+        JLabel hauteurlb=new JLabel("Rentrer la hauteur");
+        panneau.add(hauteurlb);
+        JFormattedTextField hauteurnb= new JFormattedTextField(NumberFormat.getInstance());
+        hauteurnb.setColumns(20);
+        panneau.add(hauteurnb);
+        //faire les setVisibles
+        
+        getContentPane().add(panneau); 
     }
         
         if(bulle==null)
@@ -102,16 +144,18 @@ public class Fenetre_saisie extends JFrame{
                      
                      if(arg0.getSource()==b2)
                      {
-                         Fenetre_saisie fenetre2 ;
-                        fenetre2 = new Fenetre_saisie();
-                        if (fenetre2.bulle!=null)
-                        {
-                            fenetre2.setVisible(true);
-                        }
-                        else
-                        {
-                            fenetre2.setVisible(false);
-                        }
+                       if (bulle=="Coaxial")
+                       {
+                           //faire les setVisibles
+                       }
+                       if (bulle=="À plaques")
+                       {
+                           //faire les setVisibles
+                       }
+                       if (bulle=="À spirales")
+                       {
+                           //faire les setVisibles
+                       }
                      }
                 }
          

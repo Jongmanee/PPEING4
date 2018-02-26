@@ -24,18 +24,13 @@ import java.awt.event.WindowEvent;
  */
 public class Fenetre_saisie extends JFrame{
     
-    JButton b1;
+    JButton b1,b2;
     JPanel panneau;
     JTextArea txt_utilisation;
     
     
     public Fenetre_saisie ()
     {
-    setBounds(0,0,600,600);
-        setTitle("PPE-ING4-GEOTHERMIE");
-        
-        panneau = new JPanel();
-        
         String[] choix = {"Coaxial", "À plaques", "À spirales"};
                     JOptionPane jop = new JOptionPane();
 
@@ -46,24 +41,52 @@ public class Fenetre_saisie extends JFrame{
                     null,
                     choix,
                     choix[2]);
+        System.out.println(bulle);
+        if (bulle!=null)
+    {
+                     
+                     
+                     
+    setBounds(0,0,600,600);
+        setTitle("PPE-ING4-GEOTHERMIE");
+        
+        panneau = new JPanel();
+        
+        
                     
                     if(bulle=="Coaxial")
                     {
                         System.out.println("ok");
+                        
                     }
+                    
+                    
+                    
+                 
+                     
           b1 = new JButton("Résultats");
+          b2 = new JButton("Changer de technologie");
           
           
           Ecouteur2 ec;
         ec = new Ecouteur2();
         b1.addActionListener(ec);
+        b2.addActionListener(ec);
           
           panneau.add(b1);
+          panneau.add(b2);
           
           getContentPane().add(panneau);
           
     }
-    
+        
+        if(bulle==null)
+        {
+        System.out.println("annuler");
+        	
+        }
+        
+    }
     
      public class Ecouteur2 extends PPEING4 implements ActionListener
         {
@@ -76,6 +99,13 @@ public class Fenetre_saisie extends JFrame{
                         fenetre3 = new Fenetre_resultats();
                         fenetre3.setVisible(true);
                     }
+                     
+                     if(arg0.getSource()==b2)
+                     {
+                         Fenetre_saisie fenetre2 ;
+                        fenetre2 = new Fenetre_saisie();
+                        fenetre2.setVisible(true);
+                     }
                 }
          
          }

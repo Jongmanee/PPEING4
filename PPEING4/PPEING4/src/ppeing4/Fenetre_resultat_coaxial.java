@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -26,6 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.Box;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import static javax.xml.bind.JAXBIntrospector.getValue;
 
 /**
@@ -41,7 +43,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
     public Fenetre_resultat_coaxial(float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float tempc, float tempf, float masse_volumique, float viscosite, float epaisseur)
             {
                 
-                 Coaxial coax1;
+                Coaxial coax1;
         
                 coax1 = new Coaxial(longueur, largeur, hauteur, debit_m,capacite_th,tempc, tempf, masse_volumique);
         
@@ -62,23 +64,38 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  double pe_main = coax1.calcul_Pe();
                  System.out.println(pe_main);
                  
-                 Object[][] donnes= {
+                 String entetes[] = {"Résultat","Valeur"};
+                 Object donnees[][] = {
                     {"Nombre de module",coax1.getter_nbre_modules()},
-                    {"Surface proposée",coax1.getter_surface_contact()},
-                    {"Surface utilisée par les modules",smod_main},
+                    {"Surface proposée (en m²)",coax1.getter_surface_contact()},
+                    {"Surface utilisée par les modules (en m²)",smod_main},
                     {"Débit massique",debit_m},
-                    {"Température chaude",tempc},
-                    {"Température froide",tempf},
+                    {"Température chaude (en °C)",tempc},
+                    {"Température froide (en °C)",tempf},
                     {"Différence de température",coax1.getter_diff_temperature()},
-                    {"Puissance électrique générée",pe_main},
+                    {"Puissance électrique générée (en W)",pe_main},
                  };
+                
                  
-                 String[] entetes = {"Résultats","Valeur"};
-                tableau = new JTable(donnes,entetes);
+                 DefaultTableModel modele = new DefaultTableModel(donnees,entetes)
+                 {
+                    @Override
+                    public boolean isCellEditable(int row, int col)
+                    {
+			return false;
+                    }
+                };
+                 
+                tableau = new JTable(modele);
+                JScrollPane tableau_entete = new JScrollPane(tableau);
+                tableau_entete.setViewportView(tableau);
+
+                tableau_entete.setPreferredSize(new Dimension(500, 155));
+                
                 setBounds(0,0,600,600);
                 setTitle("PPE-ING4-GEOTHERMIE");    
                 panneau = new JPanel();
-                panneau.add(tableau);
+                panneau.add(tableau_entete);
                 getContentPane().add(panneau);
                          
             }

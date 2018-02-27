@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ppeing4;
+import java.lang.Math;
 
 /**
  *
@@ -30,14 +31,21 @@ public class Coaxial extends Technologies{
     private float puissance_electrique;
     
     
-    public Coaxial  (float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float diff_temperature, float masse_volumique)
+    public Coaxial  (float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float tempc, float tempf, float masse_volumique)
     {
-        super(debit_m,capacite_th,diff_temperature,masse_volumique);
+        super(debit_m,capacite_th,masse_volumique, tempc, tempf);
         this.longueur=longueur;
         this.largeur=largeur;
         this.hauteur=hauteur;
 
     }
+    
+    public double calcul_densite_couple()
+    {
+        densite_couple = (254*2*surface_jambe)/(taux_occupation*surface_module);
+        return densite_couple;
+    }
+    
     
     public float calcul_smod(float surface_module)
     {
@@ -196,6 +204,13 @@ public class Coaxial extends Technologies{
         resistance_th_globale= coeff_convection_h_inverse*(1/surface_contact);
         return resistance_th_globale;
     }
+    
+     public double calcul_Pe ()
+    {
+        double Pe = (   ((seebeck+thomson)*(seebeck+thomson))  *   densite_couple*densite_couple*taux_occupation*taux_occupation*surface_contact*surface_contact*   ( (2*debit_m*capacite_th*(-diff_temperature))*(2*debit_m*capacite_th*(-diff_temperature))) *longueur_jambe*longueur_jambe*r_charge*surface_jambe*surface_jambe  )/(  4*  (2*debit_m*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th*densite_couple*taux_occupation*surface_contact) + conduct_th*densite_couple*taux_occupation*surface_contact) *  (2*debit_m*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th*densite_couple*taux_occupation*surface_contact) + conduct_th*densite_couple*taux_occupation*surface_contact)  * (r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe)*(r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe) );
+        return Pe;        
+    }
+    
     
     
     

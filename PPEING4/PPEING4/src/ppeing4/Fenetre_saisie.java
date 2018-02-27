@@ -24,6 +24,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.Box;
+import static javax.xml.bind.JAXBIntrospector.getValue;
 
 /**
  *
@@ -36,6 +37,27 @@ public class Fenetre_saisie extends JFrame
     JPanel panneau;
     JTextArea txt_utilisation;
     String bulle;
+    JTextField debitnb;
+    JTextField capacitenb;
+    JTextField tempcnb;
+    JTextField tempfnb;
+    JTextField longueurnb;
+    JTextField largeurnb;
+    JTextField hauteurnb;
+    JTextField epaisseurnb;
+    JTextField viscositenb;
+    JTextField massevolumiquenb;
+    Box box1 = Box.createHorizontalBox();
+    Box box2 = Box.createHorizontalBox();
+    Box box3 = Box.createHorizontalBox();
+    Box box4 = Box.createHorizontalBox();
+    Box box5 = Box.createHorizontalBox();
+    Box box6 = Box.createHorizontalBox();
+    Box box7 = Box.createHorizontalBox();
+    Box box8 = Box.createHorizontalBox();
+    Box box9 = Box.createHorizontalBox();
+    Box box10 = Box.createHorizontalBox();
+    Box box11 = Box.createHorizontalBox();
     
     public Fenetre_saisie ()
     {
@@ -50,7 +72,6 @@ public class Fenetre_saisie extends JFrame
             setTitle("PPE-ING4-GEOTHERMIE");    
             panneau = new JPanel();
 
-            Box box1 = Box.createHorizontalBox();
             b1 = new JButton("Résultats");
             b2 = new JButton("Changer de technologie");
 
@@ -63,77 +84,81 @@ public class Fenetre_saisie extends JFrame
             box1.add(b2);
 
             // Formulaire (partie coaxial)
-            Box box2 = Box.createHorizontalBox();
             JLabel debitlb=new JLabel("Rentrer le debit :");
             box2.add(debitlb,BorderLayout.WEST);
-            JFormattedTextField debitnb= new JFormattedTextField(NumberFormat.getInstance());
+            debitnb= new JTextField();
             debitnb.setColumns(30);
             box2.add(debitnb,BorderLayout.EAST);
 
-            Box box3 = Box.createHorizontalBox();
             JLabel capacitelb=new JLabel("Rentrer la capacite :");
             box3.add(capacitelb);
-            JFormattedTextField capacitenb= new JFormattedTextField(NumberFormat.getInstance());
+            capacitenb= new JTextField();
             capacitenb.setColumns(30);
             box3.add(capacitenb);
 
-            Box box4 = Box.createHorizontalBox();
             JLabel tempclb=new JLabel("Rentrer la temperature chaude :");
             box4.add(tempclb);
-            JFormattedTextField tempcnb= new JFormattedTextField(NumberFormat.getInstance());
+            tempcnb= new JTextField();
             tempcnb.setColumns(30);
             box4.add(tempcnb);
             
-            Box box5 = Box.createHorizontalBox();
             JLabel tempflb=new JLabel("Rentrer la temperature froide :");
             box5.add(tempflb);
-            JFormattedTextField tempfnb= new JFormattedTextField(NumberFormat.getInstance());
+            tempfnb= new JTextField();
             tempfnb.setColumns(30);
             box5.add(tempfnb);  
             
-            Box box6 = Box.createHorizontalBox();
             JLabel longueurlb=new JLabel("Rentrer la longueur :");
             box6.add(longueurlb);
-            JFormattedTextField longueurnb= new JFormattedTextField(NumberFormat.getInstance());
+            longueurnb= new JTextField();
             longueurnb.setColumns(30);
             box6.add(longueurnb);
 
-            Box box7 = Box.createHorizontalBox();
             JLabel largeurlb=new JLabel("Rentrer la largueur :");
             box7.add(largeurlb);
-            JFormattedTextField largeurnb= new JFormattedTextField(NumberFormat.getInstance());
+            largeurnb= new JTextField();
             largeurnb.setColumns(30);
             box7.add(largeurnb);
 
-            Box box8 = Box.createHorizontalBox();
             JLabel hauteurlb=new JLabel("Rentrer la hauteur :");
             box8.add(hauteurlb);
-            JFormattedTextField hauteurnb= new JFormattedTextField(NumberFormat.getInstance());
+            hauteurnb= new JTextField();
             hauteurnb.setColumns(30);
             box8.add(hauteurnb);
 
-            Box box9 = Box.createHorizontalBox();
             JLabel viscositelb=new JLabel("Rentrer la viscosite :");
             box9.add(viscositelb);
-            JFormattedTextField viscositenb= new JFormattedTextField(NumberFormat.getInstance());
+            viscositenb= new JTextField();
             viscositenb.setColumns(30);
             box9.add(viscositenb);
 
-            Box box10 = Box.createHorizontalBox();
             JLabel epaisseurlb=new JLabel("Rentrer l'épaisseur de la paroi :");
             box10.add(epaisseurlb);
-            JFormattedTextField epaisseurnb= new JFormattedTextField(NumberFormat.getInstance());
+            epaisseurnb= new JTextField();
             epaisseurnb.setColumns(30);
             box10.add(epaisseurnb);
             
-            Box box11 = Box.createHorizontalBox();
             JLabel massevolumiquelb=new JLabel("Rentrer la masse volumique :");
             box11.add(massevolumiquelb);
-            JFormattedTextField massevolumiquenb= new JFormattedTextField(NumberFormat.getInstance());
+            massevolumiquenb= new JTextField();
             massevolumiquenb.setColumns(30);
             box11.add(massevolumiquenb);
 
             //faire les setVisibles
+            if (bulle=="Coaxial")
+            {
+                box1.setVisible(true);
+                box2.setVisible(true);
+                box3.setVisible(true);
+                box4.setVisible(true);
+                box5.setVisible(true);
+                box6.setVisible(true);
+                box7.setVisible(true);
+                box8.setVisible(true);
+                box9.setVisible(true);
+                box10.setVisible(true);
+                box11.setVisible(true);
+            }    
 
             Box lastbox = Box.createVerticalBox();
             lastbox.add(box1);
@@ -163,6 +188,18 @@ public class Fenetre_saisie extends JFrame
      {
         if (arg0.getSource()==b1)
         {
+            float debitnbV=Float.parseFloat(debitnb.getText());
+            float capacitenbV=Float.parseFloat(capacitenb.getText());
+            float tempcnbV=Float.parseFloat(tempcnb.getText());
+            float tempfnbV=Float.parseFloat(tempfnb.getText());
+            float longueurnbV=Float.parseFloat(longueurnb.getText());
+            float largeurnbV=Float.parseFloat(largeurnb.getText());
+            float hauteurnbV=Float.parseFloat(hauteurnb.getText());
+            float viscositenbV=Float.parseFloat(viscositenb.getText());
+            float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
+            float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
+            
+            System.out.println(debitnbV);
             Fenetre_resultats fenetre3 ;
             fenetre3 = new Fenetre_resultats();
             fenetre3.setVisible(true);
@@ -178,14 +215,47 @@ public class Fenetre_saisie extends JFrame
            if (bulle=="Coaxial")
            {
                //faire les setVisibles
+                box1.setVisible(true);
+                box2.setVisible(true);
+                box3.setVisible(true);
+                box4.setVisible(true);
+                box5.setVisible(true);
+                box6.setVisible(true);
+                box7.setVisible(true);
+                box8.setVisible(true);
+                box9.setVisible(true);
+                box10.setVisible(true);
+                box11.setVisible(true);
            }
            if (bulle=="À plaques")
            {
                //faire les setVisibles
+                box1.setVisible(true);
+                box2.setVisible(false);
+                box3.setVisible(false);
+                box4.setVisible(false);
+                box5.setVisible(false);
+                box6.setVisible(false);
+                box7.setVisible(false);
+                box8.setVisible(false);
+                box9.setVisible(false);
+                box10.setVisible(false);
+                box11.setVisible(false);
            }
            if (bulle=="À spirales")
            {
                //faire les setVisibles
+                box1.setVisible(true);
+                box2.setVisible(false);
+                box3.setVisible(false);
+                box4.setVisible(false);
+                box5.setVisible(false);
+                box6.setVisible(false);
+                box7.setVisible(false);
+                box8.setVisible(false);
+                box9.setVisible(false);
+                box10.setVisible(false);
+                box11.setVisible(false);
            }
         }
       }

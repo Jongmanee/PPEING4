@@ -17,7 +17,7 @@ public class Coaxial extends Technologies{
     private float largeur;
     private float hauteur;
     
-    private float smod;
+    private double smod;
     private int nbre_modules;
     private double surface_contact;
     
@@ -40,14 +40,12 @@ public class Coaxial extends Technologies{
 
     }
     
-    public double calcul_densite_couple()
-    {
-        densite_couple = (254*2*surface_jambe)/(taux_occupation*surface_module);
-        return densite_couple;
-    }
+   
     
     
-    public float calcul_smod(float surface_module)
+    
+    
+    public double calcul_smod(double surface_module)
     {
         
         float rayon;
@@ -59,13 +57,19 @@ public class Coaxial extends Technologies{
             rayon=largeur/4;
         
         surface_contact = 2*Math.PI*rayon*longueur;
+        
+     
+        
         inter_nbre_modules =  surface_contact/surface_module;
         nbre_modules = (int) inter_nbre_modules;
         
+       
         
         smod = nbre_modules*surface_module;
+       
         
-        taux_occupation = smod/surface_contact;
+     taux_occupation = smod/surface_contact;
+     
         
         return smod;
         
@@ -73,11 +77,29 @@ public class Coaxial extends Technologies{
         
     }
     
+     public double calcul_taux_occupation()
+     {
+         taux_occupation = smod/surface_contact;
+         return taux_occupation;
+     }
+    
+    
+     public double calcul_densite_couple()
+    {
+        densite_couple = ((254*2*surface_jambe)*(Math.pow(taux_occupation*surface_module, -1)));
+        return densite_couple;
+    }
+    
+     
+     public double getter_densite_couple()
+    {
+        return densite_couple;
+    }
     
     
     
     
-    public double calcul_r_charge (float densite_couple, float longueur_jambe, float surface_jambe)
+    public double calcul_r_charge (double densite_couple, float longueur_jambe, float surface_jambe)
     {
        
         r_charge = (masse_volumique*densite_couple*taux_occupation*longueur_jambe)/(2*surface_jambe*surface_jambe);
@@ -86,7 +108,7 @@ public class Coaxial extends Technologies{
     
     
     
-    public double calcul_rth (float débit_m, float masse_volumique, float epaisseur_paroi, float viscosite, float conductivite, float capacite_th)
+    public double calcul_rth (float débit_m, float masse_volumique, float epaisseur_paroi, float viscosite, double conductivite, float capacite_th)
     {
         
         double l=0;
@@ -123,8 +145,12 @@ public class Coaxial extends Technologies{
          
          Rey1 = (4*debit_m*masse_volumique)/(Math.PI*rayon1*viscosite);
          Rey2 = (4*debit_m*masse_volumique)/(Math.PI*rayon2*viscosite);
-       
+         
+         System.out.println(Rey1+"Rey1");
+         System.out.println(Rey2+"Rey2");
+         
          Prandt = (viscosite*capacite_th)/(conductivite);  
+         System.out.println(Prandt+"Prandt");
         
          if(Rey1>=1 && Rey1<=4)
          {
@@ -195,11 +221,17 @@ public class Coaxial extends Technologies{
         Nuss1= 1.11*A1*Math.pow(Rey1, m1)*Math.pow(Prandt, 0.31);
         Nuss2= 1.11*A2*Math.pow(Rey2, m2)*Math.pow(Prandt, 0.31);
         
+        System.out.println(Nuss1);
+        System.out.println(Nuss2);
         
         h1=(Nuss1*conductivite)/rayon1;
         h2=(Nuss2*conductivite)/rayon2;
         
+        System.out.println(h1);
+        System.out.println(h2);
+        
         coeff_convection_h_inverse = (((l/4)+epaisseur_paroi)/((l/4)*h1)) + ((((l/4)+epaisseur_paroi)*Math.log(((l/4)+epaisseur_paroi)/(l/4)))/conductivite) + (1/h2);
+        System.out.println(coeff_convection_h_inverse);
         
         resistance_th_globale= coeff_convection_h_inverse*(1/surface_contact);
         return resistance_th_globale;

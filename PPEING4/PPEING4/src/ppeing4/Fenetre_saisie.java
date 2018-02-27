@@ -158,8 +158,38 @@ public class Fenetre_saisie extends JFrame
                 box9.setVisible(true);
                 box10.setVisible(true);
                 box11.setVisible(true);
-            }    
-
+            } 
+            
+            if (bulle=="À spirales")
+            {
+                box1.setVisible(true);
+                box2.setVisible(false);
+                box3.setVisible(false);
+                box4.setVisible(false);
+                box5.setVisible(false);
+                box6.setVisible(false);
+                box7.setVisible(false);
+                box8.setVisible(false);
+                box9.setVisible(false);
+                box10.setVisible(false);
+                box11.setVisible(false);
+            }   
+            
+            if (bulle=="À plaques")
+            {
+                box1.setVisible(true);
+                box2.setVisible(false);
+                box3.setVisible(false);
+                box4.setVisible(false);
+                box5.setVisible(false);
+                box6.setVisible(false);
+                box7.setVisible(false);
+                box8.setVisible(false);
+                box9.setVisible(false);
+                box10.setVisible(false);
+                box11.setVisible(false);
+            }
+                 
             Box lastbox = Box.createVerticalBox();
             lastbox.add(box1);
             lastbox.add(box2);
@@ -188,21 +218,24 @@ public class Fenetre_saisie extends JFrame
      {
         if (arg0.getSource()==b1)
         {
-            float debitnbV=Float.parseFloat(debitnb.getText());
-            float capacitenbV=Float.parseFloat(capacitenb.getText());
-            float tempcnbV=Float.parseFloat(tempcnb.getText());
-            float tempfnbV=Float.parseFloat(tempfnb.getText());
-            float longueurnbV=Float.parseFloat(longueurnb.getText());
-            float largeurnbV=Float.parseFloat(largeurnb.getText());
-            float hauteurnbV=Float.parseFloat(hauteurnb.getText());
-            float viscositenbV=Float.parseFloat(viscositenb.getText());
-            float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
-            float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
-            
-            System.out.println(debitnbV);
-            Fenetre_resultats fenetre3 ;
-            fenetre3 = new Fenetre_resultats();
-            fenetre3.setVisible(true);
+            if (bulle=="Coaxial")
+            {
+                float debitnbV=Float.parseFloat(debitnb.getText());
+                float capacitenbV=Float.parseFloat(capacitenb.getText());
+                float tempcnbV=Float.parseFloat(tempcnb.getText());
+                float tempfnbV=Float.parseFloat(tempfnb.getText());
+                float longueurnbV=Float.parseFloat(longueurnb.getText());
+                float largeurnbV=Float.parseFloat(largeurnb.getText());
+                float hauteurnbV=Float.parseFloat(hauteurnb.getText());
+                float viscositenbV=Float.parseFloat(viscositenb.getText());
+                float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
+                float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
+
+                System.out.println(debitnbV);
+                Fenetre_resultat_coaxial fenetre3 ;
+                fenetre3 = new Fenetre_resultat_coaxial();
+                //fenetre3.setVisible(true);
+            }
         }
 
         if(arg0.getSource()==b2)

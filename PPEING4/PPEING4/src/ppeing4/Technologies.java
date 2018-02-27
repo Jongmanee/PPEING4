@@ -52,6 +52,11 @@ public class Technologies {
     {
         return conduct_th;
     }
+    
+    public float getter_diff_temperature()
+    {
+        return diff_temperature;
+    }
    
     
    

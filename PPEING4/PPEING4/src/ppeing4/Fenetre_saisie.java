@@ -233,22 +233,22 @@ public class Fenetre_saisie extends JFrame
 
                 System.out.println(debitnbV);
                 Fenetre_resultat_coaxial fenetre3 ;
-                fenetre3 = new Fenetre_resultat_coaxial(longueurnbV, largeurnbV, hauteurnbV, debitnbV,capacitenbV,tempcnbV, tempfnbV, massevolumiquenbV);
+                fenetre3 = new Fenetre_resultat_coaxial(longueurnbV, largeurnbV, hauteurnbV, debitnbV,capacitenbV,tempcnbV, tempfnbV, massevolumiquenbV, viscositenbV, epaisseurnbV);
                 fenetre3.setVisible(true);
             }
             
             if (bulle=="À spirales")
             {
-                Fenetre_resultat_spirales fenetre4 ;
-                fenetre4=new Fenetre_resultat_spirales();
-                fenetre4.setVisible(true);
+               // Fenetre_resultat_spirales fenetre4 ;
+               // fenetre4=new Fenetre_resultat_spirales();
+                //fenetre4.setVisible(true);
             }
             
             if (bulle=="À plaques")
             {
-                Fenetre_resultat_spirales fenetre5 ;
-                fenetre5=new Fenetre_resultat_plaque();
-                fenetre5.setVisible(true);
+               // Fenetre_resultat_spirales fenetre5 ;
+               // fenetre5=new Fenetre_resultat_plaque();
+                //fenetre5.setVisible(true);
             }
         }
 

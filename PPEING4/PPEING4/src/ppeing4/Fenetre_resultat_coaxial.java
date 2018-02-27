@@ -25,6 +25,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.Box;
+import javax.swing.JTable;
 import static javax.xml.bind.JAXBIntrospector.getValue;
 
 /**
@@ -33,6 +34,8 @@ import static javax.xml.bind.JAXBIntrospector.getValue;
  */
 public class Fenetre_resultat_coaxial extends JFrame{
     
+    JPanel panneau;
+    JTable tableau;
     
     
     public Fenetre_resultat_coaxial(float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float tempc, float tempf, float masse_volumique, float viscosite, float epaisseur)
@@ -58,13 +61,33 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  double pe_main = coax1.calcul_Pe();
                  System.out.println(pe_main);
-                
-                
-                
-                
+                 
+                 Object[][] donnes= {
+                    {"Nombre de module",coax1.getter_nbre_modules()},
+                    {"Surface proposée",coax1.getter_surface_contact()},
+                    {"Surface utilisée par les modules",smod_main},
+                    {"Débit massique",debit_m},
+                    {"Température chaude",tempc},
+                    {"Température froide",tempf},
+                    {"Différence de température",coax1.getter_diff_temperature()},
+                    {"Puissance électrique générée",pe_main},
+                 };
+                 
+                 String[] entetes = {"Résultats","Valeur"};
+                tableau = new JTable(donnes,entetes);
+                setBounds(0,0,600,600);
+                setTitle("PPE-ING4-GEOTHERMIE");    
+                panneau = new JPanel();
+                panneau.add(tableau);
+                getContentPane().add(panneau);
+                         
             }
     
     
+    }
     
     
-}
+    
+    
+
+

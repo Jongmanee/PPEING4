@@ -244,7 +244,16 @@ public class Coaxial extends Technologies{
     }
     
     
+    public int getter_nbre_modules()
+    {
+        return nbre_modules;
+    }
     
+    public double getter_surface_contact()
+    {
+        return surface_contact;
+    }
+     
     
     
     

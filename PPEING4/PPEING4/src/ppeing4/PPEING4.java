@@ -120,14 +120,14 @@ public class PPEING4 {
                  System.out.println(longueur);
         */
         
-        Coaxial coax1;
+        /*Coaxial coax1;
         
         coax1 = new Coaxial(longueur,largeur,hauteur,debit_m,capacite_th,diff_temperature,masse_volumique);
         
         System.out.println(coax1.get_debit());
         
          System.out.println(coax1.calcul_smod(3));
-         System.out.println(coax1.calcul_r_charge(2,1,1));
+         System.out.println(coax1.calcul_r_charge(2,1,1));*/
       
     }
     

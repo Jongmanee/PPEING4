@@ -233,7 +233,7 @@ public class Fenetre_saisie extends JFrame
 
                 System.out.println(debitnbV);
                 Fenetre_resultat_coaxial fenetre3 ;
-                fenetre3 = new Fenetre_resultat_coaxial();
+                fenetre3 = new Fenetre_resultat_coaxial(longueurnbV, largeurnbV, hauteurnbV, debitnbV,capacitenbV,tempcnbV, tempfnbV, massevolumiquenbV);
                 //fenetre3.setVisible(true);
             }
         }

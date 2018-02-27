@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ppeing4;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -41,11 +42,13 @@ public class Fenetre_resultat_coaxial extends JFrame{
         
                 coax1 = new Coaxial(longueur, largeur, hauteur, debit_m,capacite_th,tempc, tempf, masse_volumique);
         
-                 double densite_couple_main = coax1.calcul_densite_couple();
-                 System.out.println(densite_couple_main);
-         
+                
+              
                  double smod_main = coax1.calcul_smod(coax1.getter_surface_module());
                  System.out.println(smod_main);
+                 
+                 double densite_couple_main = coax1.calcul_densite_couple();
+                 System.out.println(densite_couple_main);
          
                  double r_charge_main = coax1.calcul_r_charge(coax1.getter_densite_couple(), longueur, largeur);
                  System.out.println(r_charge_main);

@@ -39,16 +39,12 @@ public class Ecran extends JFrame
     JLabel jlbackgroundImage;
     String bulle;
    
-    
-
-
-
 
     public Ecran ()
     {
 
         setBounds(0,0,600,600);
-        setTitle("PPE-ING4-GEOTHERMIE");
+        setTitle("PPE - Thermoélectricité");
         
        
         JTextArea txt_utilisation = new JTextArea(

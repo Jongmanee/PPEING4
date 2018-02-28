@@ -71,7 +71,7 @@ public class Fenetre_saisie extends JFrame
 
         if (bulle!=null)
         {                                   
-            setBounds(0,0,600,600);
+            setBounds(0,0,800,600);
             setTitle("Saisie des Données");    
             panneau = new JPanel();
 
@@ -220,7 +220,7 @@ public class Fenetre_saisie extends JFrame
                  
             Box lastbox = Box.createVerticalBox();
             lastbox.add(boxtechno);
-            lastbox.add(box1);
+           
             lastbox.add(box2);
             lastbox.add(box3);
             lastbox.add(box4);
@@ -231,6 +231,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box9);
             lastbox.add(box10);
             lastbox.add(box11);
+             lastbox.add(box1);
             lastbox.add(boxerreurchamp);
             panneau.add(lastbox);
             getContentPane().add(panneau); 

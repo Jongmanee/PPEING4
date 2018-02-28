@@ -152,22 +152,22 @@ public class Fenetre_saisie extends JFrame
             //faire les setVisibles
             if (bulle=="Coaxial")
             {
-                box1.setVisible(true);
-                box2.setVisible(true);
-                box3.setVisible(true);
-                box4.setVisible(true);
-                box5.setVisible(true);
-                box6.setVisible(true);
-                box7.setVisible(true);
-                box8.setVisible(true);
-                box9.setVisible(true);
-                box10.setVisible(true);
-                box11.setVisible(true);
+                box1.setVisible(true); //bouton
+                box2.setVisible(true); //debit
+                box3.setVisible(true); //capacite thermique
+                box4.setVisible(true); //temp chaud
+                box5.setVisible(true); //temp froid
+                box6.setVisible(true); //longueur
+                box7.setVisible(true); //largeur
+                box8.setVisible(true); //hauteur
+                box9.setVisible(true); //viscosité
+                box10.setVisible(true); //epaisseur
+                box11.setVisible(true); //masse volumique
             } 
             
             if (bulle=="À spirales")
             {
-                box1.setVisible(true);
+                box1.setVisible(true);//bouton
                 box2.setVisible(false);
                 box3.setVisible(false);
                 box4.setVisible(false);
@@ -182,7 +182,7 @@ public class Fenetre_saisie extends JFrame
             
             if (bulle=="À plaques")
             {
-                box1.setVisible(true);
+                box1.setVisible(true);//bouton
                 box2.setVisible(false);
                 box3.setVisible(false);
                 box4.setVisible(false);

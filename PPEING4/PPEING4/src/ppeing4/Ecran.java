@@ -93,8 +93,6 @@ public class Ecran extends JFrame
         
 
         getContentPane().add(panneau);
-
-
     }
 
         public class Ecouteur extends PPEING4 implements ActionListener

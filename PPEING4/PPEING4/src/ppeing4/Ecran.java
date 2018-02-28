@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.Box;
 
 /**
 *
@@ -30,7 +31,7 @@ public class Ecran extends JFrame
 
 
     JPanel panneau, panneau2;
-    JButton b1, b2, b3, b4;
+    JButton b1;
     JTextArea txt_utilisation;
     JScrollPane defil;
     JFrame frame;
@@ -75,38 +76,24 @@ public class Ecran extends JFrame
         Ecouteur ec;
         ec = new Ecouteur();
 
-
-
-
-
-
-
-        b1 = new JButton("Sélection Technologie", new ImageIcon("/images/saisie.png"));
-        b1.setSize(200,200);
-        
-        
-        b2 = new JButton("Saisie des caract.");
-        b3 = new JButton("Affichage");
-        b4 = new JButton("Lancer Calcul");
+        b1 = new JButton("Lancer Calcul");
 
         b1.addActionListener(ec);
-        b2.addActionListener(ec);
-        b3.addActionListener(ec);
-        b4.addActionListener(ec);
 
 
         panneau = new JPanel();
-        
-        
-
-        panneau.add(defil);
+            
         txt_utilisation.setLineWrap(true);
         txt_utilisation.setWrapStyleWord(true);
 
-        panneau.add(b1);
-        panneau.add(b2);
-        panneau.add(b3);
-        panneau.add(b4);
+        Box boxa = Box.createHorizontalBox();
+        Box boxb = Box.createHorizontalBox();
+        Box dernierebox = Box.createVerticalBox();
+        boxa.add(defil);
+        boxb.add(b1);
+        dernierebox.add(boxa);
+        dernierebox.add(boxb);
+        panneau.add(dernierebox);
         
 
         getContentPane().add(panneau);
@@ -121,47 +108,7 @@ public class Ecran extends JFrame
                 public void actionPerformed(ActionEvent arg0)
                 {
 
-                    if (arg0.getSource()==b1)
-                    {
-                          String[] choix = {"Coaxial", "À plaques", "À spirales"};
-                    JOptionPane jop = new JOptionPane();
-
-                    bulle = (String)jop.showInputDialog(null, 
-                    "Veuillez choisir la technologie de l'échangeur",
-                    "PPE ING4 GEOTHERMIE",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    choix,
-                    choix[2]);
-
-                    }
-
-                     if (arg0.getSource()==b2)
-                    {
-                         double input_debit = Double.parseDouble(JOptionPane.showInputDialog(null, "Veuillez saisir le débit :")) ;
-                         System.out.println(input_debit);
-                         String input_capacite_massique = JOptionPane.showInputDialog("Veuillez saisir la capacité massique du fluide :");
-                         System.out.println(input_capacite_massique);
-                         String input_diff_temperature = JOptionPane.showInputDialog("Veuillez saisir la différence de température entre les deux fluides :");
-                         System.out.println(input_diff_temperature);
-                         String input_masse_volumique = JOptionPane.showInputDialog("Veuillez saisir la masse volumique du fluide :");
-                         System.out.println(input_masse_volumique);
-                         String input_largeur = JOptionPane.showInputDialog("Veuillez saisir la largeur de l'espace disponible :");
-                         System.out.println(input_largeur);
-                         String input_hauteur = JOptionPane.showInputDialog("Veuillez saisir la hauteur de l'espace disponible :");
-                         System.out.println(input_hauteur);
-                         String input_longeur = JOptionPane.showInputDialog("Veuillez saisir la longueur de l'espace disponible :");
-                         System.out.println(input_longeur);
-                         
-                    }
-
-                      if (arg0.getSource()==b3)
-                    {
-                         panneau.setBackground(Color.BLUE);
-                         System.out.println("BLEU");
-                    }
-                      
-                     if (arg0.getSource()==b4)
+                     if (arg0.getSource()==b1)
                     {
                          
                          Fenetre_saisie fenetre2 ;

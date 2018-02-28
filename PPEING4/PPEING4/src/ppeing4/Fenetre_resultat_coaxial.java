@@ -93,7 +93,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 tableau_entete.setPreferredSize(new Dimension(500, 155));
                 
                 setBounds(0,0,600,600);
-                setTitle("PPE-ING4-GEOTHERMIE");    
+                setTitle("Résultats Technologie Coaxial");    
                 panneau = new JPanel();
                 panneau.add(tableau_entete);
                 getContentPane().add(panneau);

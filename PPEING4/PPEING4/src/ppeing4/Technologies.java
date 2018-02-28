@@ -66,6 +66,23 @@ public class Technologies {
     {
         return diff_temperature;
     }
+    
+    public double getter_surface_jambe()
+    {
+        return surface_jambe;
+    }
+    
+    public double getter_longueur_jambe()
+    {
+        return longueur_jambe;
+    }
+    
+    public double getter_densite_couple()
+    {
+        return densite_couple;
+    }
+    
+    
    
     
    

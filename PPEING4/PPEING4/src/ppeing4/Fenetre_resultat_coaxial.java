@@ -126,6 +126,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
                 getContentPane().add(panneau);
+                this.setLocation(600,0);
                          
             }
     

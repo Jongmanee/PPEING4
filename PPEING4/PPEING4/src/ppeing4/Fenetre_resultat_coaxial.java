@@ -38,6 +38,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
     
     JPanel panneau;
     JTable tableau;
+    JTable tableau2;
     
     
     public Fenetre_resultat_coaxial(float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float tempc, float tempf, float masse_volumique, float viscosite, float epaisseur)
@@ -87,15 +88,43 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 };
                  
                 tableau = new JTable(modele);
-                JScrollPane tableau_entete = new JScrollPane(tableau);
-                tableau_entete.setViewportView(tableau);
-
-                tableau_entete.setPreferredSize(new Dimension(500, 155));
                 
+                String entetes2[] = {"Caractéristiques","Valeurs"};
+                Object donnees2[][] = {
+                    {"Surface d'un module (en m²)",coax1.getter_surface_module()},
+                    {"Longueur d'une jambe (en m)",coax1.getter_longueur_jambe()},
+                    {"Surface d'une jambe (en m²)",coax1.getter_surface_jambe()},
+                    {"Densité de couple (en )",coax1.getter_densite_couple()},
+                    {"Conductivité thermique du module ",coax1.getter_conduct_th_module()}
+                };
+                
+                DefaultTableModel modele2 = new DefaultTableModel(donnees2,entetes2)
+                 {
+                    @Override
+                    public boolean isCellEditable(int row, int col)
+                    {
+			return false;
+                    }
+                };
+                
+                tableau2 = new JTable(modele2);
+                
+                JScrollPane tableau_entete = new JScrollPane(tableau);
+                JScrollPane tableau_entete2 = new JScrollPane(tableau2);
+                
+                tableau_entete.setViewportView(tableau);
+                tableau_entete2.setViewportView(tableau2);
+                
+                tableau_entete.setPreferredSize(new Dimension(500, 155));
+                tableau_entete2.setPreferredSize(new Dimension(500, 110));
+                
+                JLabel label_module=new JLabel("Caractéristique du module");
                 setBounds(0,0,600,600);
                 setTitle("Résultats Technologie Coaxial");    
                 panneau = new JPanel();
                 panneau.add(tableau_entete);
+                panneau.add(label_module);
+                panneau.add(tableau_entete2);
                 getContentPane().add(panneau);
                          
             }

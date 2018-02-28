@@ -67,10 +67,10 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  String entetes[] = {"Résultat","Valeur"};
                  Object donnees[][] = {
-                    {"Nombre de module",coax1.getter_nbre_modules()},
+                    {"Nombre de modules",coax1.getter_nbre_modules()},
                     {"Surface proposée (en m²)",coax1.getter_surface_contact()},
                     {"Surface utilisée par les modules (en m²)",smod_main},
-                    {"Débit massique",debit_m},
+                    {"Débit massique (en m3/h)",debit_m},
                     {"Température chaude (en °C)",tempc},
                     {"Température froide (en °C)",tempf},
                     {"Différence de température",coax1.getter_diff_temperature()},
@@ -94,8 +94,8 @@ public class Fenetre_resultat_coaxial extends JFrame{
                     {"Surface d'un module (en m²)",coax1.getter_surface_module()},
                     {"Longueur d'une jambe (en m)",coax1.getter_longueur_jambe()},
                     {"Surface d'une jambe (en m²)",coax1.getter_surface_jambe()},
-                    {"Densité de couple (en )",coax1.getter_densite_couple()},
-                    {"Conductivité thermique du module ",coax1.getter_conduct_th_module()}
+                    {"Densité de couple",coax1.getter_densite_couple()},
+                    {"Conductivité thermique du module (en W/m/K)",coax1.getter_conduct_th_module()}
                 };
                 
                 DefaultTableModel modele2 = new DefaultTableModel(donnees2,entetes2)
@@ -116,9 +116,9 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 tableau_entete2.setViewportView(tableau2);
                 
                 tableau_entete.setPreferredSize(new Dimension(500, 155));
-                tableau_entete2.setPreferredSize(new Dimension(500, 110));
+                tableau_entete2.setPreferredSize(new Dimension(550, 110));
                 
-                JLabel label_module=new JLabel("Caractéristique du module");
+                JLabel label_module=new JLabel("Caractéristique du module utilisé");
                 setBounds(0,0,600,600);
                 setTitle("Résultats Technologie Coaxial");    
                 panneau = new JPanel();

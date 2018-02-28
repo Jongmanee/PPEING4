@@ -47,6 +47,8 @@ public class Fenetre_saisie extends JFrame
     JTextField epaisseurnb;
     JTextField viscositenb;
     JTextField massevolumiquenb;
+    JLabel techno;
+    Box boxtechno = Box.createHorizontalBox();
     Box box1 = Box.createHorizontalBox();
     Box box2 = Box.createHorizontalBox();
     Box box3 = Box.createHorizontalBox();
@@ -85,6 +87,27 @@ public class Fenetre_saisie extends JFrame
             box1.add(b2);
 
             // Formulaire (partie coaxial)
+            if (bulle=="Coaxial")
+            {
+                techno=new JLabel("Technologie Echangeur Coaxial");
+                boxtechno.add(techno);
+                boxtechno.setVisible(true);
+            }
+            
+            if (bulle=="À plaques")
+            {
+                techno=new JLabel("Technologie Echangeur à Plaques");
+                boxtechno.add(techno);
+                boxtechno.setVisible(true);
+            }
+            
+            if (bulle=="À spirales")
+            {
+                techno=new JLabel("Technologie Echangeur à Spirales");
+                boxtechno.add(techno);
+                boxtechno.setVisible(true);
+            }
+            
             JLabel debitlb=new JLabel("Rentrer le debit :");
             box2.add(debitlb);
             debitnb= new JTextField();
@@ -196,6 +219,7 @@ public class Fenetre_saisie extends JFrame
             }
                  
             Box lastbox = Box.createVerticalBox();
+            lastbox.add(boxtechno);
             lastbox.add(box1);
             lastbox.add(box2);
             lastbox.add(box3);
@@ -278,6 +302,7 @@ public class Fenetre_saisie extends JFrame
            if (bulle=="Coaxial")
            {
                //faire les setVisibles
+                techno.setText("Technologie Echangeur Coaxial");
                 box1.setVisible(true); //bouton
                 box2.setVisible(true); //debit
                 box3.setVisible(true); //capacite thermique
@@ -293,6 +318,7 @@ public class Fenetre_saisie extends JFrame
            if (bulle=="À plaques")
            {
                //faire les setVisibles
+                techno.setText("Technologie Echangeur à Plaques");
                 box1.setVisible(true);
                 box2.setVisible(false);
                 box3.setVisible(false);
@@ -308,6 +334,7 @@ public class Fenetre_saisie extends JFrame
            if (bulle=="À spirales")
            {
                //faire les setVisibles
+                techno.setText("Technologie Echangeur à Spirales");
                 box1.setVisible(true);
                 box2.setVisible(false);
                 box3.setVisible(false);

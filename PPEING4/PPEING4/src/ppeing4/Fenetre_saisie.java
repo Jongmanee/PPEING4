@@ -204,6 +204,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box11);
             panneau.add(lastbox);
             getContentPane().add(panneau); 
+            setLocationRelativeTo(null);
         }
 
         if(bulle==null)

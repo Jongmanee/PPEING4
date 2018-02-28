@@ -58,7 +58,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  double r_charge_main = coax1.calcul_r_charge(coax1.getter_densite_couple(), longueur, largeur);
                  System.out.println(r_charge_main);
                  
-                 double rth_main = coax1.calcul_rth(debit_m, masse_volumique, epaisseur, viscosite, coax1.getter_conduct_th(), capacite_th);
+                 double rth_main = coax1.calcul_rth(debit_m, masse_volumique, epaisseur, viscosite, capacite_th);
                  System.out.println(rth_main);
                  
                  double pe_main = coax1.calcul_Pe();

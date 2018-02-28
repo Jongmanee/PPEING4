@@ -23,7 +23,9 @@ public class Technologies {
     protected double densite_couple ;
     protected double longueur_jambe = 3.45*Math.pow(10,-3);
     protected double surface_jambe = 6.25*Math.pow(10,-6);
-    protected double conduct_th;
+    protected double conduct_th_module;
+    protected double conduct_th_fluide;
+    protected double conduct_th_tube;
     protected double surface_module = ((55*Math.pow(10,-3))*(55*Math.pow(10,-3)));
     
     public Technologies (float debit_m, float capacite_th, float masse_volumique, float tempc, float tempf)
@@ -36,8 +38,10 @@ public class Technologies {
         
         
         this.seebeck = ((22224+930.6*tempm) - (0.9905*tempm*tempm))*Math.pow(10,-9);
-        this.thomson = ((930.6-0.9905*tempm*tempm)*Math.pow(10,-9)*tempm);
-        this.conduct_th = ((62605-277.7*tempm + 0.4131*tempm*tempm)*Math.pow(10,-4));
+        this.thomson =((930.6-0.9905*tempm*tempm)*Math.pow(10,-9)*tempm);
+        this.conduct_th_fluide = 0.6;
+        this.conduct_th_module = ((62605-277.7*tempm + 0.4131*tempm*tempm)*Math.pow(10,-4));
+        this.conduct_th_tube = 50.2;
         
         
         
@@ -48,9 +52,14 @@ public class Technologies {
         return surface_module;
     }
 
-    public double getter_conduct_th()
+    public double getter_conduct_th_module()
     {
-        return conduct_th;
+        return conduct_th_module;
+    }
+    
+    public double getter_conduct_th_fluide()
+    {
+        return conduct_th_fluide;
     }
     
     public float getter_diff_temperature()

@@ -58,6 +58,7 @@ public class Fenetre_saisie extends JFrame
     Box box9 = Box.createHorizontalBox();
     Box box10 = Box.createHorizontalBox();
     Box box11 = Box.createHorizontalBox();
+    Box boxerreurchamp = Box.createHorizontalBox();
     
     public Fenetre_saisie ()
     {
@@ -143,6 +144,10 @@ public class Fenetre_saisie extends JFrame
             massevolumiquenb= new JTextField();
             massevolumiquenb.setColumns(30);
             box11.add(massevolumiquenb);
+            
+            JLabel erreurchamp=new JLabel("Champ Manquant (Merci de renseigner tous les champs)");
+            boxerreurchamp.add(erreurchamp);
+            boxerreurchamp.setVisible(false);
 
             //faire les setVisibles
             if (bulle=="Coaxial")
@@ -202,6 +207,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box9);
             lastbox.add(box10);
             lastbox.add(box11);
+            lastbox.add(boxerreurchamp);
             panneau.add(lastbox);
             getContentPane().add(panneau); 
             setLocationRelativeTo(null);
@@ -221,21 +227,30 @@ public class Fenetre_saisie extends JFrame
         {
             if (bulle=="Coaxial")
             {
-                float debitnbV=Float.parseFloat(debitnb.getText());
-                float capacitenbV=Float.parseFloat(capacitenb.getText());
-                float tempcnbV=Float.parseFloat(tempcnb.getText());
-                float tempfnbV=Float.parseFloat(tempfnb.getText());
-                float longueurnbV=Float.parseFloat(longueurnb.getText());
-                float largeurnbV=Float.parseFloat(largeurnb.getText());
-                float hauteurnbV=Float.parseFloat(hauteurnb.getText());
-                float viscositenbV=Float.parseFloat(viscositenb.getText());
-                float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
-                float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
+                try
+                {
+                    float debitnbV=Float.parseFloat(debitnb.getText());
+                    float capacitenbV=Float.parseFloat(capacitenb.getText());
+                    float tempcnbV=Float.parseFloat(tempcnb.getText());
+                    float tempfnbV=Float.parseFloat(tempfnb.getText());
+                    float longueurnbV=Float.parseFloat(longueurnb.getText());
+                    float largeurnbV=Float.parseFloat(largeurnb.getText());
+                    float hauteurnbV=Float.parseFloat(hauteurnb.getText());
+                    float viscositenbV=Float.parseFloat(viscositenb.getText());
+                    float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
+                    float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
 
-                System.out.println(debitnbV);
-                Fenetre_resultat_coaxial fenetre3 ;
-                fenetre3 = new Fenetre_resultat_coaxial(longueurnbV, largeurnbV, hauteurnbV, debitnbV,capacitenbV,tempcnbV, tempfnbV, massevolumiquenbV, viscositenbV, epaisseurnbV);
-                fenetre3.setVisible(true);
+                    System.out.println(debitnbV);
+                    boxerreurchamp.setVisible(false);
+                    Fenetre_resultat_coaxial fenetre3 ;
+                    fenetre3 = new Fenetre_resultat_coaxial(longueurnbV, largeurnbV, hauteurnbV, debitnbV,capacitenbV,tempcnbV, tempfnbV, massevolumiquenbV, viscositenbV, epaisseurnbV);
+                    fenetre3.setVisible(true);
+                }
+                catch(NumberFormatException e)
+                {
+                     System.out.println("Champ manquant");
+                     boxerreurchamp.setVisible(true);
+                }
             }
             
             if (bulle=="À spirales")

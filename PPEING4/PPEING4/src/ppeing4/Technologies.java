@@ -32,10 +32,9 @@ public class Technologies {
     {
         this.tempm = (tempc+tempf)/2;
         this.diff_temperature = tempc-tempf;
-        this.debit_m = debit_m;
         this.capacite_th = capacite_th;
         this.masse_volumique = masse_volumique;
-        
+        this.debit_m = (debit_m*masse_volumique)/3600;
         
         this.seebeck = ((22224+930.6*tempm) - (0.9905*tempm*tempm))*Math.pow(10,-9);
         this.thomson =((930.6-0.9905*tempm*tempm)*Math.pow(10,-9)*tempm);

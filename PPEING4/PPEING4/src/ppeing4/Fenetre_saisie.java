@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
@@ -61,6 +62,9 @@ public class Fenetre_saisie extends JFrame
     Box box10 = Box.createHorizontalBox();
     Box box11 = Box.createHorizontalBox();
     Box boxerreurchamp = Box.createHorizontalBox();
+    Box boxlabel1=Box.createHorizontalBox();
+    Box boxlabel2=Box.createHorizontalBox();
+    Box boxlabel3=Box.createHorizontalBox();
     
     public Fenetre_saisie ()
     {
@@ -112,65 +116,87 @@ public class Fenetre_saisie extends JFrame
             box2.add(debitlb);
             debitnb= new JTextField();
             debitnb.setColumns(30);
+            box2.add(Box.createRigidArea(new Dimension(5,0)));//créé un espace entre le layout et la zone de donné
             box2.add(debitnb);
 
             JLabel capacitelb=new JLabel("Rentrer la capacite (en J/°K) :");
             box3.add(capacitelb);
             capacitenb= new JTextField();
             capacitenb.setColumns(30);
+            box3.add(Box.createRigidArea(new Dimension(5,0)));
             box3.add(capacitenb);
 
             JLabel tempclb=new JLabel("Rentrer la temperature chaude (en °C) :");
             box4.add(tempclb);
             tempcnb= new JTextField();
             tempcnb.setColumns(30);
+            box4.add(Box.createRigidArea(new Dimension(5,0)));
             box4.add(tempcnb);
             
             JLabel tempflb=new JLabel("Rentrer la temperature froide (en °C) :");
             box5.add(tempflb);
             tempfnb= new JTextField();
             tempfnb.setColumns(30);
+            box5.add(Box.createRigidArea(new Dimension(5,0)));
             box5.add(tempfnb);  
             
             JLabel longueurlb=new JLabel("Rentrer la longueur (en m) :");
             box6.add(longueurlb);
             longueurnb= new JTextField();
             longueurnb.setColumns(30);
+            box6.add(Box.createRigidArea(new Dimension(5,0)));
             box6.add(longueurnb);
 
             JLabel largeurlb=new JLabel("Rentrer la largueur (en m) :");
             box7.add(largeurlb);
             largeurnb= new JTextField();
             largeurnb.setColumns(30);
+            box7.add(Box.createRigidArea(new Dimension(5,0)));
             box7.add(largeurnb);
 
             JLabel hauteurlb=new JLabel("Rentrer la hauteur (en m) :");
             box8.add(hauteurlb);
             hauteurnb= new JTextField();
             hauteurnb.setColumns(30);
+            box8.add(Box.createRigidArea(new Dimension(5,0)));
             box8.add(hauteurnb);
 
             JLabel viscositelb=new JLabel("Rentrer la viscosite (en Pascal.s) :");
             box9.add(viscositelb);
             viscositenb= new JTextField();
             viscositenb.setColumns(30);
+            box9.add(Box.createRigidArea(new Dimension(5,0)));
             box9.add(viscositenb);
 
             JLabel epaisseurlb=new JLabel("Rentrer l'épaisseur de la paroi (en m) :");
             box10.add(epaisseurlb);
             epaisseurnb= new JTextField();
             epaisseurnb.setColumns(30);
+            box10.add(Box.createRigidArea(new Dimension(5,0)));
             box10.add(epaisseurnb);
             
             JLabel massevolumiquelb=new JLabel("Rentrer la masse volumique (Kg/m3):");
             box11.add(massevolumiquelb);
             massevolumiquenb= new JTextField();
             massevolumiquenb.setColumns(30);
+            box11.add(Box.createRigidArea(new Dimension(5,0)));
             box11.add(massevolumiquenb);
             
             JLabel erreurchamp=new JLabel("Champ Manquant (Merci de renseigner tous les champs)");
             boxerreurchamp.add(erreurchamp);
             boxerreurchamp.setVisible(false);
+            
+            JLabel cat1=new JLabel("Caracteristique du fluide :");
+            boxlabel1.add(cat1);
+            boxlabel1.setVisible(true);
+            
+            JLabel cat2=new JLabel("Espace Disponible pour l'implementation de l'echangeur :");
+            boxlabel2.add(cat2);
+            boxlabel2.setVisible(true);
+            
+            JLabel cat3=new JLabel("Caracteristique de l'echangeur :");
+            boxlabel3.add(cat3);
+            boxlabel3.setVisible(true);
 
             //faire les setVisibles
             if (bulle=="Coaxial")
@@ -220,18 +246,32 @@ public class Fenetre_saisie extends JFrame
                  
             Box lastbox = Box.createVerticalBox();
             lastbox.add(boxtechno);
-           
+            lastbox.add(Box.createVerticalStrut(20));//crée un espace
+                 
+            lastbox.add(boxlabel1);
+            lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box2);
             lastbox.add(box3);
             lastbox.add(box4);
             lastbox.add(box5);
+            lastbox.add(box9);
+            lastbox.add(box11);
+            lastbox.add(Box.createVerticalStrut(20));
+            
+            lastbox.add(boxlabel2);
+            lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box6);
             lastbox.add(box7);
             lastbox.add(box8);
-            lastbox.add(box9);
+            lastbox.add(Box.createVerticalStrut(20));
+            
+            lastbox.add(boxlabel3);
+            lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box10);
-            lastbox.add(box11);
-             lastbox.add(box1);
+            lastbox.add(Box.createVerticalStrut(20));
+            
+            lastbox.add(box1);
+            lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(boxerreurchamp);
             panneau.add(lastbox);
             getContentPane().add(panneau); 

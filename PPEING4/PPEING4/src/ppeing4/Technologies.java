@@ -13,11 +13,14 @@ import java.lang.Math;
  */
 public class Technologies {
     
-    protected float debit_m;
-    protected float capacite_th;
+    protected float debit_m_1;
+    protected float debit_m_2;
+    protected float capacite_th_1;
+    protected float capacite_th_2;
     protected float diff_temperature;
     protected float tempm;
-    protected float masse_volumique;
+    protected float masse_volumique_1;
+    protected float masse_volumique_2;
     protected double seebeck;
     protected double thomson;
     protected double densite_couple ;
@@ -28,13 +31,17 @@ public class Technologies {
     protected double conduct_th_tube;
     protected double surface_module = ((55*Math.pow(10,-3))*(55*Math.pow(10,-3)));
     
-    public Technologies (float debit_m, float capacite_th, float masse_volumique, float tempc, float tempf)
+    public Technologies (float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float masse_volumique_1,float masse_volumique_2, float tempc, float tempf)
     {
         this.tempm = (tempc+tempf)/2;
         this.diff_temperature = tempc-tempf;
-        this.capacite_th = capacite_th;
-        this.masse_volumique = masse_volumique;
-        this.debit_m = (debit_m*masse_volumique)/3600;
+        this.capacite_th_1 = capacite_th_1;
+        this.masse_volumique_1 = masse_volumique_1;
+        this.debit_m_1 = (debit_m_1*masse_volumique_1)/3600;
+        
+         this.capacite_th_2 = capacite_th_2;
+        this.masse_volumique_2 = masse_volumique_2;
+        this.debit_m_2 = (debit_m_2*masse_volumique_2)/3600;
         
         this.seebeck = ((22224+930.6*tempm) - (0.9905*tempm*tempm))*Math.pow(10,-9);
         this.thomson =((930.6-0.9905*tempm*tempm)*Math.pow(10,-9)*tempm);

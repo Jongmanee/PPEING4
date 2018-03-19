@@ -541,13 +541,14 @@ public class Fenetre_saisie extends JFrame
                     float capacite2nbV=Float.parseFloat(capacite2nb.getText());
                     float lambda1nbV=Float.parseFloat(lambda1nb.getText());
                     float lambda2nbV=Float.parseFloat(lambda2nb.getText());
-                    int nbplaqueV=Integer.parseInt(nbplaque.getText()); // pas sure ?
+                    int nbplaqueV=Integer.parseInt(nbplaque.getText()); 
                     float epaisseurinterV=Float.parseFloat(epaisseurinter.getText());
                     float diametrenbV=Float.parseFloat(diametre.getText());
                     float surfacenbV=Float.parseFloat(surface.getText());
                     float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
                     float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
-                            
+                    
+                    boxerreurchamp.setVisible(false);
                     // Fenetre_resultat_spirales fenetre4 ;
                     // fenetre4=new Fenetre_resultat_spirales();
                     //fenetre4.setVisible(true);

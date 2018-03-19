@@ -531,16 +531,47 @@ public class Fenetre_saisie extends JFrame
             
             if (bulle=="À spirales")
             {
-               // Fenetre_resultat_spirales fenetre4 ;
-               // fenetre4=new Fenetre_resultat_spirales();
-                //fenetre4.setVisible(true);
+                try
+                {
+                    float debit1nbV=Float.parseFloat(debit1nb.getText());
+                    float debit2nbV=Float.parseFloat(debit2nb.getText());
+                    float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
+                    float viscosite2nbV=Float.parseFloat(viscosite2nb.getText());
+                    float capacite1nbV=Float.parseFloat(capacite1nb.getText());
+                    float capacite2nbV=Float.parseFloat(capacite2nb.getText());
+                    float lambda1nbV=Float.parseFloat(lambda1nb.getText());
+                    float lambda2nbV=Float.parseFloat(lambda2nb.getText());
+                    int nbplaqueV=Integer.parseInt(nbplaque.getText()); // pas sure ?
+                    float epaisseurinterV=Float.parseFloat(epaisseurinter.getText());
+                    float diametrenbV=Float.parseFloat(diametre.getText());
+                    float surfacenbV=Float.parseFloat(surface.getText());
+                    float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
+                    float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
+                            
+                    // Fenetre_resultat_spirales fenetre4 ;
+                    // fenetre4=new Fenetre_resultat_spirales();
+                    //fenetre4.setVisible(true);
+                }
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Champ manquant");
+                    boxerreurchamp.setVisible(true);
+                }
             }
             
             if (bulle=="À plaques")
             {
-               // Fenetre_resultat_spirales fenetre5 ;
-               // fenetre5=new Fenetre_resultat_plaque();
+                try
+                {
+                // Fenetre_resultat_spirales fenetre5 ;
+                // fenetre5=new Fenetre_resultat_plaque();
                 //fenetre5.setVisible(true);
+                }
+                catch(NumberFormatException e)
+                {
+                     System.out.println("Champ manquant");
+                     boxerreurchamp.setVisible(true);
+                }
             }
         }
 
@@ -585,6 +616,7 @@ public class Fenetre_saisie extends JFrame
                 box23.setVisible(false); // surface d'une plaque
                 box24.setVisible(false); // masse volumique 1
                 box25.setVisible(false); // masse volumique 2
+                boxerreurchamp.setVisible(false);
            }
            if (bulle=="À plaques")
            {
@@ -620,6 +652,7 @@ public class Fenetre_saisie extends JFrame
                 box23.setVisible(true); // surface d'une plaque
                 box24.setVisible(true); // masse volumique 1
                 box25.setVisible(true); // masse volumique 2
+                boxerreurchamp.setVisible(false);
            }
            if (bulle=="À spirales")
            {
@@ -655,6 +688,7 @@ public class Fenetre_saisie extends JFrame
                 box23.setVisible(false); // surface d'une plaque
                 box24.setVisible(false); // masse volumique 1
                 box25.setVisible(false); // masse volumique 2
+                boxerreurchamp.setVisible(false);
            }
         }
       }

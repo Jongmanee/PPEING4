@@ -143,7 +143,7 @@ public class Coaxial extends Technologies{
          double Nuss2;
          double Prandt;
          
-         Rey1 = (4*debit_m*masse_volumique)/(Math.PI*rayon1*viscosite);
+         Rey1 = (4*debit_m)/(Math.PI*rayon1*viscosite);
          Rey2 = (4*debit_m)/(Math.PI*rayon2*viscosite);
          
          System.out.println(Rey1+"Rey1");
@@ -231,19 +231,23 @@ public class Coaxial extends Technologies{
         System.out.println(h1+" h1");
         System.out.println(h2+" h2");
         
-        coeff_convection_h_inverse = (((l/4)+epaisseur_paroi)/((l/4)*h1)) + ((((l/4)+epaisseur_paroi)*Math.log(((l/4)+epaisseur_paroi)/(l/4)))/conduct_th_tube) + (1/h2);
+        coeff_convection_h_inverse = (((l/4)+epaisseur_paroi)/((l/4)*h1)) + ((((l/4)+epaisseur_paroi)*Math.log(((l-2*epaisseur_paroi))/((l/2)-2*epaisseur_paroi)))/conduct_th_tube) + (1/h2);
         System.out.println(coeff_convection_h_inverse);
         
-        resistance_th_globale= coeff_convection_h_inverse*(1/surface_contact);
+        resistance_th_globale= coeff_convection_h_inverse*(smod);
         return resistance_th_globale;
     }
     
      public double calcul_Pe ()
     {
         //double Pe = (   ((seebeck+thomson)*(seebeck+thomson))  *   densite_couple*densite_couple*taux_occupation*taux_occupation*surface_contact*surface_contact*   ( (2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))*(2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))) *longueur_jambe*longueur_jambe*r_charge*surface_jambe*surface_jambe  )/(  4*  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact) *  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact)  * (r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe)*(r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe) );
-        double Pe = ((    16*diff_temperature*diff_temperature*debit_m*debit_m*capacite_th*capacite_th*r_charge*surface_jambe*surface_jambe*surface_contact*surface_contact*seebeck*seebeck*densite_couple*densite_couple*taux_occupation*taux_occupation*longueur_jambe*longueur_jambe)/((  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      )*(  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      ) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact)) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact))           ));
+        //double Pe = ((    16*diff_temperature*diff_temperature*debit_m*debit_m*capacite_th*capacite_th*r_charge*surface_jambe*surface_jambe*surface_contact*surface_contact*seebeck*seebeck*densite_couple*densite_couple*taux_occupation*taux_occupation*longueur_jambe*longueur_jambe)/((  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      )*(  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      ) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact)) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact))           ));
+        double Pe = (diff_temperature*diff_temperature*debit_m*capacite_th*2.9)/(8*(1+2*debit_m*capacite_th*resistance_th_globale));
         System.out.println("rth="+resistance_th_globale);
-        return Pe;        
+        return Pe;   
+        
+        
+        
     }
     
     

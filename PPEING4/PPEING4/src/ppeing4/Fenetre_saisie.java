@@ -319,11 +319,11 @@ public class Fenetre_saisie extends JFrame
             boxlabel3.add(cat3);
             boxlabel3.setVisible(true);
             
-            JLabel cat4=new JLabel("Caracteristique du fluide 1:");
+            JLabel cat4=new JLabel("Caracteristique du fluide 1 (fluide chaud):");
             boxlabel4.add(cat4);
             boxlabel4.setVisible(true);
             
-            JLabel cat5=new JLabel("Caracteristique du fluide 2:");
+            JLabel cat5=new JLabel("Caracteristique du fluide 2 (fluide froid):");
             boxlabel5.add(cat5);
             boxlabel5.setVisible(true);
 
@@ -445,6 +445,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box16);
             lastbox.add(box18);
             lastbox.add(box23);
+            lastbox.add(box21);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(boxlabel2);
@@ -458,14 +459,13 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box17);
             lastbox.add(box19);
             lastbox.add(box24);
+            lastbox.add(box22);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(boxlabel3);
             lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box10);
             lastbox.add(box20);
-            lastbox.add(box21);
-            lastbox.add(box22);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(box1);

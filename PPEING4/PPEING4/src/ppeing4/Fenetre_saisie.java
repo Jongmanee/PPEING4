@@ -552,9 +552,9 @@ public class Fenetre_saisie extends JFrame
                     float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
                     float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
                     boxerreurchamp.setVisible((false));
-                // Fenetre_resultat_spirales fenetre5 ;
-                // fenetre5=new Fenetre_resultat_plaque();
-                //fenetre5.setVisible(true);
+                    Fenetre_resultats_plaque fenetre5 ;
+                    fenetre5=new Fenetre_resultats_plaque(debit1nbV,debit2nbV,capacite1nbV,capacite2nbV,viscosite1nbV,viscosite2nbV,lambda1nbV,lambda2nbV,massevolumique1nbV,massevolumique2nbV,tempchaudnbV,tempfroidnbV,tempcvoulunbV);
+                    fenetre5.setVisible(true);
                 }
                 catch(NumberFormatException e)
                 {

@@ -33,7 +33,7 @@ public class Technologies {
     
     public Technologies (float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float masse_volumique_1,float masse_volumique_2, float tempc, float tempf)
     {
-        this.tempm = (tempc+tempf)/2;
+        this.tempm = (tempc+273+tempf+273)/2;
         this.diff_temperature = tempc-tempf;
         this.capacite_th_1 = capacite_th_1;
         this.masse_volumique_1 = masse_volumique_1;

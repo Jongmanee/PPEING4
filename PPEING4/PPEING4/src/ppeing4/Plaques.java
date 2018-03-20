@@ -31,25 +31,21 @@ public class Plaques extends Technologies {
     private int nbre_plaques;
     private float viscosite_1;
     private float viscosite_2;
-    private float surface_plaques;
-    private float epaisseur_inter;
-    private float diametre_tube;
     private float conductivite_th_1;
     private float conductivite_th_2;
+    private float th_chaude_refroidie;
     
     
 
 
 
-public Plaques  ( float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, int nbre_plaques, float viscosite_1, float viscosite_2, float surface_plaques, float conductivite_th_1, float conductivite_th_2, float epaisseur_inter, float diametre_tube )
+public Plaques  ( float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2 )
     {
         super(debit_m_1, debit_m_2,capacite_th_1, capacite_th_2,masse_volumique_1,masse_volumique_2, tempc, tempf);
-        this.nbre_plaques= nbre_plaques;
         this.viscosite_1 = viscosite_1;
         this.viscosite_2 = viscosite_2;
-        this.surface_plaques = surface_plaques;
-        this.epaisseur_inter = epaisseur_inter;
-        this.diametre_tube = diametre_tube;
+        
+       
     }
 
 public double Calcul_Sc (double surface_module)
@@ -86,6 +82,11 @@ public double Calcul_Sc (double surface_module)
     {
         return densite_couple;
     }
+     
+     
+     
+     
+     
      
      
      
@@ -219,6 +220,7 @@ public double calcul_rth ()
         resistance_th_globale= coeff_convection_h_inverse*(smod);
         return resistance_th_globale;
     }
+
 
 
 

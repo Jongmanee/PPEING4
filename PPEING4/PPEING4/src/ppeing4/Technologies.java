@@ -30,6 +30,11 @@ public class Technologies {
     protected double conduct_th_fluide;
     protected double conduct_th_tube;
     protected double surface_module = ((55*Math.pow(10,-3))*(55*Math.pow(10,-3)));
+    protected double diam_eq = 0.007;
+    protected double surface_plaques = 0.29;
+    protected double epaisseur_inter = 0.0035;
+    protected double diam_tube = 0.125;
+    
     
     public Technologies (float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float masse_volumique_1,float masse_volumique_2, float tempc, float tempf)
     {

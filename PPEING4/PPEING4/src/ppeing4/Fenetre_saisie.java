@@ -56,10 +56,9 @@ public class Fenetre_saisie extends JFrame
     JTextField capacite2nb;
     JTextField lambda1nb;
     JTextField lambda2nb;
-    JTextField nbplaque;
-    JTextField epaisseurinter;
-    JTextField diametre;
-    JTextField surface;
+    JTextField tempcvoulunb;
+    JTextField tempfroidnb;
+    JTextField tempchaudnb;
     JTextField massevolumique1nb;
     JTextField massevolumique2nb;
     JLabel techno;
@@ -88,7 +87,6 @@ public class Fenetre_saisie extends JFrame
     Box box22 = Box.createHorizontalBox();
     Box box23 = Box.createHorizontalBox();
     Box box24 = Box.createHorizontalBox();
-    Box box25 = Box.createHorizontalBox();
     Box boxerreurchamp = Box.createHorizontalBox();
     Box boxlabel1=Box.createHorizontalBox();
     Box boxlabel2=Box.createHorizontalBox();
@@ -270,47 +268,40 @@ public class Fenetre_saisie extends JFrame
             box19.add(Box.createRigidArea(new Dimension(5,0)));
             box19.add(lambda2nb);
             
-            JLabel nbplaquelb=new JLabel("Rentrer le nombre de plaques :");
-            box20.add(nbplaquelb);
-            nbplaque= new JTextField();
-            nbplaque.setColumns(30);
+            JLabel tempcvoululb=new JLabel("Rentrer la temperature chaude voulu en sortie (C):");
+            box20.add(tempcvoululb);
+            tempcvoulunb= new JTextField();
+            tempcvoulunb.setColumns(30);
             box20.add(Box.createRigidArea(new Dimension(5,0)));
-            box20.add(nbplaque);
+            box20.add(tempcvoulunb);
             
-            JLabel epaisseurinterlb=new JLabel("Rentrer l'epaisseur entre les plaques (m):");
-            box21.add(epaisseurinterlb);
-            epaisseurinter= new JTextField();
-            epaisseurinter.setColumns(30);
+            JLabel tempchaudlb=new JLabel("Rentrer la temperature du fluide Chaud (C) :");
+            box21.add(tempchaudlb);
+            tempchaudnb= new JTextField();
+            tempchaudnb.setColumns(30);
             box21.add(Box.createRigidArea(new Dimension(5,0)));
-            box21.add(epaisseurinter);
+            box21.add(tempchaudnb);
             
-            JLabel diametrelb=new JLabel("Rentrer le diametre du tube :");
-            box22.add(diametrelb);
-            diametre= new JTextField();
-            diametre.setColumns(30);
+            JLabel tempfroidelb=new JLabel("Rentrer la temperature du fluide Froid (C):");
+            box22.add(tempfroidelb);
+            tempfroidnb= new JTextField();
+            tempfroidnb.setColumns(30);
             box22.add(Box.createRigidArea(new Dimension(5,0)));
-            box22.add(diametre);
-            
-            JLabel surfacelb=new JLabel("Rentrer la surface de la plaque (m2) :");
-            box23.add(surfacelb);
-            surface= new JTextField();
-            surface.setColumns(30);
-            box23.add(Box.createRigidArea(new Dimension(5,0)));
-            box23.add(surface);
+            box22.add(tempfroidnb);
             
             JLabel massevolumique1lb=new JLabel("Rentrer la masse volumique du fluide 1 (Kg/m3) :");
-            box24.add(massevolumique1lb);
+            box23.add(massevolumique1lb);
             massevolumique1nb= new JTextField();
             massevolumique1nb.setColumns(30);
-            box24.add(Box.createRigidArea(new Dimension(5,0)));
-            box24.add(massevolumique1nb);
+            box23.add(Box.createRigidArea(new Dimension(5,0)));
+            box23.add(massevolumique1nb);
             
             JLabel massevolumique2lb=new JLabel("Rentrer la masse volumique du fluide 2 (Kg/m3) :");
-            box25.add(massevolumique2lb);
+            box24.add(massevolumique2lb);
             massevolumique2nb= new JTextField();
             massevolumique2nb.setColumns(30);
-            box25.add(Box.createRigidArea(new Dimension(5,0)));
-            box25.add(massevolumique2nb);
+            box24.add(Box.createRigidArea(new Dimension(5,0)));
+            box24.add(massevolumique2nb);
             
             JLabel erreurchamp=new JLabel("Champ Manquant (Merci de renseigner tous les champs)");
             boxerreurchamp.add(erreurchamp);
@@ -363,12 +354,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // nombre de plaque
-                box21.setVisible(false); // epaisseur inter plaque
-                box22.setVisible(false); // diametre d'un tube
-                box23.setVisible(false); // surface d'une plaque
-                box24.setVisible(false); // masse volumique 1
-                box25.setVisible(false); // masse volumique 2
+                box20.setVisible(false); // temp chaud voulu
+                box21.setVisible(false); // temp fluide chaud 
+                box22.setVisible(false); // temp fluide froid
+                box23.setVisible(false); // masse volumique 1
+                box24.setVisible(false); // masse volumique 2
             } 
             
             if (bulle=="À spirales")
@@ -397,12 +387,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // nombre de plaque
-                box21.setVisible(false); // epaisseur inter plaque
-                box22.setVisible(false); // diametre d'un tube
-                box23.setVisible(false); // surface d'une plaque
-                box24.setVisible(false); // masse volumique 1
-                box25.setVisible(false); // masse volumique 2
+                box20.setVisible(false); // temp chaud voulu
+                box21.setVisible(false); // temp fluide chaud 
+                box22.setVisible(false); // temp fluide froid
+                box23.setVisible(false); // masse volumique 1
+                box24.setVisible(false); // masse volumique 2
             }   
             
             if (bulle=="À plaques")
@@ -431,12 +420,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(true); //capacite 2
                 box18.setVisible(true); //lambda 1
                 box19.setVisible(true); //lambda 2
-                box20.setVisible(true); // nombre de plaque
-                box21.setVisible(true); // epaisseur inter plaque
-                box22.setVisible(true); // diametre d'un tube
-                box23.setVisible(true); // surface d'une plaque
-                box24.setVisible(true); // masse volumique 1
-                box25.setVisible(true); // masse volumique 2
+                box20.setVisible(true); // temp chaud voulu
+                box21.setVisible(true); // temp fluide chaud 
+                box22.setVisible(true); // temp fluide froid
+                box23.setVisible(true); // masse volumique 1
+                box24.setVisible(true); // masse volumique 2
             }
                  
             Box lastbox = Box.createVerticalBox();
@@ -456,7 +444,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box14);
             lastbox.add(box16);
             lastbox.add(box18);
-            lastbox.add(box24);
+            lastbox.add(box23);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(boxlabel2);
@@ -469,7 +457,7 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box15);
             lastbox.add(box17);
             lastbox.add(box19);
-            lastbox.add(box25);
+            lastbox.add(box24);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(boxlabel3);
@@ -478,7 +466,6 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box20);
             lastbox.add(box21);
             lastbox.add(box22);
-            lastbox.add(box23);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(box1);
@@ -533,20 +520,7 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
-                    float debit1nbV=Float.parseFloat(debit1nb.getText());
-                    float debit2nbV=Float.parseFloat(debit2nb.getText());
-                    float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
-                    float viscosite2nbV=Float.parseFloat(viscosite2nb.getText());
-                    float capacite1nbV=Float.parseFloat(capacite1nb.getText());
-                    float capacite2nbV=Float.parseFloat(capacite2nb.getText());
-                    float lambda1nbV=Float.parseFloat(lambda1nb.getText());
-                    float lambda2nbV=Float.parseFloat(lambda2nb.getText());
-                    int nbplaqueV=Integer.parseInt(nbplaque.getText()); 
-                    float epaisseurinterV=Float.parseFloat(epaisseurinter.getText());
-                    float diametrenbV=Float.parseFloat(diametre.getText());
-                    float surfacenbV=Float.parseFloat(surface.getText());
-                    float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
-                    float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
+                    
                     
                     boxerreurchamp.setVisible(false);
                     // Fenetre_resultat_spirales fenetre4 ;
@@ -564,6 +538,20 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
+                    float debit1nbV=Float.parseFloat(debit1nb.getText());
+                    float debit2nbV=Float.parseFloat(debit2nb.getText());
+                    float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
+                    float viscosite2nbV=Float.parseFloat(viscosite2nb.getText());
+                    float capacite1nbV=Float.parseFloat(capacite1nb.getText());
+                    float capacite2nbV=Float.parseFloat(capacite2nb.getText());
+                    float lambda1nbV=Float.parseFloat(lambda1nb.getText());
+                    float lambda2nbV=Float.parseFloat(lambda2nb.getText());
+                    float tempcvoulunbV=Float.parseFloat(tempcvoulunb.getText());
+                    float tempfroidnbV=Float.parseFloat(tempfroidnb.getText());
+                    float tempchaudnbV=Float.parseFloat(tempchaudnb.getText());
+                    float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
+                    float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
+                    boxerreurchamp.setVisible((false));
                 // Fenetre_resultat_spirales fenetre5 ;
                 // fenetre5=new Fenetre_resultat_plaque();
                 //fenetre5.setVisible(true);
@@ -611,12 +599,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // nombre de plaque
-                box21.setVisible(false); // epaisseur inter plaque
-                box22.setVisible(false); // diametre d'un tube
-                box23.setVisible(false); // surface d'une plaque
-                box24.setVisible(false); // masse volumique 1
-                box25.setVisible(false); // masse volumique 2
+                box20.setVisible(false); // temp chaud voulu
+                box21.setVisible(false); // temp fluide chaud 
+                box22.setVisible(false); // temp fluide froid
+                box23.setVisible(false); // masse volumique 1
+                box24.setVisible(false); // masse volumique 2
                 boxerreurchamp.setVisible(false);
            }
            if (bulle=="À plaques")
@@ -647,12 +634,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(true); //capacite 2
                 box18.setVisible(true); //lambda 1
                 box19.setVisible(true); //lambda 2
-                box20.setVisible(true); // nombre de plaque
-                box21.setVisible(true); // epaisseur inter plaque
-                box22.setVisible(true); // diametre d'un tube
-                box23.setVisible(true); // surface d'une plaque
-                box24.setVisible(true); // masse volumique 1
-                box25.setVisible(true); // masse volumique 2
+                box20.setVisible(true); // temp chaud voulu
+                box21.setVisible(true); // temp fluide chaud 
+                box22.setVisible(true); // temp fluide froid
+                box23.setVisible(true); // masse volumique 1
+                box24.setVisible(true); // masse volumique 2
                 boxerreurchamp.setVisible(false);
            }
            if (bulle=="À spirales")
@@ -683,12 +669,11 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // nombre de plaque
-                box21.setVisible(false); // epaisseur inter plaque
-                box22.setVisible(false); // diametre d'un tube
-                box23.setVisible(false); // surface d'une plaque
-                box24.setVisible(false); // masse volumique 1
-                box25.setVisible(false); // masse volumique 2
+                box20.setVisible(false); // temp chaud voulu
+                box21.setVisible(false); // temp fluide chaud 
+                box22.setVisible(false); // temp fluide froid
+                box23.setVisible(false); // masse volumique 1
+                box24.setVisible(false); // masse volumique 2
                 boxerreurchamp.setVisible(false);
            }
         }

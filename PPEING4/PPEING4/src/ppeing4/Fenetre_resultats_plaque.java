@@ -55,8 +55,9 @@ public class Fenetre_resultats_plaque extends JFrame{
                  
                  double dtlm_main = plaque1.calcul_DTLM();
                  System.out.println(dtlm_main);
-         
                  
+                 double coeff_convection_h=plaque1.calcul_coeff_convection_h();
+                 System.out.println(coeff_convection_h);
                  
                  int nbre_plaques_main = plaque1.calcul_nbre_plaques();
                  System.out.println(nbre_plaques_main);
@@ -64,11 +65,17 @@ public class Fenetre_resultats_plaque extends JFrame{
                  int nbre_plaques_total_main = plaque1.calcul_nbre_plaques_total();
                  System.out.println(nbre_plaques_total_main);
                  
-                    double sc_main = plaque1.calcul_Sc(plaque1.getter_surface_module());
-                 System.out.println(sc_main);
                  
+                 double sc_main = plaque1.calcul_Sc(plaque1.getter_surface_module());
+                 System.out.println(sc_main);
+         
                  double rth_main = plaque1.calcul_rth();
                  System.out.println(rth_main);
+                 
+                 
+                 
+                 
+                
                  
                  double pe_main = plaque1.calcul_Pe();
                  System.out.println(pe_main);

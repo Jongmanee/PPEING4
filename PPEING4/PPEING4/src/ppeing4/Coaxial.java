@@ -99,12 +99,6 @@ public class Coaxial extends Technologies{
     
     
     
-    public double calcul_r_charge (double densite_couple, float longueur_jambe, float surface_jambe)
-    {
-       
-        r_charge = (masse_volumique_1*densite_couple*taux_occupation*longueur_jambe)/(2*surface_jambe*surface_jambe);
-        return r_charge;
-    }
     
     
     

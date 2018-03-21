@@ -11,19 +11,7 @@ package ppeing4;
  */
 public class ModuleFerrotec {
     
-    private float seebeck;
-    private float thomson;
-    private float densite_couple;
-    private float longueur_jambe;
-    private float surface_jambe;
-    private float conduct_th;
-    private float surface_module;
-    
-    
-    
-    
-    
-    
+   
     
 }
 

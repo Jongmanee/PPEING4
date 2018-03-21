@@ -23,7 +23,8 @@ public class Plaques extends Technologies {
     private double taux_occupation;
     
     private double resistance_th_globale;
-    private double coeff_convection_h_inverse;
+    private double coeff_convection_h;
+    
     
     private float flux_thermique;
     private float puissance_electrique;
@@ -33,29 +34,89 @@ public class Plaques extends Technologies {
     private float viscosite_2;
     private float conductivite_th_1;
     private float conductivite_th_2;
-    private float th_chaude_refroidie;
-    
-    
+    private double th_froide_rechauffe;
+    private float temp_ech;
+    private double dtlm;
+    private int nbre_plaques_total;
 
 
 
-public Plaques  ( float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2 )
+public Plaques  ( float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float temp_ech )
     {
         super(debit_m_1, debit_m_2,capacite_th_1, capacite_th_2,masse_volumique_1,masse_volumique_2, tempc, tempf);
         this.viscosite_1 = viscosite_1;
         this.viscosite_2 = viscosite_2;
+        this.temp_ech = temp_ech+273;
+        this.conductivite_th_1 = conductivite_th_1;
+        this.conductivite_th_2 = conductivite_th_2;
         
        
     }
 
-public double Calcul_Sc (double surface_module)
+public double calcul_temperature_DTLM()
+
+{
+    th_froide_rechauffe = tempf + (debit_m_1*capacite_th_1*(tempc-temp_ech))/(debit_m_2*capacite_th_2);
+     System.out.println("temp froide"+tempf);
+              System.out.println(debit_m_1); 
+                       System.out.println(capacite_th_1);
+                               System.out.println(tempc);
+                                       System.out.println(temp_ech); 
+                                               System.out.println(debit_m_2);
+                                                       System.out.println(capacite_th_2);
+                               
+                               
+                               
+                               
+                      
+      System.out.println("temp DTLM"+th_froide_rechauffe);
+    return th_froide_rechauffe;
+}
+
+public double calcul_DTLM()
+{
+    
+     dtlm = ((tempc-th_froide_rechauffe)-(temp_ech-tempf))/(Math.log((tempc-th_froide_rechauffe)/(temp_ech-tempf)));
+     System.out.println("DTLM"+dtlm);
+     return dtlm;
+}
+
+public int calcul_nbre_plaques ()
+{
+    double inter_nbre_plaques;
+    inter_nbre_plaques = (debit_m_1*capacite_th_1*(th_froide_rechauffe-tempf))/(coeff_convection_h*surface_plaques*dtlm);
+     System.out.println("DEBIT M 1"+debit_m_1);
+              System.out.println(capacite_th_1);
+                       System.out.println(th_froide_rechauffe);
+                                System.out.println(tempf);
+                                         System.out.println(coeff_convection_h);
+                                                  System.out.println(surface_plaques);
+                                                           System.out.println(dtlm);
+                                                                   
+    nbre_plaques = (int) inter_nbre_plaques;
+    return nbre_plaques;
+}
+
+
+
+public int calcul_nbre_plaques_total()
+        {
+           nbre_plaques_total = nbre_plaques + 2;
+           return nbre_plaques_total;
+        }
+
+
+
+
+public double calcul_Sc (double surface_module)
 {
     double inter_nbre_modules;
     
     
     
+    System.out.println("nbre plaque =" + nbre_plaques);
+    surface_contact = (nbre_plaques-1)*(surface_plaques-(Math.PI*diam_tube*diam_tube));
     
-    surface_contact = (nbre_plaques-1)*(surface_plaques-(Math.PI*(2*epaisseur_inter)*(2*epaisseur_inter)));
     
      inter_nbre_modules =  surface_contact/surface_module;
         nbre_modules = (int) inter_nbre_modules;
@@ -63,12 +124,16 @@ public double Calcul_Sc (double surface_module)
        
         
         smod = nbre_modules*surface_module;
-       
+        
+        System.out.println(nbre_modules);
+       System.out.println(surface_module);
         
      taux_occupation = smod/surface_contact;
     
     return smod;
 }
+
+
 
 
  public double calcul_densite_couple()
@@ -86,17 +151,7 @@ public double Calcul_Sc (double surface_module)
      
      
      
-     
-     
-     
-     
-public double calcul_r_charge (double densite_couple, float longueur_jambe, float surface_jambe)
-    {
-       
-        r_charge = (masse_volumique_1*densite_couple*taux_occupation*longueur_jambe)/(2*surface_jambe*surface_jambe);
-        return r_charge;
-    } 
-
+    
 
 
 public double calcul_rth ()
@@ -122,14 +177,17 @@ public double calcul_rth ()
          double Prandt;
          double Prandt2;
          
-         Rey1 = (4*debit_m_1)/(Math.PI*2*epaisseur_inter*viscosite_1);
-         Rey2 = (4*debit_m_2)/(Math.PI*2*epaisseur_inter*viscosite_2);
+         Rey1 = (4*debit_m_1)/(Math.PI*diam_tube*viscosite_1);
+         Rey2 = (4*debit_m_2)/(Math.PI*diam_tube*viscosite_2);
          
          System.out.println(Rey1+"Rey1");
          System.out.println(Rey2+"Rey2");
          
          Prandt = (viscosite_1*capacite_th_1)/(conductivite_th_1);  
          Prandt2 = (viscosite_2*capacite_th_2)/(conductivite_th_2);
+          System.out.println(viscosite_1);
+           System.out.println(capacite_th_1);
+            System.out.println(conductivite_th_1);
          System.out.println(Prandt+"Prandt");
         System.out.println(Prandt2+"Prandt2");
          
@@ -206,18 +264,19 @@ public double calcul_rth ()
         System.out.println(Nuss1+"Nuss1");
         System.out.println(Nuss2+"Nuss2");
         
-        h1=(Nuss1*conductivite_th_1)/(2*epaisseur_inter);
-        h2=(Nuss2*conductivite_th_2)/(2*epaisseur_inter);
+        h1=(Nuss1*conductivite_th_1)/(diam_tube);
+        h2=(Nuss2*conductivite_th_2)/(diam_tube);
         
         System.out.println(h1+" h1");
         System.out.println(h2+" h2");
         
         
         
-        coeff_convection_h_inverse = (1/h1) + (1/h2);
-        System.out.println(coeff_convection_h_inverse);
+        coeff_convection_h = 1/((1/h1) + (1/h2));
+        System.out.println(coeff_convection_h);
         
-        resistance_th_globale= coeff_convection_h_inverse*(smod);
+        resistance_th_globale= 1/(coeff_convection_h*smod);
+        System.out.println("SMOD"+smod);
         return resistance_th_globale;
     }
 
@@ -247,5 +306,6 @@ public double calcul_Pe ()
         return surface_contact;
     }
 
+    
 
 }

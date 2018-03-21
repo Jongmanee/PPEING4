@@ -18,6 +18,8 @@ public class Technologies {
     protected float capacite_th_1;
     protected float capacite_th_2;
     protected float diff_temperature;
+    protected float tempc;
+    protected float tempf;
     protected float tempm;
     protected float masse_volumique_1;
     protected float masse_volumique_2;
@@ -31,14 +33,16 @@ public class Technologies {
     protected double conduct_th_tube;
     protected double surface_module = ((55*Math.pow(10,-3))*(55*Math.pow(10,-3)));
     protected double diam_eq = 0.007;
-    protected double surface_plaques = 0.29;
+    protected double surface_plaques = 10.7;
     protected double epaisseur_inter = 0.0035;
-    protected double diam_tube = 0.125;
+    protected double diam_tube = 0.450;
     
     
     public Technologies (float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float masse_volumique_1,float masse_volumique_2, float tempc, float tempf)
     {
-        this.tempm = (tempc+273+tempf+273)/2;
+        this.tempf = tempf+273;
+        this.tempc = tempc+273;
+        this.tempm = (this.tempc+this.tempf)/2;
         this.diff_temperature = tempc-tempf;
         this.capacite_th_1 = capacite_th_1;
         this.masse_volumique_1 = masse_volumique_1;

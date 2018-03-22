@@ -101,7 +101,7 @@ public class Fenetre_saisie extends JFrame
 
         if (bulle!=null)
         {                                   
-            setBounds(0,0,800,600);
+            setBounds(0,0,800,800);
             setTitle("Saisie des Données");    
             panneau = new JPanel();
 
@@ -364,9 +364,9 @@ public class Fenetre_saisie extends JFrame
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(false);
-                box7.setVisible(false);
-                box8.setVisible(false);
+                box6.setVisible(true);
+                box7.setVisible(true);
+                box8.setVisible(true);
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
@@ -387,8 +387,8 @@ public class Fenetre_saisie extends JFrame
             if (bulle=="À plaques")
             {
                 boxlabel1.setVisible(false);
-                boxlabel2.setVisible(false);
-                boxlabel3.setVisible(true);
+                boxlabel2.setVisible(true);
+                boxlabel3.setVisible(false);
                 boxlabel4.setVisible(true);
                 boxlabel5.setVisible(true);
                 box1.setVisible(true);//bouton
@@ -421,7 +421,6 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(Box.createVerticalStrut(20));//crée un espace
                  
             lastbox.add(boxlabel1);
-            lastbox.add(boxlabel4);
             lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box2);
             lastbox.add(box3);
@@ -429,6 +428,10 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box5);
             lastbox.add(box9);
             lastbox.add(box11);
+            lastbox.add(Box.createVerticalStrut(20));
+            
+            lastbox.add(boxlabel4);
+            lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box12);
             lastbox.add(box14);
             lastbox.add(box16);
@@ -437,18 +440,21 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(box21);
             lastbox.add(Box.createVerticalStrut(20));
             
-            lastbox.add(boxlabel2);
             lastbox.add(boxlabel5);
             lastbox.add(Box.createVerticalStrut(20));
-            lastbox.add(box6);
-            lastbox.add(box7);
-            lastbox.add(box8);
             lastbox.add(box13);
             lastbox.add(box15);
             lastbox.add(box17);
             lastbox.add(box19);
             lastbox.add(box24);
             lastbox.add(box22);
+            lastbox.add(Box.createVerticalStrut(20));
+            
+            lastbox.add(boxlabel2);
+            lastbox.add(Box.createVerticalStrut(20));
+            lastbox.add(box6);
+            lastbox.add(box7);
+            lastbox.add(box8);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(boxlabel3);
@@ -600,8 +606,8 @@ public class Fenetre_saisie extends JFrame
                //faire les setVisibles
                 techno.setText("Technologie Echangeur à Plaques");
                 boxlabel1.setVisible(false);
-                boxlabel2.setVisible(false);
-                boxlabel3.setVisible(true);
+                boxlabel2.setVisible(true);
+                boxlabel3.setVisible(false);
                 boxlabel4.setVisible(true);
                 boxlabel5.setVisible(true);
                 box1.setVisible(true);//bouton

@@ -22,6 +22,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.NumberFormat;
 import java.text.Format;
+import static javafx.application.Application.launch;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -29,6 +30,11 @@ import javax.swing.Box;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import static javax.xml.bind.JAXBIntrospector.getValue;
+import javafx.scene.*;
+import javafx.scene.chart.PieChart;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.embed.swing.JFXPanel;
 
 /**
  *
@@ -116,6 +122,20 @@ public class Fenetre_resultats_plaque extends JFrame{
                     }
                 };
                 
+                // Pour le graphique en camembert
+                
+                final JFXPanel fxPanel = new JFXPanel(); // On crée un panneau FX car on peut pas mettre des objet FX dans un JFRame
+                final PieChart chart = new PieChart();  // on crée un objet de type camembert
+                chart.setTitle("Stock de fruits");  // on change le titre de ce graph
+                chart.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),  
+                        new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42), 
+                        new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19) 
+                ); // on implémente les différents case du camebert
+                final Scene scene = new Scene(chart); // on crée une scene (FX) où l'on met le graph camembert
+                fxPanel.setScene(scene); // on met cette scene dans l'objet panneau FX (panneau Fx est un objet Swing donc marche dans les Jframe)
+                
+                // a partir de là c'est plus le camembert
+                
                 tableau2 = new JTable(modele2);
                 
                 JScrollPane tableau_entete = new JScrollPane(tableau);
@@ -134,12 +154,12 @@ public class Fenetre_resultats_plaque extends JFrame{
                 panneau.add(tableau_entete);
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
+                panneau.add(fxPanel); // on ajoute au Jframe notre panneau FX (qui contient donc UNE "scene" qui elle contient les object FX, ici notre camembert)
                 getContentPane().add(panneau);
                 this.setLocation(600,0);
                          
             }
-    
-    
+   
     }
     
     

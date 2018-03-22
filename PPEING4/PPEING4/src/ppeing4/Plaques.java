@@ -332,7 +332,7 @@ public double calcul_Pe ()
         this.conductivite_th_1 = conductivite_th_1;
         this.conductivite_th_2 = conductivite_th_2;
         this.longueur=longueur;
-         this.longueur=largeur;
+         this.largeur=largeur;
          this.hauteur = hauteur;
     }
     
@@ -351,12 +351,15 @@ public double calcul_Pe ()
     public double calcul_surface_plaques ()
     {
         surface_plaques = largeur*hauteur;
+        System.out.println("largeur"+largeur+" "+hauteur);
         return surface_plaques;
     }
     
     public double calcul_surface_contact ()
     {
         surface_contact = nbre_plaques*surface_plaques;
+        System.out.println(nbre_plaques);
+        System.out.println("surface_contact "+surface_contact);
         return surface_contact;
     }
     

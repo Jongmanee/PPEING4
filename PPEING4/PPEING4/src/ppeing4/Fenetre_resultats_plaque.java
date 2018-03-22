@@ -41,41 +41,33 @@ public class Fenetre_resultats_plaque extends JFrame{
     JTable tableau2;
     
     
-    public Fenetre_resultats_plaque( float debit_m_1,float debit_m_2, float capacite_th_1, float capacite_th_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float masse_volumique_1, float masse_volumique_2, float tempc, float tempf, float temp_ech)
+    public Fenetre_resultats_plaque( float debit_m_1,float debit_m_2, float capacite_th_1, float capacite_th_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float masse_volumique_1, float masse_volumique_2, float tempc, float tempf, float longueur, float largeur, float hauteur)
             {
                 
                 Plaques plaque1;
         
-                plaque1 = new Plaques(debit_m_1, debit_m_2, capacite_th_1, capacite_th_2,tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2, temp_ech);
+                plaque1 = new Plaques(longueur, largeur, hauteur, debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2);
         
                 
               
-                 double temp_dtlm_main = plaque1.calcul_temperature_DTLM();
-                 System.out.println(temp_dtlm_main);
-                 
-                 double dtlm_main = plaque1.calcul_DTLM();
-                 System.out.println(dtlm_main);
-                 
-                 double coeff_convection_h=plaque1.calcul_coeff_convection_h();
-                 System.out.println(coeff_convection_h);
-                 
-                 int nbre_plaques_main = plaque1.calcul_nbre_plaques();
-                 System.out.println(nbre_plaques_main);
-                 
-                 int nbre_plaques_total_main = plaque1.calcul_nbre_plaques_total();
+                 int nbre_plaques_total_main = plaque1.calcul_nbre_plaques_total ();
                  System.out.println(nbre_plaques_total_main);
                  
+                 double surface_plaque_main = plaque1.calcul_surface_plaques ();
+                 System.out.println(surface_plaque_main);
                  
-                 double sc_main = plaque1.calcul_Sc(plaque1.getter_surface_module());
-                 System.out.println(sc_main);
-         
+                 
+                 double surface_contact_main = plaque1.calcul_surface_contact();
+                 System.out.println(surface_contact_main);
+                 
+                 double smod_main = plaque1.calcul_smod ();
+                 System.out.println(smod_main);
+                 
+                 double coeff_convection_h_main=plaque1.calcul_coeff_convection_h();
+                 System.out.println(coeff_convection_h_main);
+                 
                  double rth_main = plaque1.calcul_rth();
                  System.out.println(rth_main);
-                 
-                 
-                 
-                 
-                
                  
                  double pe_main = plaque1.calcul_Pe();
                  System.out.println(pe_main);
@@ -84,12 +76,12 @@ public class Fenetre_resultats_plaque extends JFrame{
                  Object donnees[][] = {
                     {"Nombre de modules",plaque1.getter_nbre_modules()},
                     {"Surface proposée (en m²)",plaque1.getter_surface_contact()},
-                    {"Surface utilisée par les modules (en m²)",sc_main},
+                    {"Surface utilisée par les modules (en m²)",smod_main},
                     {"Débit massique chaud(en m3/h)",debit_m_1},
                     {"Débit massique froid(en m3/h)",debit_m_2},
                     {"Température chaude (en °C)",tempc},
                     {"Température froide (en °C)",tempf},
-                    {"Temperature voulue sortie echangeur (en °C)",temp_ech},
+                    //{"Temperature voulue sortie echangeur (en °C)",temp_ech},
                     {"Différence de température",plaque1.getter_diff_temperature()},
                     {"Puissance électrique générée (en W)",pe_main},
                  };

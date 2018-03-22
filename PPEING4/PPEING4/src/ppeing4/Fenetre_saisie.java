@@ -266,12 +266,6 @@ public class Fenetre_saisie extends JFrame
             box19.add(Box.createRigidArea(new Dimension(5,0)));
             box19.add(lambda2nb);
             
-            JLabel tempcvoululb=new JLabel("Rentrer la temperature chaude voulu en sortie (C):");
-            box20.add(tempcvoululb);
-            tempcvoulunb= new JTextField();
-            tempcvoulunb.setColumns(30);
-            box20.add(Box.createRigidArea(new Dimension(5,0)));
-            box20.add(tempcvoulunb);
             
             JLabel tempchaudlb=new JLabel("Rentrer la temperature du fluide Chaud (C) :");
             box21.add(tempchaudlb);
@@ -548,9 +542,9 @@ public class Fenetre_saisie extends JFrame
                     float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
                     float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
                     boxerreurchamp.setVisible((false));
-                    //Fenetre_resultats_plaque fenetre5 ;
-                   // fenetre5=new Fenetre_resultats_plaque(debit1nbV,debit2nbV,capacite1nbV,capacite2nbV,viscosite1nbV,viscosite2nbV,lambda1nbV,lambda2nbV,massevolumique1nbV,massevolumique2nbV,tempchaudnbV,tempfroidnbV);
-                    //fenetre5.setVisible(true);
+                    Fenetre_resultats_plaque fenetre5 ;
+                    fenetre5=new Fenetre_resultats_plaque(debit1nbV,debit2nbV,capacite1nbV,capacite2nbV,viscosite1nbV,viscosite2nbV,lambda1nbV,lambda2nbV,massevolumique1nbV,massevolumique2nbV,tempchaudnbV,tempfroidnbV,longueurnbV,largeurnbV,hauteurnbV);
+                    fenetre5.setVisible(true);
                 }
                 catch(NumberFormatException e)
                 {

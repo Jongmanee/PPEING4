@@ -34,7 +34,7 @@ public class Technologies {
     protected double surface_module = ((55*Math.pow(10,-3))*(55*Math.pow(10,-3)));
     protected double diam_eq = 0.007;
     protected double surface_plaques = 10.7;
-    protected double epaisseur_inter = 0.0035;
+    protected double epaisseur_inter = 0.0040;
     protected double diam_tube = 0.450;
     protected double epaisseur_plaques = 0.0057;
     

@@ -36,6 +36,7 @@ public class Technologies {
     protected double surface_plaques = 10.7;
     protected double epaisseur_inter = 0.0035;
     protected double diam_tube = 0.450;
+    protected double epaisseur_plaques = 0.0057;
     
     
     public Technologies (float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float masse_volumique_1,float masse_volumique_2, float tempc, float tempf)

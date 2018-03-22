@@ -56,7 +56,6 @@ public class Fenetre_saisie extends JFrame
     JTextField capacite2nb;
     JTextField lambda1nb;
     JTextField lambda2nb;
-    JTextField tempcvoulunb;
     JTextField tempfroidnb;
     JTextField tempchaudnb;
     JTextField massevolumique1nb;
@@ -82,7 +81,6 @@ public class Fenetre_saisie extends JFrame
     Box box17 = Box.createHorizontalBox();
     Box box18 = Box.createHorizontalBox();
     Box box19 = Box.createHorizontalBox();
-    Box box20 = Box.createHorizontalBox();
     Box box21 = Box.createHorizontalBox();
     Box box22 = Box.createHorizontalBox();
     Box box23 = Box.createHorizontalBox();
@@ -354,7 +352,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // temp chaud voulu
                 box21.setVisible(false); // temp fluide chaud 
                 box22.setVisible(false); // temp fluide froid
                 box23.setVisible(false); // masse volumique 1
@@ -387,7 +384,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // temp chaud voulu
                 box21.setVisible(false); // temp fluide chaud 
                 box22.setVisible(false); // temp fluide froid
                 box23.setVisible(false); // masse volumique 1
@@ -406,9 +402,9 @@ public class Fenetre_saisie extends JFrame
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(false);
-                box7.setVisible(false);
-                box8.setVisible(false);
+                box6.setVisible(true);
+                box7.setVisible(true);
+                box8.setVisible(true);
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
@@ -420,7 +416,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(true); //capacite 2
                 box18.setVisible(true); //lambda 1
                 box19.setVisible(true); //lambda 2
-                box20.setVisible(true); // temp chaud voulu
                 box21.setVisible(true); // temp fluide chaud 
                 box22.setVisible(true); // temp fluide froid
                 box23.setVisible(true); // masse volumique 1
@@ -465,7 +460,6 @@ public class Fenetre_saisie extends JFrame
             lastbox.add(boxlabel3);
             lastbox.add(Box.createVerticalStrut(20));
             lastbox.add(box10);
-            lastbox.add(box20);
             lastbox.add(Box.createVerticalStrut(20));
             
             lastbox.add(box1);
@@ -538,6 +532,9 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
+                    float longueurnbV=Float.parseFloat(longueurnb.getText());
+                    float largeurnbV=Float.parseFloat(largeurnb.getText());
+                    float hauteurnbV=Float.parseFloat(hauteurnb.getText());
                     float debit1nbV=Float.parseFloat(debit1nb.getText());
                     float debit2nbV=Float.parseFloat(debit2nb.getText());
                     float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
@@ -546,15 +543,14 @@ public class Fenetre_saisie extends JFrame
                     float capacite2nbV=Float.parseFloat(capacite2nb.getText());
                     float lambda1nbV=Float.parseFloat(lambda1nb.getText());
                     float lambda2nbV=Float.parseFloat(lambda2nb.getText());
-                    float tempcvoulunbV=Float.parseFloat(tempcvoulunb.getText());
                     float tempfroidnbV=Float.parseFloat(tempfroidnb.getText());
                     float tempchaudnbV=Float.parseFloat(tempchaudnb.getText());
                     float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
                     float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
                     boxerreurchamp.setVisible((false));
-                    Fenetre_resultats_plaque fenetre5 ;
-                    fenetre5=new Fenetre_resultats_plaque(debit1nbV,debit2nbV,capacite1nbV,capacite2nbV,viscosite1nbV,viscosite2nbV,lambda1nbV,lambda2nbV,massevolumique1nbV,massevolumique2nbV,tempchaudnbV,tempfroidnbV,tempcvoulunbV);
-                    fenetre5.setVisible(true);
+                    //Fenetre_resultats_plaque fenetre5 ;
+                   // fenetre5=new Fenetre_resultats_plaque(debit1nbV,debit2nbV,capacite1nbV,capacite2nbV,viscosite1nbV,viscosite2nbV,lambda1nbV,lambda2nbV,massevolumique1nbV,massevolumique2nbV,tempchaudnbV,tempfroidnbV);
+                    //fenetre5.setVisible(true);
                 }
                 catch(NumberFormatException e)
                 {
@@ -599,7 +595,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // temp chaud voulu
                 box21.setVisible(false); // temp fluide chaud 
                 box22.setVisible(false); // temp fluide froid
                 box23.setVisible(false); // masse volumique 1
@@ -620,9 +615,9 @@ public class Fenetre_saisie extends JFrame
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(false);
-                box7.setVisible(false);
-                box8.setVisible(false);
+                box6.setVisible(true); // longueur
+                box7.setVisible(true); // largeur
+                box8.setVisible(true); // hauteur
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
@@ -634,7 +629,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(true); //capacite 2
                 box18.setVisible(true); //lambda 1
                 box19.setVisible(true); //lambda 2
-                box20.setVisible(true); // temp chaud voulu
                 box21.setVisible(true); // temp fluide chaud 
                 box22.setVisible(true); // temp fluide froid
                 box23.setVisible(true); // masse volumique 1
@@ -669,7 +663,6 @@ public class Fenetre_saisie extends JFrame
                 box17.setVisible(false); //capacite 2
                 box18.setVisible(false); //lambda 1
                 box19.setVisible(false); //lambda 2
-                box20.setVisible(false); // temp chaud voulu
                 box21.setVisible(false); // temp fluide chaud 
                 box22.setVisible(false); // temp fluide froid
                 box23.setVisible(false); // masse volumique 1

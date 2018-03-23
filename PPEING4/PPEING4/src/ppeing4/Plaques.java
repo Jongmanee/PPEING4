@@ -389,7 +389,7 @@ public double calcul_rth ()
     {
         
         
-        resistance_th_globale= 1/(coeff_convection_h*smod);
+        resistance_th_globale= 1/(coeff_convection_h);
         System.out.println("SMOD"+smod);
         return resistance_th_globale;
     }

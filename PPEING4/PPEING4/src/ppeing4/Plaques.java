@@ -506,7 +506,7 @@ public double calcul_coeff_convection_h()
         
         
         
-        coeff_convection_h = 1/((1/h1) + (1/h2) + (1/surface_contact)*(0.000005+epaisseur_plaques/21.9));
+        coeff_convection_h = 1/((1/h1) + (1/h2) + (1/smod)*(0.000005+epaisseur_plaques/21.9));
         System.out.println(coeff_convection_h);
         return coeff_convection_h;
     }

@@ -40,7 +40,16 @@ public class Coaxial extends Technologies{
 
     }
     
-   
+   public float calcul_rayon ()
+   {
+       float rayon;
+       if(hauteur<largeur)
+            rayon=hauteur/4;
+        else
+            rayon=largeur/4;
+       
+       return rayon;
+   }
     
     
     
@@ -51,10 +60,7 @@ public class Coaxial extends Technologies{
         float rayon;
         double inter_nbre_modules;
        
-        if(hauteur<largeur)
-            rayon=hauteur/4;
-        else
-            rayon=largeur/4;
+        rayon = calcul_rayon();
         
         surface_contact = 2*Math.PI*rayon*longueur;
         

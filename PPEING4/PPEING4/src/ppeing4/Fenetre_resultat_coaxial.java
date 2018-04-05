@@ -45,9 +45,10 @@ public class Fenetre_resultat_coaxial extends JFrame{
             {
                 
                 Coaxial coax1;
+                Finance F1;
         
                 coax1 = new Coaxial(longueur, largeur, hauteur, debit_m,capacite_th,tempc, tempf, masse_volumique);
-        
+                F1 = new Finance();
                 
               
                  double smod_main = coax1.calcul_smod(coax1.getter_surface_module());
@@ -62,6 +63,14 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  double pe_main = coax1.calcul_Pe();
                  System.out.println(pe_main);
+                 
+                 float rayon_main = coax1.calcul_rayon();
+                 
+                 double prix_module_main = F1.calcul_prix_modules(coax1.getter_nbre_modules(),10);
+                 double prix_materiaux_main = F1.calcul_prix_coaxial(rayon_main, longueur, epaisseur, 4.54, 4500);
+                 
+                 System.out.println(prix_module_main + "PRIX TOTAL MOD");
+                 System.out.println(prix_materiaux_main + "PRIX TOTAL MAT");
                  
                  String entetes[] = {"Résultat","Valeur"};
                  Object donnees[][] = {

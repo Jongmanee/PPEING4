@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ppeing4;
+/*package ppeing4;
 
 import java.lang.Math;
 
@@ -11,6 +11,7 @@ import java.lang.Math;
  *
  * @author Jongmanee Denis
  */
+/*
 public class Spirale extends Technologies {
 
    private float longueur;
@@ -46,7 +47,7 @@ public class Spirale extends Technologies {
         double inter_nbre_spires;
         //va dependre de la géometrie approchée utilisée et donc de la longueur, largeur et hauteur
         //je mets en commentaire la formule utilisée dans Plaques
-        inter_nbre_spires = /* longueur/(epaisseur_plaques+epaisseur_inter) */; 
+        inter_nbre_spires = /* longueur/(epaisseur_plaques+epaisseur_inter) ; 
         
         nbre_spires = (int) inter_nbre_spires;
         return nbre_spires;
@@ -62,7 +63,7 @@ public class Spirale extends Technologies {
         surface_plaques = largeur*hauteur;
         System.out.println("largeur"+largeur+" "+hauteur);
         return surface_plaques;
-        */
+        
     }
     
     
@@ -172,3 +173,4 @@ public class Spirale extends Technologies {
     }
 
 }
+*/

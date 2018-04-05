@@ -5,6 +5,7 @@
  */
 package ppeing4;
 
+import java.util.Scanner;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -45,15 +46,20 @@ public class Fenetre_resultats_plaque extends JFrame{
     JPanel panneau;
     JTable tableau;
     JTable tableau2;
+    JButton b1;
+    int nbre_modules;
     
     
     public Fenetre_resultats_plaque( float debit_m_1,float debit_m_2, float capacite_th_1, float capacite_th_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float masse_volumique_1, float masse_volumique_2, float tempc, float tempf, float longueur, float largeur, float hauteur)
             {
                 
+                
+                
                 Plaques plaque1;
+                Finance F1;
         
                 plaque1 = new Plaques(longueur, largeur, hauteur, debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2);
-        
+                F1 = new Finance();
                 
               
                  int nbre_plaques_total_main = plaque1.calcul_nbre_plaques_total ();
@@ -77,6 +83,14 @@ public class Fenetre_resultats_plaque extends JFrame{
                  
                  double pe_main = plaque1.calcul_Pe();
                  System.out.println(pe_main);
+                 
+                 nbre_modules= plaque1.getter_nbre_modules();
+                 
+                 double prix_modules_main = F1.calcul_prix_modules(nbre_modules, 10);
+                 double prix_materiaux_main = F1.calcul_prix_plaques (surface_plaque_main , plaque1.getter_diam_tube(), 0.0057, 0.058, nbre_plaques_total_main, 0.0040 );
+                 
+                 System.out.println(prix_modules_main +"PRIX MOD");
+                 System.out.println(prix_materiaux_main +"PRIX MAT");
                  
                  String entetes[] = {"Résultat","Valeur"};
                  Object donnees[][] = {
@@ -151,16 +165,43 @@ public class Fenetre_resultats_plaque extends JFrame{
                 setBounds(0,0,600,600);
                 setTitle("Résultats Technologie Plaques");    
                 panneau = new JPanel();
+                
+                 Ecouteur ec;
+                ec = new Ecouteur();
+                 b1 = new JButton("Estimation des coûts");
+                 b1.addActionListener(ec);
+                
+   
                 panneau.add(tableau_entete);
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
+                panneau.add(b1);
                 panneau.add(fxPanel); // on ajoute au Jframe notre panneau FX (qui contient donc UNE "scene" qui elle contient les object FX, ici notre camembert)
                 getContentPane().add(panneau);
                 this.setLocation(600,0);
                          
             }
+    
+    public class Ecouteur extends PPEING4 implements ActionListener
+        {
+        
+         public void actionPerformed(ActionEvent arg0)
+                {
+
+                     if (arg0.getSource()==b1)
+                    {
+                         
+                        // Fenetre_finance fenetre2 ;
+                         //fenetre2 = new Fenetre_finance("plaque", nbre_modules);
+                       
+                        
+                    } 
+
+                }
    
     }
+
+}
     
     
     

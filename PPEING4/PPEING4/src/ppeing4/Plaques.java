@@ -530,6 +530,15 @@ public double calcul_Pe ()
     {
         return surface_contact;
     }
+    
+    
+    public double getter_diam_tube()
+    {
+        return diam_tube;
+    }
+    
+    
+    
 }
 
 

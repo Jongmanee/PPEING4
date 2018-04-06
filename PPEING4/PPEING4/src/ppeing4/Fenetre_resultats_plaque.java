@@ -46,7 +46,7 @@ public class Fenetre_resultats_plaque extends JFrame{
     JPanel panneau;
     JTable tableau;
     JTable tableau2;
-    JButton b1;
+    JTable tableau3;
     int nbre_modules;
     
     
@@ -87,7 +87,10 @@ public class Fenetre_resultats_plaque extends JFrame{
                  nbre_modules= plaque1.getter_nbre_modules();
                  
                  double prix_modules_main = F1.calcul_prix_modules(nbre_modules, 10);
+                 if (prix_modules_main<0){prix_modules_main=0;}
                  double prix_materiaux_main = F1.calcul_prix_plaques (surface_plaque_main , plaque1.getter_diam_tube(), 0.0057, 0.058, nbre_plaques_total_main, 0.0040 );
+                 if (prix_materiaux_main<0){prix_materiaux_main=0;}
+                 double prix_total_main=prix_modules_main+prix_materiaux_main;
                  
                  System.out.println(prix_modules_main +"PRIX MOD");
                  System.out.println(prix_materiaux_main +"PRIX MAT");
@@ -135,18 +138,35 @@ public class Fenetre_resultats_plaque extends JFrame{
 			return false;
                     }
                 };
+
+                Object donnees3[][] = {
+                    {"Prix des modules (en €)",prix_modules_main},
+                    {"Prix de la matière première (en €)", prix_materiaux_main}, 
+                    {"Prix total échangeur (en €)", prix_total_main}
+                };
+               String entetes3[] = {"Caractéristiques","Valeurs"};
                 
+                DefaultTableModel modele3 = new DefaultTableModel(donnees3,entetes3)
+                 {
+                    @Override
+                    public boolean isCellEditable(int row, int col)
+                    {
+			return false;
+                    }
+                };
+                
+                 tableau3 = new JTable(modele3);
+                                
                 // Pour le graphique en camembert
                 
                 final JFXPanel fxPanel = new JFXPanel(); // On crée un panneau FX car on peut pas mettre des objet FX dans un JFRame
                 final PieChart chart = new PieChart();  // on crée un objet de type camembert
-                chart.setTitle("Stock de fruits");  // on change le titre de ce graph
-                chart.getData().setAll(new PieChart.Data("Pommes", 50), new PieChart.Data("Oranges", 30),  
-                        new PieChart.Data("Poires", 25), new PieChart.Data("Pêches", 42), 
-                        new PieChart.Data("Citrons", 5), new PieChart.Data("Kiwis", 19) 
+                chart.setTitle("Répartition du prix de l'échangeur");  // on change le titre de ce graph
+                chart.getData().setAll(new PieChart.Data("Prix des modules "+prix_modules_main+" €", prix_modules_main), new PieChart.Data("Prix du matériau "+prix_materiaux_main+" €", prix_materiaux_main)  
+                        
                 ); // on implémente les différents case du camebert
                 final Scene scene = new Scene(chart); // on crée une scene (FX) où l'on met le graph camembert
-                fxPanel.setScene(scene); // on met cette scene dans l'objet panneau FX (panneau Fx est un objet Swing donc marche dans les Jframe)
+                fxPanel.setScene(scene);
                 
                 // a partir de là c'est plus le camembert
                 
@@ -154,57 +174,33 @@ public class Fenetre_resultats_plaque extends JFrame{
                 
                 JScrollPane tableau_entete = new JScrollPane(tableau);
                 JScrollPane tableau_entete2 = new JScrollPane(tableau2);
+                JScrollPane tableau_entete3 = new JScrollPane(tableau3);
                 
                 tableau_entete.setViewportView(tableau);
                 tableau_entete2.setViewportView(tableau2);
+                tableau_entete3.setViewportView(tableau3);
                 
-                tableau_entete.setPreferredSize(new Dimension(500, 155));
+                tableau_entete.setPreferredSize(new Dimension(500, 170));
                 tableau_entete2.setPreferredSize(new Dimension(550, 110));
+                tableau_entete3.setPreferredSize(new Dimension(550, 75));
                 
+                 JLabel label_resultat=new JLabel("Resultat de la simulation");
                 JLabel label_module=new JLabel("Caractéristique du module utilisé");
-                setBounds(0,0,600,600);
+                JLabel label_prix=new JLabel("Prix de l'échangeur");
+                setBounds(0,0,600,900);
                 setTitle("Résultats Technologie Plaques");    
                 panneau = new JPanel();
                 
-                 Ecouteur ec;
-                ec = new Ecouteur();
-                 b1 = new JButton("Estimation des coûts");
-                 b1.addActionListener(ec);
                 
-   
+                panneau.add(label_resultat);
                 panneau.add(tableau_entete);
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
-                panneau.add(b1);
+                panneau.add(label_prix);
+                panneau.add(tableau_entete3);
                 panneau.add(fxPanel); // on ajoute au Jframe notre panneau FX (qui contient donc UNE "scene" qui elle contient les object FX, ici notre camembert)
                 getContentPane().add(panneau);
                 this.setLocation(600,0);
                          
             }
-    
-    public class Ecouteur extends PPEING4 implements ActionListener
-        {
-        
-         public void actionPerformed(ActionEvent arg0)
-                {
-
-                     if (arg0.getSource()==b1)
-                    {
-                         
-                        // Fenetre_finance fenetre2 ;
-                         //fenetre2 = new Fenetre_finance("plaque", nbre_modules);
-                       
-                        
-                    } 
-
-                }
-   
-    }
-
 }
-    
-    
-    
-    
-
-

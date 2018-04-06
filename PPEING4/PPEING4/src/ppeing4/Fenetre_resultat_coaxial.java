@@ -70,7 +70,9 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  float rayon_main = coax1.calcul_rayon();
                  
                  double prix_module_main = F1.calcul_prix_modules(coax1.getter_nbre_modules(),10);
+                 if (prix_module_main<0){prix_module_main=0;}
                  double prix_materiaux_main = F1.calcul_prix_coaxial(rayon_main, longueur, epaisseur, 4.54, 4500);
+                 if (prix_materiaux_main<0){prix_materiaux_main=0;}
                  double prix_total = prix_module_main + prix_materiaux_main;
                  
                  System.out.println(prix_module_main + "PRIX TOTAL MOD");
@@ -120,9 +122,9 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 
                 
                 Object donnees3[][] = {
-                    {"Prix des modules(en €)",prix_module_main},
-                    {"Prix de la matière première", prix_materiaux_main}, 
-                    {"Prix total échangeur", prix_total}
+                    {"Prix des modules (en €)",prix_module_main},
+                    {"Prix de la matière première (en €)", prix_materiaux_main}, 
+                    {"Prix total échangeur (en €)", prix_total}
                 };
                String entetes3[] = {"Caractéristiques","Valeurs"};
                 
@@ -144,8 +146,8 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 
                 final JFXPanel fxPanel = new JFXPanel(); // On crée un panneau FX car on peut pas mettre des objet FX dans un JFRame
                 final PieChart chart = new PieChart();  // on crée un objet de type camembert
-                chart.setTitle("Prix de l'échangeur");  // on change le titre de ce graph
-                chart.getData().setAll(new PieChart.Data("Prix des modules", prix_module_main), new PieChart.Data("Prix du matériau", prix_materiaux_main)  
+                chart.setTitle("Répartition du prix de l'échangeur");  // on change le titre de ce graph
+                chart.getData().setAll(new PieChart.Data("Prix des modules "+prix_module_main+" €", prix_module_main), new PieChart.Data("Prix du matériau "+prix_materiaux_main+" €", prix_materiaux_main)  
                         
                 ); // on implémente les différents case du camebert
                 final Scene scene = new Scene(chart); // on crée une scene (FX) où l'on met le graph camembert
@@ -163,15 +165,19 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 
                 tableau_entete.setPreferredSize(new Dimension(500, 155));
                 tableau_entete2.setPreferredSize(new Dimension(550, 110));
-                tableau_entete3.setPreferredSize(new Dimension(550, 110));
+                tableau_entete3.setPreferredSize(new Dimension(550, 75));
                 
+                JLabel label_resultat=new JLabel("Resultat de la simulation");
                 JLabel label_module=new JLabel("Caractéristique du module utilisé");
-                setBounds(0,0,600,600);
+                JLabel label_prix=new JLabel("Prix de l'échangeur");
+                setBounds(0,0,600,900);
                 setTitle("Résultats Technologie Coaxial");    
                 panneau = new JPanel();
+                panneau.add(label_resultat);
                 panneau.add(tableau_entete);
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
+                panneau.add(label_prix);
                 panneau.add(tableau_entete3);
                 panneau.add(fxPanel);
                 getContentPane().add(panneau);

@@ -22,6 +22,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.NumberFormat;
 import java.text.Format;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -39,7 +42,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
     JPanel panneau;
     JTable tableau;
     JTable tableau2;
-    
+    JTable tableau3;
     
     public Fenetre_resultat_coaxial(float longueur, float largeur, float hauteur, float debit_m, float capacite_th, float tempc, float tempf, float masse_volumique, float viscosite, float epaisseur)
             {
@@ -68,6 +71,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  double prix_module_main = F1.calcul_prix_modules(coax1.getter_nbre_modules(),10);
                  double prix_materiaux_main = F1.calcul_prix_coaxial(rayon_main, longueur, epaisseur, 4.54, 4500);
+                 double prix_total = prix_module_main + prix_materiaux_main;
                  
                  System.out.println(prix_module_main + "PRIX TOTAL MOD");
                  System.out.println(prix_materiaux_main + "PRIX TOTAL MAT");
@@ -114,16 +118,52 @@ public class Fenetre_resultat_coaxial extends JFrame{
                     }
                 };
                 
+                
+                Object donnees3[][] = {
+                    {"Prix des modules(en €)",prix_module_main},
+                    {"Prix de la matière première", prix_materiaux_main}, 
+                    {"Prix total échangeur", prix_total}
+                };
+               String entetes3[] = {"Caractéristiques","Valeurs"};
+                
+                DefaultTableModel modele3 = new DefaultTableModel(donnees3,entetes3)
+                 {
+                    @Override
+                    public boolean isCellEditable(int row, int col)
+                    {
+			return false;
+                    }
+                };
+                
+                 tableau3 = new JTable(modele3);
+                
+               
+               
+                
+                // Pour le graphique en camembert
+                
+                final JFXPanel fxPanel = new JFXPanel(); // On crée un panneau FX car on peut pas mettre des objet FX dans un JFRame
+                final PieChart chart = new PieChart();  // on crée un objet de type camembert
+                chart.setTitle("Prix de l'échangeur");  // on change le titre de ce graph
+                chart.getData().setAll(new PieChart.Data("Prix des modules", prix_module_main), new PieChart.Data("Prix du matériau", prix_materiaux_main)  
+                        
+                ); // on implémente les différents case du camebert
+                final Scene scene = new Scene(chart); // on crée une scene (FX) où l'on met le graph camembert
+                fxPanel.setScene(scene);
+                
                 tableau2 = new JTable(modele2);
                 
                 JScrollPane tableau_entete = new JScrollPane(tableau);
                 JScrollPane tableau_entete2 = new JScrollPane(tableau2);
+                JScrollPane tableau_entete3 = new JScrollPane(tableau3);
                 
                 tableau_entete.setViewportView(tableau);
                 tableau_entete2.setViewportView(tableau2);
+                tableau_entete3.setViewportView(tableau3);
                 
                 tableau_entete.setPreferredSize(new Dimension(500, 155));
                 tableau_entete2.setPreferredSize(new Dimension(550, 110));
+                tableau_entete3.setPreferredSize(new Dimension(550, 110));
                 
                 JLabel label_module=new JLabel("Caractéristique du module utilisé");
                 setBounds(0,0,600,600);
@@ -132,6 +172,8 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 panneau.add(tableau_entete);
                 panneau.add(label_module);
                 panneau.add(tableau_entete2);
+                panneau.add(tableau_entete3);
+                panneau.add(fxPanel);
                 getContentPane().add(panneau);
                 this.setLocation(600,0);
                          

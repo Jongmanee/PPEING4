@@ -235,7 +235,7 @@ public class Coaxial extends Technologies{
         System.out.println(h1+" h1");
         System.out.println(h2+" h2");
         
-        coeff_convection_h_inverse = (((l/4)+epaisseur_paroi)/((l/4)*h1)) + ((((l/4)+epaisseur_paroi)*Math.log(((l-2*epaisseur_paroi))/((l/2)-2*epaisseur_paroi)))/conduct_th_tube) + (1/h2);
+    coeff_convection_h_inverse = (((l/4))/((l/4-epaisseur_paroi)*h1)) + (  (  (l/4)*Math.log( (l/4)/( (l/4)-epaisseur_paroi) )  )/conduct_th_tube) + (1/h2);
         System.out.println(coeff_convection_h_inverse);
         
         resistance_th_globale= coeff_convection_h_inverse/smod;

@@ -196,7 +196,7 @@ public class Fenetre_resultats_spirales extends JFrame {
         panneau.add(fxPanel); // on ajoute au Jframe notre panneau FX (qui contient donc UNE "scene" qui elle contient les object FX, ici notre camembert)
         getContentPane().add(panneau);
         this.setLocation(600, 0);
-
+        this.setResizable(false);
     }
 
 }

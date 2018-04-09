@@ -199,7 +199,7 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 panneau.add(fxPanel);
                 getContentPane().add(panneau);
                 this.setLocation(600,0);
-                         
+                this.setResizable(false);         
             }
     
     

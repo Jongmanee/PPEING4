@@ -354,11 +354,11 @@ public class Fenetre_saisie extends JFrame
             
             if (bulle=="À spirales")
             {
-                boxlabel1.setVisible(true);
+                boxlabel1.setVisible(false);
                 boxlabel2.setVisible(true);
-                boxlabel3.setVisible(true);
-                boxlabel4.setVisible(false);
-                boxlabel5.setVisible(false);
+                boxlabel3.setVisible(false);
+                boxlabel4.setVisible(true);
+                boxlabel5.setVisible(true);
                 box1.setVisible(true);//bouton
                 box2.setVisible(false);
                 box3.setVisible(false);
@@ -370,18 +370,18 @@ public class Fenetre_saisie extends JFrame
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
-                box12.setVisible(false); //debit1
-                box13.setVisible(false); //debit2
-                box14.setVisible(false); //viscosite 1
-                box15.setVisible(false); //viscosite 2
-                box16.setVisible(false); //capacite 1
-                box17.setVisible(false); //capacite 2
-                box18.setVisible(false); //lambda 1
-                box19.setVisible(false); //lambda 2
-                box21.setVisible(false); // temp fluide chaud 
-                box22.setVisible(false); // temp fluide froid
-                box23.setVisible(false); // masse volumique 1
-                box24.setVisible(false); // masse volumique 2
+                box12.setVisible(true); //debit1
+                box13.setVisible(true); //debit2
+                box14.setVisible(true); //viscosite 1
+                box15.setVisible(true); //viscosite 2
+                box16.setVisible(true); //capacite 1
+                box17.setVisible(true); //capacite 2
+                box18.setVisible(true); //lambda 1
+                box19.setVisible(true); //lambda 2
+                box21.setVisible(true); // temp fluide chaud 
+                box22.setVisible(true); // temp fluide froid
+                box23.setVisible(true); // masse volumique 1
+                box24.setVisible(true); // masse volumique 2
             }   
             
             if (bulle=="À plaques")
@@ -514,8 +514,17 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
-                    
-                    
+                    float debitnbV=Float.parseFloat(debitnb.getText());
+                    float capacitenbV=Float.parseFloat(capacitenb.getText());
+                    float tempcnbV=Float.parseFloat(tempcnb.getText());
+                    float tempfnbV=Float.parseFloat(tempfnb.getText());
+                    float longueurnbV=Float.parseFloat(longueurnb.getText());
+                    float largeurnbV=Float.parseFloat(largeurnb.getText());
+                    float hauteurnbV=Float.parseFloat(hauteurnb.getText());
+                    float viscositenbV=Float.parseFloat(viscositenb.getText());
+                    float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
+                    float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
+                                
                     boxerreurchamp.setVisible(false);
                     // Fenetre_resultat_spirales fenetre4 ;
                     // fenetre4=new Fenetre_resultat_spirales();
@@ -639,34 +648,34 @@ public class Fenetre_saisie extends JFrame
            {
                //faire les setVisibles
                 techno.setText("Technologie Echangeur à Spirales");
-                boxlabel1.setVisible(true);
+                boxlabel1.setVisible(false);
                 boxlabel2.setVisible(true);
-                boxlabel3.setVisible(true);
-                boxlabel4.setVisible(false);
-                boxlabel5.setVisible(false);
+                boxlabel3.setVisible(false);
+                boxlabel4.setVisible(true);
+                boxlabel5.setVisible(true);
                 box1.setVisible(true);//bouton
                 box2.setVisible(false);
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(false);
-                box7.setVisible(false);
-                box8.setVisible(false);
+                box6.setVisible(true); // longueur
+                box7.setVisible(true); // largeur
+                box8.setVisible(true); // hauteur
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
-                box12.setVisible(false); //debit1
-                box13.setVisible(false); //debit2
-                box14.setVisible(false); //viscosite 1
-                box15.setVisible(false); //viscosite 2
-                box16.setVisible(false); //capacite 1
-                box17.setVisible(false); //capacite 2
-                box18.setVisible(false); //lambda 1
-                box19.setVisible(false); //lambda 2
-                box21.setVisible(false); // temp fluide chaud 
-                box22.setVisible(false); // temp fluide froid
-                box23.setVisible(false); // masse volumique 1
-                box24.setVisible(false); // masse volumique 2
+                box12.setVisible(true); //debit1
+                box13.setVisible(true); //debit2
+                box14.setVisible(true); //viscosite 1
+                box15.setVisible(true); //viscosite 2
+                box16.setVisible(true); //capacite 1
+                box17.setVisible(true); //capacite 2
+                box18.setVisible(true); //lambda 1
+                box19.setVisible(true); //lambda 2
+                box21.setVisible(true); // temp fluide chaud 
+                box22.setVisible(true); // temp fluide froid
+                box23.setVisible(true); // masse volumique 1
+                box24.setVisible(true); // masse volumique 2
                 boxerreurchamp.setVisible(false);
            }
         }

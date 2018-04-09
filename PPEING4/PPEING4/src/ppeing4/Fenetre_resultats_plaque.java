@@ -196,14 +196,14 @@ public class Fenetre_resultats_plaque extends JFrame{
                 tableau_entete2.setViewportView(tableau2);
                 tableau_entete3.setViewportView(tableau3);
                 
-                tableau_entete.setPreferredSize(new Dimension(500, 170));
+                tableau_entete.setPreferredSize(new Dimension(550, 170));
                 tableau_entete2.setPreferredSize(new Dimension(550, 110));
-                tableau_entete3.setPreferredSize(new Dimension(550, 110));
+                tableau_entete3.setPreferredSize(new Dimension(550, 120));
                 
                  JLabel label_resultat=new JLabel("Resultat de la simulation");
                 JLabel label_module=new JLabel("Caractéristique du module utilisé");
                 JLabel label_prix=new JLabel("Prix de l'échangeur");
-                setBounds(0,0,1000,1000);
+                setBounds(0,0,600,950);
                 setTitle("Résultats Technologie Plaques");    
                 panneau = new JPanel();
                 

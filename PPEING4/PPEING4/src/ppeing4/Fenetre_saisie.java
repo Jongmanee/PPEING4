@@ -25,6 +25,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.Box;
+import javax.swing.WindowConstants;
 import static javax.xml.bind.JAXBIntrospector.getValue;
 
 /**
@@ -474,6 +475,8 @@ public class Fenetre_saisie extends JFrame
         {
             System.out.println("annuler");
         }
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
     }
 
      public class Ecouteur2 extends PPEING4 implements ActionListener

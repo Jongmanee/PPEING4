@@ -296,7 +296,7 @@ public class Fenetre_saisie extends JFrame
             box24.add(Box.createRigidArea(new Dimension(5,0)));
             box24.add(massevolumique2nb);
             
-            JLabel erreurchamp=new JLabel("Champ Manquant (Merci de renseigner tous les champs)");
+            JLabel erreurchamp=new JLabel("<html><font color=#FB4F38>Champ Invalide ou Manquant (Merci de renseigner tous les champs avec des nombres)</font></html>");
             boxerreurchamp.add(erreurchamp);
             boxerreurchamp.setVisible(false);
             

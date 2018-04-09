@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.Box;
+import javax.swing.WindowConstants;
 
 /**
 *
@@ -95,6 +96,9 @@ public class Ecran extends JFrame
 
         getContentPane().add(panneau);
         this.setLocation(400, 200);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
+
     }
 
         public class Ecouteur extends PPEING4 implements ActionListener

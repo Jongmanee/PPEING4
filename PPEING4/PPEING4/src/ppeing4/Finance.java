@@ -30,6 +30,7 @@ public class Finance {
     private double prix_matiere_premiere;
     private double prix_total_modules;
     private double volume_total_plaques;
+    private double volume_total_spirale;
     private double masse_volumique_materiaux = 4500;// kg/m3
     
     private double prix_elec = 0.15; // en €;
@@ -37,6 +38,7 @@ public class Finance {
     private double revenu_horaire;
     private double nbre_heures;
     private double temps_remboursement;
+   
 
     
     
@@ -66,6 +68,10 @@ public class Finance {
          
          return prix_matiere_premiere;
      }
+     public double calcul_prix_spirales(double epaisseur_spire,double surface_contact) {
+        volume_total_plaques =surface_contact*epaisseur_spire;
+        return volume_total_spirale;
+    }
      
      public double calcul_prix_modules(float nbre_modules, float prix_module)
      {
@@ -100,6 +106,8 @@ public class Finance {
          nbre_heures = (prix_matiere_premiere+prix_total_modules)/revenu_horaire;
          return nbre_heures;
      }
+     
+     
 
     
 }

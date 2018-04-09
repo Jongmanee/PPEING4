@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*package ppeing4;
+package ppeing4;
 
 import java.lang.Math;
 
@@ -11,7 +11,7 @@ import java.lang.Math;
  *
  * @author Jongmanee Denis
  */
-/*
+
 public class Spirale extends Technologies {
 
    private float longueur;
@@ -25,10 +25,11 @@ public class Spirale extends Technologies {
     private double coeff_convection_h;
     private double resistance_th_globale;
     private double epasseur_paroi = 0.0057;
-    private double conduct_surface_echange;
     private double smod;
     private int nbre_spires;
     private int nbre_modules;
+    double epaisseur_spire;
+    
 
     public Spirale(float longueur, float largeur, float hauteur, float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2) {
         super(debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, masse_volumique_1, masse_volumique_2, tempc, tempf);
@@ -39,37 +40,40 @@ public class Spirale extends Technologies {
         this.longueur = longueur;
         this.largeur = largeur;
         this.hauteur = hauteur;
-
     }
     
    
     public int calcul_nbre_spire() {
         double inter_nbre_spires;
-        //va dependre de la géometrie approchée utilisée et donc de la longueur, largeur et hauteur
-        //je mets en commentaire la formule utilisée dans Plaques
-        inter_nbre_spires = /* longueur/(epaisseur_plaques+epaisseur_inter) ; 
+        double l=longueur;
+        if (l>largeur) {
+            l=largeur;
+        }
+        if (l>hauteur) {
+            l=hauteur;
+        }
+        inter_nbre_spires =  l/(4*epaisseur_inter) ; 
         
         nbre_spires = (int) inter_nbre_spires;
         return nbre_spires;
-        
-    }
-      
-    public double calcul_surface_plaques ()
-    {
-        // j'ignore si c'est le meme que celui de la technologie Plaques; 
-        //je mets en commentaire la formule utilisée dans Plaques
-        
-        /*
-        surface_plaques = largeur*hauteur;
-        System.out.println("largeur"+largeur+" "+hauteur);
-        return surface_plaques;
-        
     }
     
+    public double calcul_epaiseur_spire() {
+        epaisseur_spire = 2*(epaisseur_plaques+epaisseur_inter);
+        return epaisseur_spire;
+    }
+      
     
     public double calcul_surface_contact ()
     {
-        surface_contact = nbre_spires*surface_plaques; //
+        double l=longueur;
+        if (l>largeur) {
+            l=largeur;
+        }
+        if (l>hauteur) {
+            l=hauteur;
+        }
+        surface_contact = 8*Math.PI*Math.PI*epaisseur_spire*epaisseur_spire*l*(nbre_spires*(nbre_spires+1)/2+(nbre_spires-0.5)*(nbre_spires-0.5)/2); //
         System.out.println(nbre_spires);
         System.out.println("surface_contact "+surface_contact);
         return surface_contact;
@@ -160,8 +164,7 @@ public class Spirale extends Technologies {
 
         System.out.println(h1 + " h1");
         System.out.println(h2 + " h2");
-        conduct_surface_echange =; //formule qui dépend du matériau et de smod normalement
-        coeff_convection_h = 1 / ((1 / h1) + (1 / h2) + (epasseur_paroi / conduct_surface_echange));
+        coeff_convection_h = 1/((1/h1) + (1/h2) + (1/smod)*(0.000005+epaisseur_plaques/21.9));
         System.out.println(coeff_convection_h);
         return coeff_convection_h;
     }
@@ -173,4 +176,3 @@ public class Spirale extends Technologies {
     }
 
 }
-*/

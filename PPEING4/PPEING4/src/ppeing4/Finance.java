@@ -32,6 +32,13 @@ public class Finance {
     private double volume_total_plaques;
     private double masse_volumique_materiaux = 4500;// kg/m3
     
+    private double prix_elec = 0.15; // en €;
+    private double energie_produite;
+    private double revenu_horaire;
+    private double nbre_heures;
+    private double temps_remboursement;
+
+    
     
      public Finance ()
      {  
@@ -75,5 +82,24 @@ public class Finance {
          
          
      }
+     
+     public double conversion_kwh (double Pe)
+     {
+         energie_produite = Pe/1000;
+         return energie_produite;
+     }
+     
+     public double calcul_revenu_horaire()
+     {
+         revenu_horaire = energie_produite*prix_elec;
+         return revenu_horaire;
+     }
+     
+     public double calcul_nbre_heures ()
+     {
+         nbre_heures = (prix_matiere_premiere+prix_total_modules)/revenu_horaire;
+         return nbre_heures;
+     }
+
     
 }

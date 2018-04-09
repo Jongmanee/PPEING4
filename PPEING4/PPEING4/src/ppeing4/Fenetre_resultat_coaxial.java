@@ -75,6 +75,17 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  if (prix_materiaux_main<0){prix_materiaux_main=0;}
                  double prix_total = prix_module_main + prix_materiaux_main;
                  
+                 double energie_produite_main = F1.conversion_kwh(pe_main);
+                 double revenu_horaire_main = F1.calcul_revenu_horaire();
+                 double nbre_heures_main = F1.calcul_nbre_heures();
+                 
+                 System.out.println(energie_produite_main + "KWH");
+                 
+                   System.out.println(revenu_horaire_main + "PRIX HORAIRE");
+                 
+                    System.out.println( nbre_heures_main + "NBRE HEURES");
+
+                 
                  System.out.println(prix_module_main + "PRIX TOTAL MOD");
                  System.out.println(prix_materiaux_main + "PRIX TOTAL MAT");
                  
@@ -124,7 +135,10 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 Object donnees3[][] = {
                     {"Prix des modules (en €)",prix_module_main},
                     {"Prix de la matière première (en €)", prix_materiaux_main}, 
-                    {"Prix total échangeur (en €)", prix_total}
+                    {"Prix total échangeur (en €)", prix_total},
+                          {"Nombre de KiloWatt-heures", energie_produite_main},
+                    {"Revenu horaire", revenu_horaire_main},
+                    {"Nbre d'heures pour remboursement", nbre_heures_main}
                 };
                String entetes3[] = {"Caractéristiques","Valeurs"};
                 
@@ -165,12 +179,12 @@ public class Fenetre_resultat_coaxial extends JFrame{
                 
                 tableau_entete.setPreferredSize(new Dimension(500, 155));
                 tableau_entete2.setPreferredSize(new Dimension(550, 110));
-                tableau_entete3.setPreferredSize(new Dimension(550, 75));
+                tableau_entete3.setPreferredSize(new Dimension(550, 110));
                 
                 JLabel label_resultat=new JLabel("Resultat de la simulation");
                 JLabel label_module=new JLabel("Caractéristique du module utilisé");
                 JLabel label_prix=new JLabel("Prix de l'échangeur");
-                setBounds(0,0,600,900);
+                setBounds(0,0,1000,1000);
                 setTitle("Résultats Technologie Coaxial");    
                 panneau = new JPanel();
                 panneau.add(label_resultat);

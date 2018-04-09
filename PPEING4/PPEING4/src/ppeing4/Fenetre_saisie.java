@@ -514,21 +514,25 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
-                    float debitnbV=Float.parseFloat(debitnb.getText());
-                    float capacitenbV=Float.parseFloat(capacitenb.getText());
-                    float tempcnbV=Float.parseFloat(tempcnb.getText());
-                    float tempfnbV=Float.parseFloat(tempfnb.getText());
                     float longueurnbV=Float.parseFloat(longueurnb.getText());
                     float largeurnbV=Float.parseFloat(largeurnb.getText());
                     float hauteurnbV=Float.parseFloat(hauteurnb.getText());
-                    float viscositenbV=Float.parseFloat(viscositenb.getText());
-                    float epaisseurnbV=Float.parseFloat(epaisseurnb.getText());
-                    float massevolumiquenbV=Float.parseFloat(massevolumiquenb.getText());
-                                
-                    boxerreurchamp.setVisible(false);
-                    // Fenetre_resultat_spirales fenetre4 ;
-                    // fenetre4=new Fenetre_resultat_spirales();
-                    //fenetre4.setVisible(true);
+                    float debit1nbV=Float.parseFloat(debit1nb.getText());
+                    float debit2nbV=Float.parseFloat(debit2nb.getText());
+                    float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
+                    float viscosite2nbV=Float.parseFloat(viscosite2nb.getText());
+                    float capacite1nbV=Float.parseFloat(capacite1nb.getText());
+                    float capacite2nbV=Float.parseFloat(capacite2nb.getText());
+                    float lambda1nbV=Float.parseFloat(lambda1nb.getText());
+                    float lambda2nbV=Float.parseFloat(lambda2nb.getText());
+                    float tempfroidnbV=Float.parseFloat(tempfroidnb.getText());
+                    float tempchaudnbV=Float.parseFloat(tempchaudnb.getText());
+                    float massevolumique1nbV=Float.parseFloat(massevolumique1nb.getText());
+                    float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
+                    boxerreurchamp.setVisible((false));
+                    Fenetre_resultats_spirales fenetre4 ;
+                    fenetre4=new Fenetre_resultats_spirales(debit1nbV, debit2nbV, capacite1nbV, capacite2nbV, viscosite1nbV, viscosite2nbV, lambda1nbV, lambda2nbV, massevolumique1nbV, massevolumique2nbV, tempchaudnbV, tempfroidnbV, longueurnbV, largeurnbV, hauteurnbV);
+                    fenetre4.setVisible(true);
                 }
                 catch(NumberFormatException e)
                 {

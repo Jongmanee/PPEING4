@@ -80,7 +80,8 @@ public class Fenetre_resultats_plaque extends JFrame{
                  
                  double rth_main = plaque1.calcul_rth();
                  System.out.println(rth_main);
-                 
+                 double densite_couple_main = plaque1.calcul_densite_couple();
+                 double r_charge_main = plaque1.calcul_rcharge();
                  double pe_main = plaque1.calcul_Pe();
                  System.out.println(pe_main);
                  
@@ -88,7 +89,8 @@ public class Fenetre_resultats_plaque extends JFrame{
                  
                  double prix_modules_main = F1.calcul_prix_modules(nbre_modules, 10);
                  if (prix_modules_main<0){prix_modules_main=0;}
-                 double prix_materiaux_main = F1.calcul_prix_plaques (surface_plaque_main , plaque1.getter_diam_tube(), 0.0057, 0.058, nbre_plaques_total_main, 0.0040 );
+                 double volume_materiaux_main = F1.calcul_volume_plaques (surface_plaque_main , plaque1.getter_diam_tube(), 0.0057, 0.058, nbre_plaques_total_main, 0.0040 );
+                 double prix_materiaux_main = F1.calcul_prix_matiere();
                  if (prix_materiaux_main<0){prix_materiaux_main=0;}
                  double prix_total_main=prix_modules_main+prix_materiaux_main;
                  

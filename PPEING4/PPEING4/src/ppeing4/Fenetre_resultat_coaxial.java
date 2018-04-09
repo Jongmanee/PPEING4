@@ -59,6 +59,8 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  double densite_couple_main = coax1.calcul_densite_couple();
                  System.out.println(densite_couple_main);
+                 
+                 double r_charge_main = coax1.calcul_rcharge();
          
                  
                  double rth_main = coax1.calcul_rth(debit_m, masse_volumique, epaisseur, viscosite, capacite_th);
@@ -71,7 +73,8 @@ public class Fenetre_resultat_coaxial extends JFrame{
                  
                  double prix_module_main = F1.calcul_prix_modules(coax1.getter_nbre_modules(),10);
                  if (prix_module_main<0){prix_module_main=0;}
-                 double prix_materiaux_main = F1.calcul_prix_coaxial(rayon_main, longueur, epaisseur, 4.54, 4500);
+                 double volume_materiaux_main = F1.calcul_volume_coaxial(rayon_main, longueur, epaisseur, 4.54, 4500);
+                 double prix_materiaux_main = F1.calcul_prix_matiere();
                  if (prix_materiaux_main<0){prix_materiaux_main=0;}
                  double prix_total = prix_module_main + prix_materiaux_main;
                  

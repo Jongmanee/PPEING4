@@ -365,9 +365,9 @@ public class Fenetre_saisie extends JFrame
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(true);
+                box6.setVisible(false);
                 box7.setVisible(true);
-                box8.setVisible(true);
+                box8.setVisible(false);
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);
@@ -517,9 +517,7 @@ public class Fenetre_saisie extends JFrame
             {
                 try
                 {
-                    float longueurnbV=Float.parseFloat(longueurnb.getText());
                     float largeurnbV=Float.parseFloat(largeurnb.getText());
-                    float hauteurnbV=Float.parseFloat(hauteurnb.getText());
                     float debit1nbV=Float.parseFloat(debit1nb.getText());
                     float debit2nbV=Float.parseFloat(debit2nb.getText());
                     float viscosite1nbV=Float.parseFloat(viscosite1nb.getText());
@@ -534,7 +532,7 @@ public class Fenetre_saisie extends JFrame
                     float massevolumique2nbV=Float.parseFloat(massevolumique2nb.getText());
                     boxerreurchamp.setVisible((false));
                     Fenetre_resultats_spirales fenetre4 ;
-                    fenetre4=new Fenetre_resultats_spirales(debit1nbV, debit2nbV, capacite1nbV, capacite2nbV, viscosite1nbV, viscosite2nbV, lambda1nbV, lambda2nbV, massevolumique1nbV, massevolumique2nbV, tempchaudnbV, tempfroidnbV, longueurnbV, largeurnbV, hauteurnbV);
+                    fenetre4=new Fenetre_resultats_spirales(debit1nbV, debit2nbV, capacite1nbV, capacite2nbV, viscosite1nbV, viscosite2nbV, lambda1nbV, lambda2nbV, massevolumique1nbV, massevolumique2nbV, tempchaudnbV, tempfroidnbV,largeurnbV);
                     fenetre4.setVisible(true);
                 }
                 catch(NumberFormatException e)
@@ -665,9 +663,9 @@ public class Fenetre_saisie extends JFrame
                 box3.setVisible(false);
                 box4.setVisible(false);
                 box5.setVisible(false);
-                box6.setVisible(true); // longueur
+                box6.setVisible(false); // longueur
                 box7.setVisible(true); // largeur
-                box8.setVisible(true); // hauteur
+                box8.setVisible(false); // hauteur
                 box9.setVisible(false);
                 box10.setVisible(false);
                 box11.setVisible(false);

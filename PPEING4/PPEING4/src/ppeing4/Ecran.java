@@ -45,7 +45,7 @@ public class Ecran extends JFrame
     {
 
         setBounds(0,0,600,600);
-        setTitle("PPE - Thermoélectricité");
+        setTitle("C°2WATT");
         
        
         JTextArea txt_utilisation = new JTextArea(
@@ -68,7 +68,7 @@ public class Ecran extends JFrame
         txt_utilisation.setEditable(false); 
 
         defil = new JScrollPane(txt_utilisation);
-        txt_utilisation.setRows(20);
+        txt_utilisation.setRows(15);
         txt_utilisation.setColumns(40);
 
         Ecouteur ec;
@@ -77,7 +77,8 @@ public class Ecran extends JFrame
         b1 = new JButton("Lancer Calcul");
 
         b1.addActionListener(ec);
-
+        
+        JLabel img = new JLabel(new ImageIcon("logo.png"));
 
         panneau = new JPanel();
             
@@ -87,10 +88,13 @@ public class Ecran extends JFrame
         Box boxa = Box.createHorizontalBox();
         Box boxb = Box.createHorizontalBox();
         Box dernierebox = Box.createVerticalBox();
+        Box boximg = Box.createHorizontalBox();
+        boximg.add(img);
         boxa.add(defil);
         boxb.add(b1);
+        dernierebox.add(boximg);
         dernierebox.add(boxa);
-        dernierebox.add(boxb);
+        dernierebox.add(boxb); 
         panneau.add(dernierebox);
         
 

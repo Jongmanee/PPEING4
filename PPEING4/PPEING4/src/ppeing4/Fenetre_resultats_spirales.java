@@ -98,7 +98,8 @@ public class Fenetre_resultats_spirales extends JFrame {
 
 
         double pe_main = spir1.calcul_Pe();
-
+        
+        double taux_occupation_main = spir1.calcul_taux_occupation();
         double densite_couple_main = spir1.calcul_densite_couple();
 
         double prix_modules_main = F1.calcul_prix_modules(spir1.getter_nbre_modules());
@@ -149,7 +150,7 @@ public class Fenetre_resultats_spirales extends JFrame {
             {"Surface d'un module (en m²)", spir1.getter_surface_module()},
             {"Longueur d'une jambe (en m)", df4.format(spir1.getter_longueur_jambe())},
             {"Surface d'une jambe (en m²)", df7.format(spir1.getter_surface_jambe())},
-            {"Densité de couple", df5.format(spir1.getter_densite_couple())},
+            {"Densité de couple", df7.format(spir1.getter_densite_couple())},
             {"Conductivité thermique du module (en W/m/K)", df2.format(spir1.getter_conduct_th_module())}
         };
 

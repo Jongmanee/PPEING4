@@ -20,9 +20,7 @@ public class PPEING4 {
      */
     public static void main(String[] args) 
     {
-        // TODO code application logic here
-        
-        Scanner sc = new Scanner(System.in);
+        // TODO code application logic here     
      
         Ecran fenetre;
         fenetre = new Ecran();

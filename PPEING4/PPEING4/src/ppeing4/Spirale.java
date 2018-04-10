@@ -11,76 +11,96 @@ import java.lang.Math;
  *
  * @author Jongmanee Denis
  */
+
 public class Spirale extends Technologies {
 
     private float longueur;
-    private float largeur;
-    private float hauteur;
     private float viscosite_1;
     private float viscosite_2;
     private float conductivite_th_1;
     private float conductivite_th_2;
-    private double surface_contact;
     private double coeff_convection_h;
-    private double resistance_th_globale;
-    private double epasseur_paroi = 0.0057;
-    private double smod;
-    private int nbre_spires;
-    private int nbre_modules;
-    double epaisseur_spire;
 
-    public Spirale(float longueur, float largeur, float hauteur, float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2) {
+    private double epasseur_paroi = 0.0057;
+    protected double epaisseur_plaques = 0.0057;
+    private int nbre_spires;
+    private double epaisseur_spire;
+    private double epaisseur_inter = 0.0040;
+    private double diam_tube = 0.45;
+    
+    
+    /**
+     * Constructeur de la classe Spirale qui utilise le consctructeur de la classe mere Technologies
+     * @param longueur
+     * @param debit_m_1
+     * @param debit_m_2
+     * @param capacite_th_1
+     * @param capacite_th_2
+     * @param tempc
+     * @param tempf
+     * @param masse_volumique_1
+     * @param masse_volumique_2
+     * @param viscosite_1
+     * @param viscosite_2
+     * @param conductivite_th_1
+     * @param conductivite_th_2 
+     */
+    public Spirale(float longueur, float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float tempc, float tempf, float masse_volumique_1, float masse_volumique_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2) {
         super(debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, masse_volumique_1, masse_volumique_2, tempc, tempf);
         this.viscosite_1 = viscosite_1;
         this.viscosite_2 = viscosite_2;
         this.conductivite_th_1 = conductivite_th_1;
         this.conductivite_th_2 = conductivite_th_2;
         this.longueur = longueur;
-        this.largeur = largeur;
-        this.hauteur = hauteur;
     }
-
+    
+    /**
+     * calcul du nombre de spires
+     * @return nbre_spires
+     */
     public int calcul_nbre_spire() {
         double inter_nbre_spires;
         double l = longueur;
-        if (l > largeur) {
-            l = largeur;
-        }
-        if (l > hauteur) {
-            l = hauteur;
-        }
         inter_nbre_spires = l / (4 * epaisseur_inter);
 
         nbre_spires = (int) inter_nbre_spires;
         return nbre_spires;
     }
-
+    
+    /**
+     * calul l'epasseur d'une spire
+     * @return epaisseur_spire
+     */
     public double calcul_epaisseur_spire() {
         epaisseur_spire = 2 * (epaisseur_plaques + epaisseur_inter);
         return epaisseur_spire;
     }
-
+    
+    /**
+     * calcul de la surface de contact
+     * @return surface_contact
+     */
     public double calcul_surface_contact() {
         double l = longueur;
-        if (l > largeur) {
-            l = largeur;
-        }
-        if (l > hauteur) {
-            l = hauteur;
-        }
         surface_contact = 8 * Math.PI * Math.PI * epaisseur_spire * epaisseur_spire * l * (nbre_spires * (nbre_spires + 1) / 2 + (nbre_spires - 0.5) * (nbre_spires - 0.5) / 2); //
-        System.out.println(nbre_spires);
-        System.out.println("surface_contact " + surface_contact);
         return surface_contact;
     }
-
+    
+    /**
+     * calcul de la surface occupée par les modules
+     * @return smod
+     */
     public double calcul_smod() {
         double inter_nbre_modules = surface_contact / surface_module;
         nbre_modules = (int) inter_nbre_modules;
         smod = nbre_modules * surface_module;
         return smod;
     }
-
+    
+    /**
+     * calcul le coefficient de convection globale pour la classe Spirale
+     * @return resistance_th_globale
+     */
     public double calcul_coeff_convection_h() {
         double A1 = 0;
         double m1 = 0;
@@ -99,16 +119,9 @@ public class Spirale extends Technologies {
         Rey1 = (4 * debit_m_1) / (Math.PI * diam_tube * viscosite_1);
         Rey2 = (4 * debit_m_2) / (Math.PI * diam_tube * viscosite_2);
 
-        System.out.println(Rey1 + "Rey1");
-        System.out.println(Rey2 + "Rey2");
 
         Prandt = (viscosite_1 * capacite_th_1) / (conductivite_th_1);
         Prandt2 = (viscosite_2 * capacite_th_2) / (conductivite_th_2);
-        System.out.println(viscosite_1);
-        System.out.println(capacite_th_1);
-        System.out.println(conductivite_th_1);
-        System.out.println(Prandt + "Prandt");
-        System.out.println(Prandt2 + "Prandt2");
 
         if (Rey1 >= 1 && Rey1 <= 4) {
             A1 = 0.891;
@@ -147,40 +160,21 @@ public class Spirale extends Technologies {
         Nuss1 = 1.11 * A1 * Math.pow(Rey1, m1) * Math.pow(Prandt, 0.31);
         Nuss2 = 1.11 * A2 * Math.pow(Rey2, m2) * Math.pow(Prandt, 0.31);
 
-        System.out.println(Nuss1 + "Nuss1");
-        System.out.println(Nuss2 + "Nuss2");
 
         h1 = (Nuss1 * conductivite_th_1) / (diam_tube);
         h2 = (Nuss2 * conductivite_th_2) / (diam_tube);
 
-        System.out.println(h1 + " h1");
-        System.out.println(h2 + " h2");
         coeff_convection_h = 1 / ((1 / h1) + (1 / h2) + (1 / smod) * (0.000005 + epaisseur_plaques / 21.9));
-        System.out.println(coeff_convection_h);
         return coeff_convection_h;
     }
-
+    
+    /**
+     * calcul de la résistance thermique classe Spirale
+     * @return resistance_th_gloable
+     */
     public double calcul_rth() {
-        resistance_th_globale = 1 / (coeff_convection_h);
-        System.out.println("SMOD" + smod);
+        resistance_th_globale = 1 / (coeff_convection_h * smod);
         return resistance_th_globale;
-    }
-
-    public double calcul_Pe() {
-        //double Pe = (   ((seebeck+thomson)*(seebeck+thomson))  *   densite_couple*densite_couple*taux_occupation*taux_occupation*surface_contact*surface_contact*   ( (2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))*(2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))) *longueur_jambe*longueur_jambe*r_charge*surface_jambe*surface_jambe  )/(  4*  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact) *  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact)  * (r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe)*(r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe) );
-        //double Pe = ((    16*diff_temperature*diff_temperature*debit_m*debit_m*capacite_th*capacite_th*r_charge*surface_jambe*surface_jambe*surface_contact*surface_contact*seebeck*seebeck*densite_couple*densite_couple*taux_occupation*taux_occupation*longueur_jambe*longueur_jambe)/((  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      )*(  2*r_charge*surface_jambe*surface_jambe + masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe      ) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact)) * (2*debit_m*capacite_th*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact))           ));
-        double Pe = (diff_temperature * diff_temperature * debit_m_1 * capacite_th_1 * 2.9) / (8 * (1 + 2 * debit_m_1 * capacite_th_1 * resistance_th_globale));
-        System.out.println("rth=" + resistance_th_globale);
-        return Pe;
-    }
-    
-    
-    public int getter_nbre_modules() {
-        return nbre_modules;
-    }
-    
-    public double getter_surface_contact() {
-        return surface_contact;
     }
 
 }

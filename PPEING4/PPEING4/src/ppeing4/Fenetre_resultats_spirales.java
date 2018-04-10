@@ -37,44 +37,57 @@ import static javax.xml.bind.JAXBIntrospector.getValue;
  *
  * @author gautier
  */
-
 public class Fenetre_resultats_spirales extends JFrame {
 
-    JPanel panneau;
-    JTable tableau;
-    JTable tableau2;
-    JTable tableau3;
+    public JPanel panneau;
+    public JTable tableau;
+    public JTable tableau2;
+    public JTable tableau3;
 
-    public Fenetre_resultats_spirales(float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float masse_volumique_1, float masse_volumique_2, float tempc, float tempf, float longueur, float largeur, float hauteur) {
+    /**
+     * Constructeur de la classe Fenetre_resultats_spirales
+     * @param debit_m_1
+     * @param debit_m_2
+     * @param capacite_th_1
+     * @param capacite_th_2
+     * @param viscosite_1
+     * @param viscosite_2
+     * @param conductivite_th_1
+     * @param conductivite_th_2
+     * @param masse_volumique_1
+     * @param masse_volumique_2
+     * @param tempc
+     * @param tempf
+     * @param longueur
+     * @param largeur
+     * @param hauteur 
+     */
+    public Fenetre_resultats_spirales(float debit_m_1, float debit_m_2, float capacite_th_1, float capacite_th_2, float viscosite_1, float viscosite_2, float conductivite_th_1, float conductivite_th_2, float masse_volumique_1, float masse_volumique_2, float tempc, float tempf, float longueur) {
 
         Spirale spir1;
         Finance F1;
 
-        spir1 = new Spirale(longueur, largeur, hauteur, debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2);
+        spir1 = new Spirale(longueur, debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2);
         F1 = new Finance();
 
         double nbre_spire_main = spir1.calcul_nbre_spire();
-        System.out.println(nbre_spire_main);
 
         double epaisseur_spire_main = spir1.calcul_epaisseur_spire();
-        System.out.println(epaisseur_spire_main);
 
         double surface_contact_main = spir1.calcul_surface_contact();
-        System.out.println(surface_contact_main);
 
         double smod_main = spir1.calcul_smod();
-        System.out.println(smod_main);
 
         double coeff_convection_h = spir1.calcul_coeff_convection_h();
-        System.out.println(coeff_convection_h);
 
         double rth_main = spir1.calcul_rth();
-        System.out.println(rth_main);
+
 
         double pe_main = spir1.calcul_Pe();
-        System.out.println(pe_main);
-        
-        double prix_modules_main = F1.calcul_prix_modules(spir1.getter_nbre_modules(), 10);
+
+        double densite_couple_main = spir1.calcul_densite_couple();
+
+        double prix_modules_main = F1.calcul_prix_modules(spir1.getter_nbre_modules());
         if (prix_modules_main < 0) {
             prix_modules_main = 0;
         }
@@ -89,14 +102,6 @@ public class Fenetre_resultats_spirales extends JFrame {
         double revenu_horaire_main = F1.calcul_revenu_horaire();
         double nbre_heures_main = F1.calcul_nbre_heures();
 
-        System.out.println(energie_produite_main + "KWH");
-
-        System.out.println(revenu_horaire_main + "PRIX HORAIRE");
-
-        System.out.println(nbre_heures_main + "NBRE HEURES");
-
-        System.out.println(prix_modules_main + "PRIX MOD");
-        System.out.println(prix_materiaux_main + "PRIX MAT");
 
         String entetes[] = {"Résultat", "Valeur"};
         Object donnees[][] = {
@@ -180,11 +185,11 @@ public class Fenetre_resultats_spirales extends JFrame {
         tableau_entete2.setPreferredSize(new Dimension(550, 110));
         tableau_entete3.setPreferredSize(new Dimension(550, 120));
 
-        JLabel label_resultat = new JLabel("Resultat de la simulation");
-        JLabel label_module = new JLabel("Caractéristique du module utilisé");
+        JLabel label_resultat = new JLabel("Resultats de la simulation");
+        JLabel label_module = new JLabel("Caractéristiques du module utilisé");
         JLabel label_prix = new JLabel("Prix de l'échangeur");
         setBounds(0, 0, 600, 950);
-        setTitle("Résultats Technologie Plaques");
+        setTitle("Résultats Technologie Spirale");
         panneau = new JPanel();
 
         panneau.add(label_resultat);

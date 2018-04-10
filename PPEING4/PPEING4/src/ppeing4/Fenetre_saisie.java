@@ -93,6 +93,9 @@ public class Fenetre_saisie extends JFrame
     Box boxlabel4=Box.createHorizontalBox();
     Box boxlabel5=Box.createHorizontalBox();
     
+    /**
+     * Consctructeur de la classe Fenetre_saisie
+     */
     public Fenetre_saisie ()
     {
         String[] choix = {"À plaques","À spirales","Coaxial"};
@@ -479,6 +482,9 @@ public class Fenetre_saisie extends JFrame
         this.setResizable(false);
     }
 
+    /**
+     * classe intégrée Listener qui recupere les saisies pour l'affichage des resultats
+     */
      public class Ecouteur2 extends PPEING4 implements ActionListener
     {
      public void actionPerformed(ActionEvent arg0)

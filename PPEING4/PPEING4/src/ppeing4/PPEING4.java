@@ -6,7 +6,6 @@
 package ppeing4;
 
 import java.util.Scanner;
-import java.lang.Math;
 
 
 
@@ -16,7 +15,7 @@ import java.lang.Math;
  */
 public class PPEING4 {
 
-    /**fefeffffefefefe
+    /**Fonction main du logiciel
      * @param args the command line arguments
      */
     public static void main(String[] args) 
@@ -24,14 +23,7 @@ public class PPEING4 {
         // TODO code application logic here
         
         Scanner sc = new Scanner(System.in);
-        float debit_m=0;
-        float capacite_th=0;
-        float diff_temperature=0;
-        float masse_volumique=0;
-        float longueur=0;
-        float largeur=0;
-        float hauteur=0;
-        
+     
         Ecran fenetre;
         fenetre = new Ecran();
         fenetre.setVisible(true);

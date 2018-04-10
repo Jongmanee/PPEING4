@@ -16,6 +16,9 @@ public class Finance {
     private float prix_module = 30;
     private double prix_materiaux = 4.54;
 
+    /**
+     *
+     */
     protected double epaisseur_tube = 0.058;
 
     private double volume_exter;

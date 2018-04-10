@@ -22,6 +22,10 @@ public class Spirale extends Technologies {
     private double coeff_convection_h;
 
     private double epasseur_paroi = 0.0057;
+
+    /**
+     *
+     */
     protected double epaisseur_plaques = 0.0057;
     private int nbre_spires;
     private double epaisseur_spire;

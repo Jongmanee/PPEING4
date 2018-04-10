@@ -13,32 +13,129 @@ import java.lang.Math;
  */
 public class Technologies {
 
+    /**
+     *
+     */
     protected double smod;
+
+    /**
+     *
+     */
     protected int nbre_modules;
+
+    /**
+     *
+     */
     protected double surface_contact;
+
+    /**
+     *
+     */
     protected double r_charge;
 
+    /**
+     *
+     */
     protected float debit_m_1;
+
+    /**
+     *
+     */
     protected float debit_m_2;
+
+    /**
+     *
+     */
     protected float capacite_th_1;
+
+    /**
+     *
+     */
     protected float capacite_th_2;
+
+    /**
+     *
+     */
     protected float diff_temperature;
+
+    /**
+     *
+     */
     protected float tempc;
+
+    /**
+     *
+     */
     protected float tempf;
+
+    /**
+     *
+     */
     protected float tempm;
+
+    /**
+     *
+     */
     protected float masse_volumique_1;
+
+    /**
+     *
+     */
     protected float masse_volumique_2;
+
+    /**
+     *
+     */
     protected double taux_occupation;
+
+    /**
+     *
+     */
     protected double resistance_th_globale;
 
+    /**
+     *
+     */
     protected double longueur_jambe = 3.45 * Math.pow(10, -3);
+
+    /**
+     *
+     */
     protected double surface_jambe = 6.25 * Math.pow(10, -6);
+
+    /**
+     *
+     */
     protected double conduct_th_fluide;
+
+    /**
+     *
+     */
     protected double conduct_th_tube;
+
+    /**
+     *
+     */
     protected double surface_module = ((55 * Math.pow(10, -3)) * (55 * Math.pow(10, -3)));
+
+    /**
+     *
+     */
     protected double conduct_th_module;
+
+    /**
+     *
+     */
     protected double seebeck;
+
+    /**
+     *
+     */
     protected double thomson;
+
+    /**
+     *
+     */
     protected double densite_couple;
 
     /**

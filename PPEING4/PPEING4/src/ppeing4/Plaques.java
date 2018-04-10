@@ -29,8 +29,19 @@ public class Plaques extends Technologies {
     private float conductivite_th_1;
     private float conductivite_th_2;
 
+    /**
+     *
+     */
     protected double epaisseur_inter = 0.0040;
+
+    /**
+     *
+     */
     protected double diam_tube = 0.45;
+
+    /**
+     *
+     */
     protected double epaisseur_plaques = 0.0057;
     
     /**

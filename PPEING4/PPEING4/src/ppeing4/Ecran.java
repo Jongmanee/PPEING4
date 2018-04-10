@@ -49,7 +49,7 @@ public class Ecran extends JFrame {
                 + "Le but de ce logiciel est de vous permettre de choisir la technologie d'échangeur, afin de constituer un générateur thermoélectrique, pour valoriser la chaleur perdue au sein de votre centrale géothermique.\n\n"
                 + "1ere étape : SELECTION de votre technologie d'échangeur\n\n"
                 + "2eme étape : SAISIE des caractéristiques de votre centrale necessaires aux calculs\n\n"
-                + "3eme étape : AFFICHAGE des résultats"
+                + "3eme étape : AFFICHAGE des résultats (physique et économique)"
         );
 
         txt_utilisation.setLineWrap(true);
@@ -98,6 +98,10 @@ public class Ecran extends JFrame {
      */
     public class Ecouteur extends PPEING4 implements ActionListener {
 
+        /**
+         *
+         * @param arg0
+         */
         public void actionPerformed(ActionEvent arg0) {
 
             if (arg0.getSource() == b1) {

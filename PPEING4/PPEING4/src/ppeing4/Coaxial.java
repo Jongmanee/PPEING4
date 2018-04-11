@@ -5,8 +5,6 @@
  */
 package ppeing4;
 
-import java.lang.Math;
-
 /**
  *
  * @author gautier
@@ -50,7 +48,6 @@ public class Coaxial extends Technologies {
         } else {
             rayon = largeur / 4;
         }
-
         return rayon;
     }
 
@@ -63,18 +60,12 @@ public class Coaxial extends Technologies {
     public double calcul_smod(double surface_module) {
         float rayon;
         double inter_nbre_modules;
-
         rayon = calcul_rayon();
-
         surface_contact = 2 * Math.PI * rayon * longueur;
-
         inter_nbre_modules = surface_contact / surface_module;
         nbre_modules = (int) inter_nbre_modules;
-
         smod = nbre_modules * surface_module;
-
         taux_occupation = smod / surface_contact;
-
         return smod;
 
     }
@@ -91,7 +82,6 @@ public class Coaxial extends Technologies {
     public double calcul_rth(float débit_m, float masse_volumique, float epaisseur_paroi, float viscosite, float capacite_th) {
 
         double l;
-        double h_global_inverse;
         double A1 = 0;
         double m1 = 0;
         double A2 = 0;
@@ -100,7 +90,6 @@ public class Coaxial extends Technologies {
         double h2;
         float rayon1;
         float rayon2;
-        double debit_volumique;
         if (hauteur < largeur) {
             rayon1 = (hauteur / 2) - 2 * epaisseur_paroi;
             rayon2 = (hauteur / 2) - 2 * epaisseur_paroi;

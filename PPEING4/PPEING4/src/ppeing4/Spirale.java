@@ -5,8 +5,6 @@
  */
 package ppeing4;
 
-import java.lang.Math;
-
 /**
  *
  * @author Jongmanee Denis
@@ -20,13 +18,7 @@ public class Spirale extends Technologies {
     private float conductivite_th_1;
     private float conductivite_th_2;
     private double coeff_convection_h;
-
-    private double epasseur_paroi = 0.0057;
-
-    /**
-     *
-     */
-    protected double epaisseur_plaques = 0.0057;
+    private double epaisseur_plaques = 0.0057;
     private int nbre_spires;
     private double epaisseur_spire;
     private double epaisseur_inter = 0.0040;
@@ -66,13 +58,12 @@ public class Spirale extends Technologies {
         double inter_nbre_spires;
         double l = longueur;
         inter_nbre_spires = l / (4 * epaisseur_inter);
-
         nbre_spires = (int) inter_nbre_spires;
         return nbre_spires;
     }
     
     /**
-     * calul l'epasseur d'une spire
+     * calul l'epaisseur d'une spire
      * @return epaisseur_spire
      */
     public double calcul_epaisseur_spire() {
@@ -162,7 +153,7 @@ public class Spirale extends Technologies {
         }
 
         Nuss1 = 1.11 * A1 * Math.pow(Rey1, m1) * Math.pow(Prandt, 0.31);
-        Nuss2 = 1.11 * A2 * Math.pow(Rey2, m2) * Math.pow(Prandt, 0.31);
+        Nuss2 = 1.11 * A2 * Math.pow(Rey2, m2) * Math.pow(Prandt2, 0.31);
 
 
         h1 = (Nuss1 * conductivite_th_1) / (diam_tube);

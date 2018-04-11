@@ -5,8 +5,6 @@
  */
 package ppeing4;
 
-import java.lang.Math;
-
 /**
  *
  * @author gautier
@@ -16,32 +14,16 @@ public class Plaques extends Technologies {
     private float longueur;
     private float largeur;
     private float hauteur;
-
     private double coeff_convection_h;
     private double surface_plaques;
-    private float flux_thermique;
-
     private int nbre_plaques;
     private int nbre_plaques_total;
-
     private float viscosite_1;
     private float viscosite_2;
     private float conductivite_th_1;
     private float conductivite_th_2;
-
-    /**
-     *
-     */
-    protected double epaisseur_inter = 0.0040;
-
-    /**
-     *
-     */
-    protected double diam_tube = 0.45;
-
-    /**
-     *
-     */
+    private double epaisseur_inter = 0.0040;
+    private double diam_tube = 0.45;
     protected double epaisseur_plaques = 0.0057;
     
     /**
@@ -79,12 +61,9 @@ public class Plaques extends Technologies {
      */
     public int calcul_nbre_plaques_total() {
         double inter_nbre_plaques_total;
-
         inter_nbre_plaques_total = longueur / (epaisseur_plaques + epaisseur_inter);
         nbre_plaques_total = (int) inter_nbre_plaques_total;
-
         nbre_plaques = nbre_plaques_total - 2;
-
         return nbre_plaques;
     }
     
@@ -111,16 +90,13 @@ public class Plaques extends Technologies {
      * @return smod
      */
     public double calcul_smod() {
-
         double inter_nbre_modules = surface_contact / surface_module;
         nbre_modules = (int) inter_nbre_modules;
         if (nbre_modules < 0) {
             nbre_modules = 0;
         }
-
         smod = nbre_modules * surface_module;
         taux_occupation = smod / surface_contact;
-
         return smod;
     }
     
@@ -139,7 +115,6 @@ public class Plaques extends Technologies {
      * @return coeff_convection_h
      */
     public double calcul_coeff_convection_h() {
-        double h_global_inverse;
         double A1 = 0;
         double m1 = 0;
         double A2 = 0;
@@ -196,7 +171,7 @@ public class Plaques extends Technologies {
         }
 
         Nuss1 = 1.11 * A1 * Math.pow(Rey1, m1) * Math.pow(Prandt, 0.31);
-        Nuss2 = 1.11 * A2 * Math.pow(Rey2, m2) * Math.pow(Prandt, 0.31);
+        Nuss2 = 1.11 * A2 * Math.pow(Rey2, m2) * Math.pow(Prandt2, 0.31);
 
 
         h1 = (Nuss1 * conductivite_th_1) / (diam_tube);

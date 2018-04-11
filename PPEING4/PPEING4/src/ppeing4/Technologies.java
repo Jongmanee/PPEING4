@@ -5,137 +5,36 @@
  */
 package ppeing4;
 
-import java.lang.Math;
-
 /**
  *
  * @author gautier
  */
 public class Technologies {
-
-    /**
-     *
-     */
+    
     protected double smod;
-
-    /**
-     *
-     */
     protected int nbre_modules;
-
-    /**
-     *
-     */
     protected double surface_contact;
-
-    /**
-     *
-     */
     protected double r_charge;
-
-    /**
-     *
-     */
     protected float debit_m_1;
-
-    /**
-     *
-     */
     protected float debit_m_2;
-
-    /**
-     *
-     */
     protected float capacite_th_1;
-
-    /**
-     *
-     */
     protected float capacite_th_2;
-
-    /**
-     *
-     */
     protected float diff_temperature;
-
-    /**
-     *
-     */
     protected float tempc;
-
-    /**
-     *
-     */
     protected float tempf;
-
-    /**
-     *
-     */
     protected float tempm;
-
-    /**
-     *
-     */
     protected float masse_volumique_1;
-
-    /**
-     *
-     */
     protected float masse_volumique_2;
-
-    /**
-     *
-     */
     protected double taux_occupation;
-
-    /**
-     *
-     */
     protected double resistance_th_globale;
-
-    /**
-     *
-     */
     protected double longueur_jambe = 3.45 * Math.pow(10, -3);
-
-    /**
-     *
-     */
     protected double surface_jambe = 6.25 * Math.pow(10, -6);
-
-    /**
-     *
-     */
     protected double conduct_th_fluide;
-
-    /**
-     *
-     */
     protected double conduct_th_tube;
-
-    /**
-     *
-     */
     protected double surface_module = ((55 * Math.pow(10, -3)) * (55 * Math.pow(10, -3)));
-
-    /**
-     *
-     */
     protected double conduct_th_module;
-
-    /**
-     *
-     */
     protected double seebeck;
-
-    /**
-     *
-     */
     protected double thomson;
-
-    /**
-     *
-     */
     protected double densite_couple;
 
     /**
@@ -157,11 +56,9 @@ public class Technologies {
         this.capacite_th_1 = capacite_th_1;
         this.masse_volumique_1 = masse_volumique_1;
         this.debit_m_1 = (debit_m_1 * masse_volumique_1) / 3600;
-
         this.capacite_th_2 = capacite_th_2;
         this.masse_volumique_2 = masse_volumique_2;
         this.debit_m_2 = (debit_m_2 * masse_volumique_2) / 3600;
-
         this.seebeck = ((22224 + 930.6 * tempm) - (0.9905 * tempm * tempm)) * Math.pow(10, -9);
         this.thomson = ((930.6 - 0.9905 * tempm * tempm) * Math.pow(10, -9) * tempm);
         this.conduct_th_fluide = 0.6;
@@ -196,7 +93,6 @@ public class Technologies {
         //double Pe = (   ((seebeck+thomson)*(seebeck+thomson))  *   densite_couple*densite_couple*taux_occupation*taux_occupation*surface_contact*surface_contact*   ( (2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))*(2*((debit_m*masse_volumique)/3600)*capacite_th*(-diff_temperature))) *longueur_jambe*longueur_jambe*r_charge*surface_jambe*surface_jambe  )/(  4*  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact) *  (2*((debit_m*masse_volumique)/3600)*capacite_th*(longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + conduct_th_module*densite_couple*taux_occupation*surface_contact)  * (r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe)*(r_charge*surface_jambe*surface_jambe+ masse_volumique*densite_couple*taux_occupation*surface_contact*longueur_jambe) );
         //double Pe = ((    16*diff_temperature*diff_temperature*debit_m_1*debit_m_1*capacite_th_1*capacite_th_1*r_charge*surface_jambe*surface_jambe*surface_contact*surface_contact*seebeck*seebeck*densite_couple*densite_couple*taux_occupation*taux_occupation*longueur_jambe*longueur_jambe)/((  2*r_charge*surface_jambe*surface_jambe + masse_volumique_1*densite_couple*taux_occupation*surface_contact*longueur_jambe      )*(  2*r_charge*surface_jambe*surface_jambe + masse_volumique_1*densite_couple*taux_occupation*surface_contact*longueur_jambe      ) * (2*debit_m_1*capacite_th_1*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact)) * (2*debit_m_1*capacite_th_1*(2*longueur_jambe+resistance_th_globale*conduct_th_module*densite_couple*taux_occupation*surface_contact) + (conduct_th_module*densite_couple*taux_occupation*surface_contact))           ));
         double Pe = 0.05 * (diff_temperature * diff_temperature * debit_m_1 * capacite_th_1 * 2.9) / (8 * (1 + 2 * debit_m_1 * capacite_th_1 * resistance_th_globale));
-
         return Pe;
     }
     
@@ -208,9 +104,7 @@ public class Technologies {
         r_charge = masse_volumique_1 * densite_couple * smod * longueur_jambe / (2 * surface_jambe);
         return r_charge;
     }
-
-    
-    
+ 
     // les differents getter
     
     /**

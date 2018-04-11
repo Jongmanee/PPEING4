@@ -5,34 +5,17 @@
  */
 package ppeing4;
 
-import java.awt.BorderLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.Format;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.Box;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import static javax.xml.bind.JAXBIntrospector.getValue;
 
 /**
  *
@@ -40,24 +23,9 @@ import static javax.xml.bind.JAXBIntrospector.getValue;
  */
 public class Fenetre_resultats_spirales extends JFrame {
 
-    /**
-     *
-     */
     public JPanel panneau;
-
-    /**
-     *
-     */
     public JTable tableau;
-
-    /**
-     *
-     */
     public JTable tableau2;
-
-    /**
-     *
-     */
     public JTable tableau3;
 
     /**
@@ -83,36 +51,34 @@ public class Fenetre_resultats_spirales extends JFrame {
 
         spir1 = new Spirale(longueur, debit_m_1, debit_m_2, capacite_th_1, capacite_th_2, tempc, tempf, masse_volumique_1, masse_volumique_2, viscosite_1, viscosite_2, conductivite_th_1, conductivite_th_2);
         F1 = new Finance();
-
-        double nbre_spire_main = spir1.calcul_nbre_spire();
-
+        
+        spir1.calcul_nbre_spire();
+        
         double epaisseur_spire_main = spir1.calcul_epaisseur_spire();
-
         double surface_contact_main = spir1.calcul_surface_contact();
-
         double smod_main = spir1.calcul_smod();
-
-        double coeff_convection_h = spir1.calcul_coeff_convection_h();
-
-        double rth_main = spir1.calcul_rth();
-
-
+        
+        spir1.calcul_coeff_convection_h();
+        spir1.calcul_rth();
+        
         double pe_main = spir1.calcul_Pe();
         
-        double taux_occupation_main = spir1.calcul_taux_occupation();
-        double densite_couple_main = spir1.calcul_densite_couple();
+        spir1.calcul_taux_occupation();
+        spir1.calcul_densite_couple();
 
         double prix_modules_main = F1.calcul_prix_modules(spir1.getter_nbre_modules());
         if (prix_modules_main < 0) {
             prix_modules_main = 0;
         }
-        double volume_materiaux_main = F1.calcul_volume_spirale(epaisseur_spire_main, surface_contact_main);
+        
+        F1.calcul_volume_spirale(epaisseur_spire_main, surface_contact_main);
+        
         double prix_materiaux_main = F1.calcul_prix_matiere();
         if (prix_materiaux_main < 0) {
             prix_materiaux_main = 0;
         }
+        
         double prix_total_main = prix_modules_main + prix_materiaux_main;
-
         double energie_produite_main = F1.conversion_kwh(pe_main);
         double revenu_horaire_main = F1.calcul_revenu_horaire();
         double nbre_heures_main = F1.calcul_nbre_heures();
@@ -208,8 +174,10 @@ public class Fenetre_resultats_spirales extends JFrame {
         JLabel label_resultat = new JLabel("Resultats de la simulation");
         JLabel label_module = new JLabel("Caractéristiques du module utilisé");
         JLabel label_prix = new JLabel("Prix de l'échangeur");
+        
         setBounds(0, 0, 600, 950);
         setTitle("Résultats Technologie Spirale");
+        
         panneau = new JPanel();
 
         panneau.add(label_resultat);
@@ -220,6 +188,7 @@ public class Fenetre_resultats_spirales extends JFrame {
         panneau.add(tableau_entete3);
         panneau.add(fxPanel); // on ajoute au Jframe notre panneau FX (qui contient donc UNE "scene" qui elle contient les object FX, ici notre camembert)
         getContentPane().add(panneau);
+        
         this.setLocation(600, 0);
         this.setResizable(false);
     }

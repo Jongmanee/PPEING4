@@ -11,13 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.Box;
 import javax.swing.WindowConstants;
 
@@ -43,7 +39,6 @@ public class Ecran extends JFrame {
 
         setBounds(0, 0, 600, 600);
         setTitle("C°2WATT");
-
         JTextArea txt_utilisation = new JTextArea(
                 "                                    Présentation du Logiciel\n\n"
                 + "Le but de ce logiciel est de vous permettre de choisir la technologie d'échangeur, afin de constituer un générateur thermoélectrique, pour valoriser la chaleur perdue au sein de votre centrale géothermique.\n\n"
@@ -62,9 +57,7 @@ public class Ecran extends JFrame {
 
         Ecouteur ec;
         ec = new Ecouteur();
-
         b1 = new JButton("Lancer Calcul");
-
         b1.addActionListener(ec);
 
         JLabel img = new JLabel(new ImageIcon("logo.png"));
@@ -105,7 +98,6 @@ public class Ecran extends JFrame {
         public void actionPerformed(ActionEvent arg0) {
 
             if (arg0.getSource() == b1) {
-
                 Fenetre_saisie fenetre2;
                 fenetre2 = new Fenetre_saisie();
                 if (fenetre2.bulle != null) {
@@ -113,11 +105,7 @@ public class Ecran extends JFrame {
                 } else {
                     fenetre2.setVisible(false);
                 }
-
             }
-
         }
-
     }
-
 }

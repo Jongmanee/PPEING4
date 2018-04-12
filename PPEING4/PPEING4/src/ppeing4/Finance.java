@@ -127,6 +127,12 @@ public class Finance {
         return nbre_heures;
     }
     
+    public double getter_prix_elec()
+    {
+        return prix_elec;
+        
+    }
+    
     
 
 }

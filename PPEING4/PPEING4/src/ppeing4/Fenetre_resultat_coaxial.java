@@ -126,7 +126,7 @@ public class Fenetre_resultat_coaxial extends JFrame {
             {"Prix des modules (en €)", df2.format(prix_module_main)},
             {"Prix de la matière première (en €)", df2.format(prix_materiaux_main)},
             {"Prix total échangeur (en €)", df2.format(prix_total)},
-            {"Nombre de KiloWatt-heures", df2.format(energie_produite_main)},
+            {"Puissance norminale en Kilowatt", df2.format(energie_produite_main)},
             {"Revenu horaire", df2.format(revenu_horaire_main)},
             {"Nbre d'heures pour remboursement", df2.format(nbre_heures_main)}
         };

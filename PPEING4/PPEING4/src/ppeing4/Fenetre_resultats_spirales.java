@@ -97,7 +97,6 @@ public class Fenetre_resultats_spirales extends JFrame {
             {"Débit massique froid(en m3/h)", debit_m_2},
             {"Température chaude (en °C)", tempc},
             {"Température froide (en °C)", tempf},
-            //{"Temperature voulue sortie echangeur (en °C)",temp_ech},
             {"Différence de température", spir1.getter_diff_temperature()},
             {"Puissance électrique générée (en W)", df2.format(pe_main)}
         };
@@ -131,7 +130,7 @@ public class Fenetre_resultats_spirales extends JFrame {
             {"Prix des modules (en €)", df2.format(prix_modules_main)},
             {"Prix de la matière première (en €)", df2.format(prix_materiaux_main)},
             {"Prix total échangeur (en €)", df2.format(prix_total_main)},
-            {"Nombre de KiloWatt-heures", df2.format(energie_produite_main)},
+            {"Puissance norminale en Kilowatt", df2.format(energie_produite_main)},
             {"Revenu horaire", df2.format(revenu_horaire_main)},
             {"Nbre d'heures pour remboursement", df2.format(nbre_heures_main)}
 
